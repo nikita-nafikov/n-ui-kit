@@ -42,7 +42,6 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 .button {
   font: inherit;
   font-size: var(--m-font-size);
-  color: var(--white-color);
   outline: none;
   border-radius: var(--default-border-radius);
   padding: 8px 16px;
@@ -51,17 +50,25 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   display: flex;
   align-items: center;
   gap: 3px;
-  background: var(--white-color);
+  color: var(--white-color);
+  background: var(--dark-gray-color);
   border: 1px solid var(--black-color);
 }
 
 .dark.button {
-  color: var(--black-color);
-  background: var(--dark-gray-color);
+  background: var(--white-color);
 }
 
 .button:hover {
   cursor: pointer;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--black-color);
+}
+
+.dark:focus-visible {
+  outline: 2px solid var(--white-color);
 }
 
 .button:disabled {
@@ -72,15 +79,12 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   border-radius: var(--m-border-radius);
 }
 
-.default {
-  color: var(--black-color);
-}
-
 .default:hover {
   border-color: var(--primary-color);
 }
 
 .dark.default {
+  color: var(--black-color);
   border-color: (--white-color);
 }
 
