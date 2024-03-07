@@ -1,0 +1,47 @@
+{
+  "name": "n-ui-kit",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/nuikit.umd.ts",
+  "module": "./dist/nuikit.es.ts",
+  "types": "./dist/components/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/nuikit.es.ts",
+      "require": "./dist/nuikit.umd.ts"
+    },
+    "./styles": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.16",
+    "@storybook/addon-interactions": "^7.6.16",
+    "@storybook/addon-links": "^7.6.16",
+    "@storybook/blocks": "^7.6.16",
+    "@storybook/test": "^7.6.16",
+    "@storybook/vue3": "^7.6.16",
+    "@storybook/vue3-vite": "^7.6.16",
+    "@types/node": "^20.11.19",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.6.16",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0",
+    "vite-plugin-dts": "^3.7.2",
+    "vue": ">=3",
+    "vue-tsc": "^1.8.27"
+  },
+  "peerDependencies": {
+    "vue": ">=3"
+  }
+}
