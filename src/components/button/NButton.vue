@@ -40,6 +40,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
 <style scoped>
 .button {
+  font: inherit;
   font-size: var(--m-font-size);
   color: var(--white-color);
   outline: none;
@@ -47,7 +48,6 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   padding: 8px 16px;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
   margin: 0;
-  font: inherit;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -77,17 +77,14 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .default:hover {
-  color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
 .dark.default {
-  color: var(--black-color);
   border-color: (--white-color);
 }
 
 .dark.default:hover {
-  color: var(--primary-color);
   border-color: var(--primary-color);
 }
 
