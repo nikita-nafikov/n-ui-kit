@@ -1,27 +1,43 @@
 <script setup lang="ts">
-import { provide } from "vue";
+import NInput from "./components/input/NInput.vue";
 import NButton from "./components/button/NButton.vue";
+
+import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
 
 const { isDarkTheme, toggleTheme } = useDarkTheme();
 
 provide("isDarkTheme", { isDarkTheme, toggleTheme });
 
+//dev
+import { ref } from "vue";
 import icon from "../public/icon.vue";
+
+const str = ref("");
+
+const x = () => {
+  console.log("x");
+};
 </script>
 
 <template>
   <div class="container">
     <NButton @click="toggleTheme">Сменить тему</NButton>
     <div class="x">
-      <NButton size="small" color="primary"> Кнопка </NButton>
+      <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
       <NButton color="danger">Кнопка</NButton>
       <NButton color="warning"> Кнопка</NButton>
       <NButton size="large" color="success">Кнопка</NButton>
+      <NButton color="warning">
+        <template v-slot:left-icon><icon /></template> Кнопка
+      </NButton>
     </div>
-    <NButton color="warning">
-      <template v-slot:left-icon><icon /></template> Кнопка
-    </NButton>
+    <div @click="x">
+      <NInput v-model="str" class="red"
+        ><template v-slot:left-icon><icon /></template
+      ></NInput>
+      {{ str }}
+    </div>
   </div>
 </template>
 
@@ -38,5 +54,9 @@ import icon from "../public/icon.vue";
   gap: 20px;
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.red {
+  color: red !important;
 }
 </style>

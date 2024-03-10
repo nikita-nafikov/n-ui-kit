@@ -4,7 +4,6 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
     aria-hidden="true"
     role="img"
-    class="iconify iconify--logos"
     width="31.88"
     height="32"
     preserveAspectRatio="xMidYMid meet"
