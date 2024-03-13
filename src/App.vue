@@ -25,7 +25,7 @@ const x = () => {
     <NButton @click="toggleTheme">Сменить тему</NButton>
     <div class="x">
       <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
-      <NButton color="danger">Кнопка</NButton>
+      <NButton disabled color="danger">Кнопка</NButton>
       <NButton color="warning"> Кнопка</NButton>
       <NButton size="large" color="success">Кнопка</NButton>
       <NButton color="warning">
@@ -33,9 +33,21 @@ const x = () => {
       </NButton>
     </div>
     <div @click="x">
-      <NInput v-model="str" class="red"
+      <NInput v-model="str"
         ><template v-slot:left-icon><icon /></template
       ></NInput>
+      {{ str }}
+    </div>
+    <div style="margin-top: 20px">
+      <NInput round size="large" v-model="str"></NInput>
+      {{ str }}
+    </div>
+    <div style="margin-top: 20px">
+      <NInput class="size" round v-model="str"></NInput>
+      {{ str }}
+    </div>
+    <div style="margin-top: 20px">
+      <NInput round size="small" v-model="str"></NInput>
       {{ str }}
     </div>
   </div>
@@ -58,5 +70,9 @@ const x = () => {
 
 .red {
   color: red !important;
+}
+
+.size {
+  max-width: 50%;
 }
 </style>

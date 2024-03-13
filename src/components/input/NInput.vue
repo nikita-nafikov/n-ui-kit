@@ -1,11 +1,16 @@
 <template>
-  <div class="input-wrapper" :class="{ dark: isDarkTheme }" @click="focusInput">
+  <div
+    class="input-wrapper"
+    :class="[size, { dark: isDarkTheme }, { round: round }]"
+    @click="focusInput"
+  >
     <slot name="left-icon" class="x" />
     <input
       ref="input"
       class="input"
-      :class="{ dark: isDarkTheme }"
+      :class="[size, { dark: isDarkTheme }]"
       :value="modelValue"
+      :disabled="disabled"
       @input="updateValue"
       v-bind="$attrs"
     />
@@ -28,6 +33,18 @@ const { modelValue } = defineProps({
     type: String,
     required: true,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+  round: {
+    type: Boolean,
+    default: false,
+  },
+  size: {
+    type: String as PropType<"small" | "medium" | "large">,
+    default: "medium",
+  },
 });
 
 const updateValue = (event: Event) => {
@@ -41,7 +58,7 @@ const focusInput = () => {
 
 <style scoped>
 .input-wrapper {
-  padding: var(--s-padding);
+  padding: var(--m-padding);
   display: flex;
   align-items: center;
   gap: 3px;
@@ -62,11 +79,39 @@ const focusInput = () => {
   color: var(--white-color);
 }
 
+.input.small {
+  font-size: var(--s-font-size);
+}
+
+.input-wrapper.small {
+  padding: var(--s-padding);
+}
+
+.input.large {
+  font-size: var(--l-font-size);
+}
+
+.input-wrapper.large {
+  padding: var(--l-padding);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
 .dark.input {
   color: var(--black-color);
 }
 
-.x {
-  display: none;
+.small.round {
+  border-radius: var(--s-border-radius);
+}
+
+.input-wrapper.round {
+  border-radius: var(--m-border-radius);
+}
+
+.large.round {
+  border-radius: var(--l-border-radius);
 }
 </style>
