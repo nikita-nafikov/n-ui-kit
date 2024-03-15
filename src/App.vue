@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import NInput from "./components/input/NInput.vue";
 import NButton from "./components/button/NButton.vue";
+import NSelect from "./components/select/NSelect.vue";
+import NOption from "./components/select/NOption.vue";
 
 import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
@@ -18,6 +20,8 @@ const str = ref("");
 const x = () => {
   console.log("x");
 };
+
+const options = ref(["fsd", "fsfds", "fsd"]);
 </script>
 
 <template>
@@ -43,12 +47,18 @@ const x = () => {
       {{ str }}
     </div>
     <div style="margin-top: 20px">
-      <NInput class="size" round v-model="str"></NInput>
+      <NInput class="size" place-holder="fsdf" round v-model="str"></NInput>
       {{ str }}
     </div>
     <div style="margin-top: 20px">
-      <NInput round size="small" v-model="str"></NInput>
-      {{ str }}
+      <NSelect>
+        <NOption
+          v-for="option of options"
+          :key="option"
+          :value="option"
+          :label="option"
+        />
+      </NSelect>
     </div>
   </div>
 </template>

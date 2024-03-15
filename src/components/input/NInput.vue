@@ -2,7 +2,7 @@
   <div
     class="input-wrapper"
     :class="[size, { dark: isDarkTheme }, { round: round }]"
-    @click="focusInput"
+    @click="handleFocusInput"
   >
     <slot name="left-icon" class="x" />
     <input
@@ -11,7 +11,8 @@
       :class="[size, { dark: isDarkTheme }]"
       :value="modelValue"
       :disabled="disabled"
-      @input="updateValue"
+      :placeholder="placeHolder"
+      @input="handleUpdateValue"
       v-bind="$attrs"
     />
     <slot name="right-icon" />
@@ -26,7 +27,9 @@ const input = ref<null | HTMLInputElement>(null);
 // @ts-ignore: Unreachable code error
 const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string): void;
+}>();
 
 const { modelValue } = defineProps({
   modelValue: {
@@ -41,17 +44,21 @@ const { modelValue } = defineProps({
     type: Boolean,
     default: false,
   },
+  placeHolder: {
+    type: String,
+    default: "Введите",
+  },
   size: {
     type: String as PropType<"small" | "medium" | "large">,
     default: "medium",
   },
 });
 
-const updateValue = (event: Event) => {
+const handleUpdateValue = (event: Event) => {
   emit("update:modelValue", (event.target as HTMLInputElement).value);
 };
 
-const focusInput = () => {
+const handleFocusInput = () => {
   input.value?.focus();
 };
 </script>
