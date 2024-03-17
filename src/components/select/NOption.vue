@@ -1,5 +1,5 @@
 <template>
-  <li @click.stop="handleUpdateValue">{{ label }}</li>
+  <li @click.stop="handleUpdateValue" tabindex="0">{{ label }}</li>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +21,7 @@ const emit = defineEmits<{
 }>();
 
 const handleUpdateValue = () => {
-  console.log("handleUpdateValue");
+  emit('update:modelValue', value)
+  console.log("handleUpdateValue", value);
 };
 </script>

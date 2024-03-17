@@ -2,12 +2,14 @@
   <div
     class="select"
     @click="handleToggleSelect"
+    @keyup.space="handleToggleSelect"
     v-click-outside="handleCloseSelect"
+    tabindex="0"
   >
-    <div class="selected-label">selectedOption.label</div>
+    <div class="selected-placeholder">{{ placeHolder }}</div>
     <transition name="fade">
       <ul v-show="isSelectOpen" class="options-list">
-        <slot />
+        <slot @updateModelValue="x"><span>Список пуст</span></slot>
       </ul>
     </transition>
   </div>
@@ -17,10 +19,14 @@
 import { ref, PropType, inject, computed } from "vue";
 import "../../style.css";
 
-const { modelValue } = defineProps({
+const { modelValue, placeHolder } = defineProps({
   modelValue: {
     type: String,
     reqired: true,
+  },
+  placeHolder: {
+    type: String,
+    default: "Выберите",
   },
 });
 const emit = defineEmits(["update:modelValue"]);
@@ -28,12 +34,14 @@ const isSelectOpen = ref(false);
 
 const handleToggleSelect = () => {
   isSelectOpen.value = !isSelectOpen.value;
-  console.log("toggle");
 };
 
 const handleCloseSelect = () => {
   isSelectOpen.value = false;
-  console.log("close");
+};
+
+const x = () => {
+  console.log("x");
 };
 </script>
 
@@ -43,7 +51,7 @@ const handleCloseSelect = () => {
   cursor: pointer;
 }
 
-.selected-label {
+.selected-placeholder {
   padding: 10px;
   border: 1px solid #ccc;
 }

@@ -32,8 +32,6 @@
     "@storybook/vue3-vite": "^7.6.16",
     "@types/node": "^20.11.19",
     "@vitejs/plugin-vue": "^5.0.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "storybook": "^7.6.16",
     "typescript": "^5.2.2",
     "vite": "^5.1.0",

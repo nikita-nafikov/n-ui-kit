@@ -16,12 +16,13 @@ import { ref } from "vue";
 import icon from "../public/icon.vue";
 
 const str = ref("");
+const selectValue = ref("");
 
 const x = () => {
   console.log("x");
 };
 
-const options = ref(["fsd", "fsfds", "fsd"]);
+const options = ref(["123", "456", "789"]);
 </script>
 
 <template>
@@ -51,7 +52,7 @@ const options = ref(["fsd", "fsfds", "fsd"]);
       {{ str }}
     </div>
     <div style="margin-top: 20px">
-      <NSelect>
+      <NSelect v-model="selectValue">
         <NOption
           v-for="option of options"
           :key="option"

@@ -13,7 +13,6 @@ export default {
       if (!el.contains(e.target as Node)) {
         binding.value();
       }
-      console.log("fdfs");
     };
     document.addEventListener("click", el.clickOutsideEvent);
   },
