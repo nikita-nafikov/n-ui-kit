@@ -3,6 +3,7 @@ import NInput from "./components/input/NInput.vue";
 import NButton from "./components/button/NButton.vue";
 import NSelect from "./components/select/NSelect.vue";
 import NOption from "./components/select/NOption.vue";
+import NCheckbox from "./components/checkbox/NCheckbox.vue";
 
 import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
@@ -15,12 +16,11 @@ provide("isDarkTheme", { isDarkTheme, toggleTheme });
 import { ref } from "vue";
 import icon from "../public/icon.vue";
 
+// input
 const str = ref("");
-const selectValue = ref("");
 
-const x = () => {
-  console.log("x");
-};
+//select
+const selectValue = ref("");
 
 const options = ref([
   {
@@ -36,6 +36,33 @@ const options = ref([
     value: "c",
   },
 ]);
+
+// checkbox
+const checkboxValue = ref(false);
+
+const checkboxList = ref([
+  {
+    name: "William",
+    age: 30,
+    sex: "Male",
+  },
+  {
+    name: "Thomas",
+    age: 24,
+    sex: "Male",
+  },
+  {
+    name: "Jennifer",
+    age: 20,
+    sex: "Female",
+  },
+]);
+
+const checkboxListValue = ref([]);
+
+const x = () => {
+  console.log("x");
+};
 </script>
 
 <template>
@@ -74,7 +101,22 @@ const options = ref([
         />
       </NSelect>
       {{ selectValue }}
-      <!-- {{ "abc" + " " + option }} -->
+    </div>
+    <div style="margin-top: 20px">
+      <!-- <NCheckbox v-model="checkboxValue" label="лейбл" /> -->
+      <!-- {{ checkboxValue }} -->
+    </div>
+
+    <div style="margin-top: 20px">
+      <template v-for="checkbox of checkboxList">
+        <NCheckbox
+          v-model="checkboxListValue"
+          :label="checkbox.name"
+          :value="checkbox"
+        />
+      </template>
+
+      {{ checkboxListValue }}
     </div>
   </div>
 </template>
