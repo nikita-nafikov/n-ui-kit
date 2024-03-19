@@ -103,8 +103,8 @@ const x = () => {
       {{ selectValue }}
     </div>
     <div style="margin-top: 20px">
-      <!-- <NCheckbox v-model="checkboxValue" label="лейбл" /> -->
-      <!-- {{ checkboxValue }} -->
+      <NCheckbox v-model="checkboxValue" label="лейбл" />
+      {{ checkboxValue }}
     </div>
 
     <div style="margin-top: 20px">

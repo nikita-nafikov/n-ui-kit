@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-const { modelValue, value, label } = defineProps({
+const props = defineProps({
   modelValue: {
     type: [Array, Boolean],
     required: true,
@@ -27,7 +27,7 @@ const emit = defineEmits<{
 
 const model = computed({
   get() {
-    return modelValue;
+    return props.modelValue;
   },
   set(value) {
     emit("update:modelValue", value);
