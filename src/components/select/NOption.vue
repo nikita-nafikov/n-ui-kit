@@ -1,27 +1,22 @@
 <template>
-  <li @click.stop="handleUpdateValue" tabindex="0">{{ label }}</li>
+  <li @click.stop="updateValue(value, label)" tabindex="0">
+    <slot>{{ label }}</slot>
+  </li>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, inject } from "vue";
+
+const updateValue = inject<Function>("updateValue");
 
 const { label, value } = defineProps({
   label: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
   value: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
 });
-
-const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
-}>();
-
-const handleUpdateValue = () => {
-  emit('update:modelValue', value)
-  console.log("handleUpdateValue", value);
-};
 </script>

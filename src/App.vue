@@ -22,7 +22,20 @@ const x = () => {
   console.log("x");
 };
 
-const options = ref(["123", "456", "789"]);
+const options = ref([
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value: "b",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
+]);
 </script>
 
 <template>
@@ -55,11 +68,13 @@ const options = ref(["123", "456", "789"]);
       <NSelect v-model="selectValue">
         <NOption
           v-for="option of options"
-          :key="option"
-          :value="option"
-          :label="option"
+          :key="option.id"
+          :value="option.id"
+          :label="option.value"
         />
       </NSelect>
+      {{ selectValue }}
+      <!-- {{ "abc" + " " + option }} -->
     </div>
   </div>
 </template>

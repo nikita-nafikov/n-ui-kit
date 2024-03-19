@@ -2,26 +2,26 @@
   <div
     class="select"
     @click="handleToggleSelect"
-    @keyup.space="handleToggleSelect"
+    @keyup.enter="handleToggleSelect"
     v-click-outside="handleCloseSelect"
     tabindex="0"
   >
-    <div class="selected-placeholder">{{ placeHolder }}</div>
+    <div class="selected-placeholder">{{ selectedLabel || placeHolder }}</div>
     <transition name="fade">
       <ul v-show="isSelectOpen" class="options-list">
-        <slot @updateModelValue="x"><span>Список пуст</span></slot>
+        <slot><span>Список пуст</span></slot>
       </ul>
     </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, inject, computed } from "vue";
+import { ref, PropType, provide } from "vue";
 import "../../style.css";
 
 const { modelValue, placeHolder } = defineProps({
   modelValue: {
-    type: String,
+    type: [String, Number],
     reqired: true,
   },
   placeHolder: {
@@ -29,20 +29,29 @@ const { modelValue, placeHolder } = defineProps({
     default: "Выберите",
   },
 });
-const emit = defineEmits(["update:modelValue"]);
-const isSelectOpen = ref(false);
 
-const handleToggleSelect = () => {
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string | number): void;
+}>();
+
+const isSelectOpen = ref(false);
+const selectedLabel = ref<null | string | number>(null);
+
+const handleToggleSelect = (): void => {
   isSelectOpen.value = !isSelectOpen.value;
 };
 
-const handleCloseSelect = () => {
+const handleCloseSelect = (): void => {
   isSelectOpen.value = false;
 };
 
-const x = () => {
-  console.log("x");
+const updateValue = (value: string | number, label: string | number): void => {
+  selectedLabel.value = label;
+  emit("update:modelValue", value);
+  handleCloseSelect();
 };
+
+provide("updateValue", updateValue);
 </script>
 
 <style scoped>
