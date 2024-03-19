@@ -112,7 +112,7 @@ const x = () => {
         <NCheckbox
           v-model="checkboxListValue"
           :label="checkbox.name"
-          :value="checkbox"
+          :value="checkbox.age"
         />
       </template>
 
