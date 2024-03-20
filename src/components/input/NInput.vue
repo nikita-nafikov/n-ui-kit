@@ -4,7 +4,7 @@
     :class="[size, { dark: isDarkTheme }, { round: round }]"
     @click="handleFocusInput"
   >
-    <slot name="left-icon" class="x" />
+    <slot name="left-icon" />
     <input
       ref="input"
       class="input"
@@ -12,7 +12,7 @@
       :value="modelValue"
       :disabled="disabled"
       :placeholder="placeHolder"
-      @input="handleUpdateValue"
+      @input.stop="handleUpdateValue"
       v-bind="$attrs"
     />
     <slot name="right-icon" />

@@ -19,6 +19,10 @@ import icon from "../public/icon.vue";
 // input
 const str = ref("");
 
+const input = () => {
+  console.log("input");
+};
+
 //select
 const selectValue = ref("");
 
@@ -60,6 +64,12 @@ const checkboxList = ref([
 
 const checkboxListValue = ref([]);
 
+const change = (event) => {
+  console.log("change", event);
+};
+
+//
+
 const x = () => {
   console.log("x");
 };
@@ -78,7 +88,7 @@ const x = () => {
       </NButton>
     </div>
     <div @click="x">
-      <NInput v-model="str"
+      <NInput v-model="str" @input="input"
         ><template v-slot:left-icon><icon /></template
       ></NInput>
       {{ str }}
@@ -103,13 +113,18 @@ const x = () => {
       {{ selectValue }}
     </div>
     <div style="margin-top: 20px">
-      <NCheckbox v-model="checkboxValue" label="лейбл" />
+      <NCheckbox
+        @change="change($event)"
+        v-model="checkboxValue"
+        label="лейбл"
+      />
       {{ checkboxValue }}
     </div>
 
     <div style="margin-top: 20px">
       <template v-for="checkbox of checkboxList">
         <NCheckbox
+          @change="change($event)"
           v-model="checkboxListValue"
           :label="checkbox.name"
           :value="checkbox.age"

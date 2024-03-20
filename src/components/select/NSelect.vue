@@ -1,8 +1,8 @@
 <template>
   <div
     class="select"
-    @click="handleToggleSelect"
-    @keyup.enter="handleToggleSelect"
+    @click.stop="handleToggleSelect"
+    @keyup.space.stop="handleToggleSelect"
     v-click-outside="handleCloseSelect"
     tabindex="0"
   >

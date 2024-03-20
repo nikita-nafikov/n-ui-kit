@@ -1,6 +1,14 @@
 <template>
-  <input type="checkbox" v-model="model" :value="value" />
-  <label>{{ label }}</label>
+  <div>
+    <input
+      type="checkbox"
+      v-model="model"
+      :value="value"
+      @change.stop
+      v-bind="$attrs"
+    />
+    <label>{{ label }}</label>
+  </div>
 </template>
 
 <script setup lang="ts">
