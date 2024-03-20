@@ -102,7 +102,7 @@ const x = () => {
       {{ str }}
     </div>
     <div style="margin-top: 20px">
-      <NSelect v-model="selectValue">
+      <NSelect @change="change" v-model="selectValue">
         <NOption
           v-for="option of options"
           :key="option.id"
@@ -128,6 +128,7 @@ const x = () => {
           v-model="checkboxListValue"
           :label="checkbox.name"
           :value="checkbox.age"
+          class="width"
         />
       </template>
 
@@ -157,5 +158,9 @@ const x = () => {
 
 .size {
   max-width: 50%;
+}
+
+.width {
+  width: 100px !important;
 }
 </style>

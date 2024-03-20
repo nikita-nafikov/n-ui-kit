@@ -32,6 +32,7 @@ const { modelValue, placeHolder } = defineProps({
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: string | number): void;
+  (e: "change", value: string | number): void;
 }>();
 
 const isSelectOpen = ref(false);
@@ -48,6 +49,7 @@ const handleCloseSelect = (): void => {
 const updateValue = (value: string | number, label: string | number): void => {
   selectedLabel.value = label;
   emit("update:modelValue", value);
+  emit("change", value);
   handleCloseSelect();
 };
 
