@@ -4,6 +4,7 @@
     <span v-bind="$attrs" class="custom-checkbox"></span>
     <span class="checkbox-label">{{ label }}</span>
   </label>
+  <div class="img"></div>
 </template>
 
 <script setup lang="ts">
@@ -39,19 +40,16 @@ const emit = defineEmits<{
 </script>
 
 <style scoped>
-.checkbox {
-}
-
-.custom-checkbox {
+.checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .checkbox-label {
 }
 
-.checkbox-wrapper {
-}
-
-.real-checkbox {
+.checkbox {
   width: 0;
   height: 0;
   opacity: 0;
@@ -71,7 +69,6 @@ const emit = defineEmits<{
   background: #ffffff;
   border: 2px solid #7e9bbd;
   border-radius: 4px;
-  vertical-align: sub;
   margin-right: 5px;
 }
 
@@ -91,7 +88,7 @@ const emit = defineEmits<{
   transition: 0.2s ease-in;
 }
 
-.real-checkbox:checked + .custom-checkbox::before {
+.checkbox:checked + .custom-checkbox::before {
   transform: translate(-50%, -50%) scale(1);
 }
 </style>
