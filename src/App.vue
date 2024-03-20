@@ -127,7 +127,7 @@ const x = () => {
           @change="change($event)"
           v-model="checkboxListValue"
           :label="checkbox.name"
-          :value="checkbox.age"
+          :value="checkbox"
           class="width"
         />
       </template>
@@ -158,9 +158,5 @@ const x = () => {
 
 .size {
   max-width: 50%;
-}
-
-.width {
-  width: 100px !important;
 }
 </style>

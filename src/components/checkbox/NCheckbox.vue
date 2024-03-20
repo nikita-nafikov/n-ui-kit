@@ -4,7 +4,6 @@
     <span v-bind="$attrs" class="custom-checkbox"></span>
     <span class="checkbox-label">{{ label }}</span>
   </label>
-  <div class="img"></div>
 </template>
 
 <script setup lang="ts">
