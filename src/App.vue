@@ -65,7 +65,7 @@ const checkboxList = ref([
 const checkboxListValue = ref([]);
 
 const change = (event) => {
-  console.log("change", event);
+  console.log("change", event[0].age);
 };
 
 //

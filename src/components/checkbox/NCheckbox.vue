@@ -30,11 +30,13 @@ const model = computed({
   },
   set(value) {
     emit("update:modelValue", value);
+    emit("change", value);
   },
 });
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: boolean | string | object | number): void;
+  (e: "change", value: boolean | string | object | number): void;
 }>();
 </script>
 
