@@ -1,5 +1,6 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --default-border-width: 2px;
   --s-font-size: 12px;
   --m-font-size: 14px;
   --l-font-size: 16px;
@@ -10,6 +11,9 @@
   --s-padding: 6px 10px;
   --m-padding: 8px 16px;
   --l-padding: 12px 20px;
+  --s-checkbox-size: 13px;
+  --m-checkbox-size: 15px;
+  --l-checkbox-size: 18px;
   --white-color: #ffffff;
   --black-color: #191c30;
   --gray-color: rgb(93, 93, 101);
@@ -34,5 +38,5 @@
   /* only dev */
   background-color: black;
   /* background-color: white; */
-  background: gray;
+  /* background: gray; */
 }

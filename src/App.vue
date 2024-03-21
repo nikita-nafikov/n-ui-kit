@@ -117,6 +117,18 @@ const x = () => {
         @change="change($event)"
         v-model="checkboxValue"
         label="лейбл"
+        disabled
+        size="small"
+      />
+      {{ checkboxValue }}
+    </div>
+    <div style="margin-top: 20px">
+      <NCheckbox
+        @change="change($event)"
+        v-model="checkboxValue"
+        label="лейбл"
+        disabled
+        size="large"
       />
       {{ checkboxValue }}
     </div>

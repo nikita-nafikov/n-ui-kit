@@ -51,13 +51,13 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   align-items: center;
   gap: 3px;
   color: var(--white-color);
-  background: var(--dark-gray-color);
-  border: 1px solid var(--black-color);
+  background: var(--black-color);
+  border: var(--default-border-width) solid var(--black-color);
 }
 
 .dark.button {
   background: var(--white-color);
-  border: 1px solid var(--white-color);
+  border: var(--default-border-width) solid var(--white-color);
 }
 
 .button:hover {
@@ -98,7 +98,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .primary {
-  border: 1px solid var(--primary-color);
+  border: var(--default-border-width) solid var(--primary-color);
   background: var(--primary-color);
 }
 
@@ -107,7 +107,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .dark.primary {
-  border: 1px solid var(--dark-primary-color);
+  border: var(--default-border-width) solid var(--dark-primary-color);
   background: var(--dark-primary-color);
 }
 
@@ -116,7 +116,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .success {
-  border: 1px solid var(--success-color);
+  border: var(--default-border-width) solid var(--success-color);
   background: var(--success-color);
 }
 
@@ -125,7 +125,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .dark.success {
-  border: 1px solid var(--dark-success-color);
+  border: var(--default-border-width) solid var(--dark-success-color);
   background: var(--dark-success-color);
 }
 
@@ -134,7 +134,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .warning {
-  border: 1px solid var(--warning-color);
+  border: var(--default-border-width) solid var(--warning-color);
   background: var(--warning-color);
 }
 
@@ -143,7 +143,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .dark.warning {
-  border: 1px solid var(--dark-warning-color);
+  border: var(--default-border-width) solid var(--dark-warning-color);
   background: var(--dark-warning-color);
 }
 
@@ -152,7 +152,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .danger {
-  border: 1px solid var(--danger-color);
+  border: var(--default-border-width) solid var(--danger-color);
   background: var(--danger-color);
 }
 
@@ -161,7 +161,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 }
 
 .dark.danger {
-  border: 1px solid var(--dark-danger-color);
+  border: var(--default-border-width) solid var(--dark-danger-color);
   background: var(--dark-danger-color);
 }
 
