@@ -57,6 +57,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
 .dark.button {
   background: var(--white-color);
+  color: var(--black-color);
   border: var(--default-border-width) solid var(--white-color);
 }
 

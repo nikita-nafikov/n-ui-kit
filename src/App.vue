@@ -76,7 +76,7 @@ const x = () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" :class="{ dark: isDarkTheme }">
     <NButton @click="toggleTheme">Сменить тему</NButton>
     <div class="x">
       <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
@@ -152,8 +152,12 @@ const x = () => {
 <style>
 .container {
   max-width: 1000px;
-  margin: 0 auto;
-  padding-top: 200px;
+  padding: 200px;
+  background: #ffffff;
+}
+
+.dark.container {
+  background: #000;
 }
 
 .x {
