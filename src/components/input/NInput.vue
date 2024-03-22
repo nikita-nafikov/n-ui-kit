@@ -1,7 +1,12 @@
 <template>
   <div
     class="input-wrapper"
-    :class="[size, { dark: isDarkTheme }, { round: round }]"
+    :class="[
+      size,
+      { dark: isDarkTheme },
+      { round: round },
+      { disabled: disabled },
+    ]"
     @click="handleFocusInput"
   >
     <slot name="left-icon" />
@@ -70,7 +75,12 @@ const handleFocusInput = () => {
   align-items: center;
   gap: 3px;
   background-color: var(--black-color);
+  color: var(--white-color);
   border-radius: var(--default-border-radius);
+}
+
+.disabled.input-wrapper {
+  opacity: 0.5;
 }
 
 .dark.input-wrapper {
@@ -84,6 +94,10 @@ const handleFocusInput = () => {
   width: 100%;
   background-color: transparent;
   color: var(--white-color);
+}
+
+.input:disabled {
+  opacity: 0.5;
 }
 
 .input.small {
@@ -104,6 +118,11 @@ const handleFocusInput = () => {
 
 .input:disabled {
   cursor: not-allowed;
+}
+
+.input-wrapper:focus-within {
+  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+    0px 0px 10px var(--primary-color-hover);
 }
 
 .dark.input {

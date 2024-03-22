@@ -65,7 +65,7 @@ const checkboxList = ref([
 const checkboxListValue = ref([]);
 
 const change = (event) => {
-  console.log("change", event[0].age);
+  console.log("change", event);
 };
 
 //
@@ -88,7 +88,7 @@ const x = () => {
       </NButton>
     </div>
     <div @click="x">
-      <NInput v-model="str" @input="input"
+      <NInput v-model="str" @input="input" disabled
         ><template v-slot:left-icon><icon /></template
       ></NInput>
       {{ str }}
@@ -117,7 +117,6 @@ const x = () => {
         @change="change($event)"
         v-model="checkboxValue"
         label="лейбл"
-        disabled
         size="small"
       />
       {{ checkboxValue }}

@@ -3,7 +3,13 @@
     class="checkbox-wrapper"
     :class="{ disabled: props.disabled, dark: isDarkTheme }"
   >
-    <input type="checkbox" v-model="model" :value="value" class="checkbox" />
+    <input
+      type="checkbox"
+      v-model="model"
+      :value="value"
+      :disabled="props.disabled"
+      class="checkbox"
+    />
     <span v-bind="$attrs" class="custom-checkbox" :class="props.size"></span>
     <span class="checkbox-label">{{ label }}</span>
   </label>
@@ -42,8 +48,10 @@ const model = computed({
     return props.modelValue;
   },
   set(value) {
-    emit("update:modelValue", value);
-    emit("change", value);
+    if (!props.disabled) {
+      emit("update:modelValue", value);
+      emit("change", value);
+    }
   },
 });
 
@@ -62,12 +70,13 @@ const emit = defineEmits<{
   color: var(--black-color);
 }
 
-.dark.checkbox-wrapper {
-  color: var(--white-color);
+.disabled.checkbox-wrapper {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.disabled.checkbox-wrapper {
-  cursor: not-allowed;
+.dark.checkbox-wrapper {
+  color: var(--white-color);
 }
 
 .checkbox {
@@ -79,7 +88,7 @@ const emit = defineEmits<{
 }
 
 .checkbox:focus + .custom-checkbox {
-  box-shadow: 0px 0px 0px 1px var(--primary-color-hover),
+  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 

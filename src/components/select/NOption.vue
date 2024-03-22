@@ -1,5 +1,9 @@
 <template>
-  <li @click.stop="updateValue(value, label)" tabindex="0">
+  <li
+    @click.stop="updateValue(value, label)"
+    @keyup.enter.stop="updateValue(value, label)"
+    tabindex="0"
+  >
     <slot>{{ label }}</slot>
   </li>
 </template>
