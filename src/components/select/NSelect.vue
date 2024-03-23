@@ -103,6 +103,10 @@ provide("updateValue", updateValue);
   transform: rotate(180deg);
 }
 
+.select-placeholder {
+  word-break: break-word;
+}
+
 .select-placeholder-wrapper {
   display: flex;
   align-items: center;

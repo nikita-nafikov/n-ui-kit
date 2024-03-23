@@ -2,7 +2,7 @@
   <li
     class="option"
     @click.stop="updateValue(value, label)"
-    @keyup.enter.stop="updateValue(value, label)"
+    @keyup.space.stop="updateValue(value, label)"
     tabindex="0"
   >
     <slot>{{ label }}</slot>
