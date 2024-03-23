@@ -68,6 +68,7 @@ const emit = defineEmits<{
   gap: 5px;
   cursor: pointer;
   color: var(--black-color);
+  word-break: break-word;
 }
 
 .disabled.checkbox-wrapper {
@@ -87,7 +88,7 @@ const emit = defineEmits<{
   z-index: -1;
 }
 
-.checkbox:focus + .custom-checkbox {
+.checkbox:focus-visible + .custom-checkbox {
   box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
@@ -95,8 +96,8 @@ const emit = defineEmits<{
 .custom-checkbox {
   position: relative;
   display: inline-block;
-  width: var(--m-checkbox-size);
-  height: var(--m-checkbox-size);
+  min-width: var(--m-checkbox-size);
+  min-height: var(--m-checkbox-size);
   background: var(--white-color);
   border: var(--default-border-width) solid var(--primary-color-hover);
   border-radius: var(--default-border-radius);
@@ -107,20 +108,20 @@ const emit = defineEmits<{
 }
 
 .small.custom-checkbox {
-  width: var(--s-checkbox-size);
-  height: var(--s-checkbox-size);
+  min-width: var(--s-checkbox-size);
+  min-height: var(--s-checkbox-size);
 }
 
 .large.custom-checkbox {
-  width: var(--l-checkbox-size);
-  height: var(--l-checkbox-size);
+  min-width: var(--l-checkbox-size);
+  min-height: var(--l-checkbox-size);
 }
 
 .custom-checkbox::before {
   content: "";
   display: inline-block;
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
   background-image: url("../../assets/img/check.svg");
   background-size: contain;
   background-repeat: no-repeat;

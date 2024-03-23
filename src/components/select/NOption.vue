@@ -1,5 +1,6 @@
 <template>
   <li
+    class="option"
     @click.stop="updateValue(value, label)"
     @keyup.enter.stop="updateValue(value, label)"
     tabindex="0"
@@ -9,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from "vue";
+import { inject } from "vue";
 
 const updateValue = inject<Function>("updateValue");
 
@@ -24,3 +25,15 @@ const { label, value } = defineProps({
   },
 });
 </script>
+
+<style scoped>
+.option {
+  padding: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.option:hover {
+  background: var(--dark-gray-color);
+}
+</style>

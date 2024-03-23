@@ -33,7 +33,8 @@ const options = ref([
   },
   {
     id: 2,
-    value: "b",
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
   },
   {
     id: 3,
@@ -116,22 +117,10 @@ const x = () => {
       <NCheckbox
         @change="change($event)"
         v-model="checkboxValue"
-        label="лейбл"
-        size="small"
-      />
-      {{ checkboxValue }}
-    </div>
-    <div style="margin-top: 20px">
-      <NCheckbox
-        @change="change($event)"
-        v-model="checkboxValue"
-        label="лейбл"
-        disabled
         size="large"
+        label="bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs"
       />
-      {{ checkboxValue }}
     </div>
-
     <div style="margin-top: 20px">
       <template v-for="checkbox of checkboxList">
         <NCheckbox

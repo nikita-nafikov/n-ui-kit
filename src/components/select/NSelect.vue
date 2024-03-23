@@ -4,12 +4,27 @@
     @click.stop="handleToggleSelect"
     @keyup.space.stop="handleToggleSelect"
     v-click-outside="handleCloseSelect"
-    tabindex="0"
-    :class="{ dark: isDarkTheme }"
+    :tabindex="disabled ? -1 : 0"
+    :class="{ dark: isDarkTheme, open: isSelectOpen, disabled: disabled }"
   >
-    <div class="selected-placeholder">{{ selectedLabel || placeHolder }}</div>
+    <div class="select-placeholder-wrapper">
+      <span class="select-placeholder">{{ selectedLabel || placeHolder }}</span>
+      <div class="select__arrow">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="17"
+          height="14"
+          viewBox="0 0 1024 1024"
+        >
+          <path
+            fill="currentColor"
+            d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"
+          ></path>
+        </svg>
+      </div>
+    </div>
     <transition name="fade">
-      <ul v-show="isSelectOpen" class="options-list select__option">
+      <ul v-show="isSelectOpen" class="select__option options-list">
         <slot><span>Список пуст</span></slot>
       </ul>
     </transition>
@@ -22,7 +37,7 @@ import "../../style.css";
 
 const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
-const { modelValue, placeHolder } = defineProps({
+const { modelValue, placeHolder, disabled } = defineProps({
   modelValue: {
     type: [String, Number],
     reqired: true,
@@ -30,6 +45,10 @@ const { modelValue, placeHolder } = defineProps({
   placeHolder: {
     type: String,
     default: "Выберите",
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -42,6 +61,7 @@ const isSelectOpen = ref(false);
 const selectedLabel = ref<null | string | number>(null);
 
 const handleToggleSelect = (): void => {
+  if (disabled) return;
   isSelectOpen.value = !isSelectOpen.value;
 };
 
@@ -68,10 +88,25 @@ provide("updateValue", updateValue);
   border-radius: var(--default-border-radius);
   background-color: var(--black-color);
   color: var(--white-color);
-  background-image: url(../../assets/img/arrow.svg);
 }
 
-.selected-placeholder {
+.select.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.select__arrow {
+  transition: transform 0.2s ease-in;
+}
+
+.select.open .select__arrow {
+  transform: rotate(180deg);
+}
+
+.select-placeholder-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px;
 }
 
@@ -107,11 +142,12 @@ provide("updateValue", updateValue);
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.fade-enter,
+.fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+  transform: translateY(-10px);
 }
 </style>

@@ -52,6 +52,7 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   color: var(--white-color);
   background: var(--black-color);
   border: var(--default-border-width) solid var(--black-color);
+  word-break: break-word;
 }
 
 .button:disabled {
