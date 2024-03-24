@@ -83,9 +83,7 @@ const x = () => {
 
 <template>
   <div class="container" :class="{ dark: isDarkTheme }">
-    <NButton @click="toggleTheme"
-      >bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs</NButton
-    >
+    <NButton @click="toggleTheme">Сменить тему</NButton>
     <div class="x">
       <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
       <NButton disabled color="danger">Кнопка</NButton>
@@ -166,7 +164,7 @@ const x = () => {
         </div>
       </NCollapse>
       <NCollapse title="Раскрыть2">
-        <div>
+        <div style="padding: 20px">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
           dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
           quae. Est consectetur doloremque assumenda unde excepturi laudantium

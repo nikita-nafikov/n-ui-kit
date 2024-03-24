@@ -107,7 +107,7 @@ provide("updateValue", updateValue);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: var(--m-padding);
 }
 
 .select:focus-visible {
