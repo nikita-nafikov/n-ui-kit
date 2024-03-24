@@ -158,10 +158,20 @@ const x = () => {
     </div>
     <div style="margin-top: 20px">
       <NCollapse title="Раскрыть">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-        dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
-        quae. Est consectetur doloremque assumenda unde excepturi laudantium
-        magnam eaque optio. Eius.
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
+      </NCollapse>
+      <NCollapse title="Раскрыть2">
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
       </NCollapse>
     </div>
   </div>

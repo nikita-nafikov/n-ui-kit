@@ -1,7 +1,7 @@
 <template>
   <div class="collapse" :class="{ dark: isDarkTheme }">
     <div class="collapse-title-wrapper" @click="handleToggleCollapse">
-      <span @click="handleToggleCollapse">
+      <span>
         {{ title }}
       </span>
       <svg
@@ -16,11 +16,9 @@
         ></path>
       </svg>
     </div>
-    <transition name="fade">
-      <div class="content" v-show="isExpanded">
-        <slot></slot>
-      </div>
-    </transition>
+    <div class="content" :class="{ open: isExpanded }">
+      <div class="text-wrapper"><slot /></div>
+    </div>
   </div>
 </template>
 
@@ -44,7 +42,6 @@ const handleToggleCollapse = () => {
 .collapse {
   color: var(--white-color);
   background-color: var(--black-color);
-  /* transition: height 3s ease-in-out; */
 }
 
 .collapse-title-wrapper {
@@ -55,17 +52,17 @@ const handleToggleCollapse = () => {
 }
 
 .content {
-  transition: height 3s ease-in-out;
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 0.3s ease-in-out;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
+.content.open {
+  grid-template-rows: 1fr;
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: translateY(-10px);
+.text-wrapper {
+  min-height: 0;
 }
 </style>
