@@ -5,6 +5,7 @@ import NSelect from "./components/select/NSelect.vue";
 import NOption from "./components/select/NOption.vue";
 import NCheckbox from "./components/checkbox/NCheckbox.vue";
 import NRadio from "./components/radio/NRadio.vue";
+import NCollapse from "./components/collapse/NCollapse.vue";
 
 import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
@@ -82,12 +83,14 @@ const x = () => {
 
 <template>
   <div class="container" :class="{ dark: isDarkTheme }">
-    <NButton @click="toggleTheme">Сменить тему</NButton>
+    <NButton @click="toggleTheme"
+      >bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs</NButton
+    >
     <div class="x">
       <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
       <NButton disabled color="danger">Кнопка</NButton>
       <NButton color="warning"> Кнопка</NButton>
-      <NButton size="large" color="success">Кнопка</NButton>
+      <NButton size="large" color="success">1</NButton>
       <NButton color="warning">
         <template v-slot:left-icon><icon /></template> Кнопка
       </NButton>
@@ -153,10 +156,14 @@ const x = () => {
       </div>
       {{ radioValue }}
     </div>
-    <!-- <div style="margin-top: 20px">
-      <input type="radio" v-model="radioValue" :value="true" />
-      {{ radioValue }}
-    </div> -->
+    <div style="margin-top: 20px">
+      <NCollapse title="Раскрыть">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+        dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+        quae. Est consectetur doloremque assumenda unde excepturi laudantium
+        magnam eaque optio. Eius.
+      </NCollapse>
+    </div>
   </div>
 </template>
 

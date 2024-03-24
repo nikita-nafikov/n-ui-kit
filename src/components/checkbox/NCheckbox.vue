@@ -68,7 +68,6 @@ const emit = defineEmits<{
   gap: 5px;
   cursor: pointer;
   color: var(--black-color);
-  word-break: break-word;
 }
 
 .disabled.checkbox-wrapper {
