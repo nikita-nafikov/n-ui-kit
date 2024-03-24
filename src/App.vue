@@ -4,6 +4,7 @@ import NButton from "./components/button/NButton.vue";
 import NSelect from "./components/select/NSelect.vue";
 import NOption from "./components/select/NOption.vue";
 import NCheckbox from "./components/checkbox/NCheckbox.vue";
+import NRadio from "./components/radio/NRadio.vue";
 
 import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
@@ -24,7 +25,7 @@ const input = () => {
 };
 
 //select
-const selectValue = ref("");
+const selectValue = ref(1);
 
 const options = ref([
   {
@@ -69,6 +70,9 @@ const change = (event) => {
   console.log("change", event);
 };
 
+// radio
+
+const radioValue = ref(2);
 //
 
 const x = () => {
@@ -134,6 +138,25 @@ const x = () => {
 
       {{ checkboxListValue }}
     </div>
+    <div style="margin-top: 20px">
+      <div>
+        <NRadio
+          v-model="radioValue"
+          size="small"
+          :value="1"
+          label="выберите2"
+        />
+      </div>
+      <div><NRadio v-model="radioValue" :value="1" label="выберите" /></div>
+      <div>
+        <NRadio v-model="radioValue" size="large" :value="1" label="выберите" />
+      </div>
+      {{ radioValue }}
+    </div>
+    <!-- <div style="margin-top: 20px">
+      <input type="radio" v-model="radioValue" :value="true" />
+      {{ radioValue }}
+    </div> -->
   </div>
 </template>
 

@@ -5,6 +5,7 @@
   --m-font-size: 14px;
   --l-font-size: 16px;
   --default-border-radius: 4px;
+  --circle-border-radius: 50%;
   --s-border-radius: 20px;
   --m-border-radius: 32px;
   --l-border-radius: 40px;
@@ -14,6 +15,9 @@
   --s-checkbox-size: 13px;
   --m-checkbox-size: 15px;
   --l-checkbox-size: 18px;
+  --s-radio-size: 13px;
+  --m-radio-size: 15px;
+  --l-radio-size: 18px;
   --white-color: #ffffff;
   --black-color: #191c30;
   --gray-color: rgb(93, 93, 101);
