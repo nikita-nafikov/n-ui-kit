@@ -100,6 +100,12 @@ const renderOption = () => {
           event.stopPropagation();
           updateValue(vnode.props.value, vnode.props.label);
         },
+        onKeydown: (event: KeyboardEvent) => {
+          event.stopPropagation();
+          if (event.code === "Enter") {
+            updateValue(vnode.props.value, vnode.props.label);
+          }
+        },
       },
       {
         default: () =>
