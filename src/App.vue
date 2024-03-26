@@ -157,7 +157,10 @@ const x = () => {
       {{ radioValue }}
     </div>
     <div style="margin-top: 20px">
-      <NCollapse title="Раскрыть">
+      <NCollapse title="Раскрыть32">
+        <template #collapse-header>
+          <div class="collapse-icon"><icon /> привет</div>
+        </template>
         <div>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
           dicta facilis vel assumenda esse tenetur perspiciatis harum architecto

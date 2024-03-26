@@ -6,9 +6,11 @@
       @keyup.space.stop="handleToggleCollapse"
       @click.stop="handleToggleCollapse"
     >
-      <span class="collapse-title">
-        {{ title }}
-      </span>
+      <slot name="collapse-header">
+        <span class="collapse-title">
+          {{ title }}
+        </span>
+      </slot>
       <span class="collapse-icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
