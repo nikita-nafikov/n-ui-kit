@@ -31,95 +31,19 @@ const selectValue = ref(1);
 const options = ref([
   {
     id: 1,
-    value: "a",
+    value:
+      "optiooption1option1option1option1option1option1option1option1option1n1",
+    flag: "🥴",
   },
   {
     id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+    value: "option2",
+    flag: "🥵",
   },
   {
     id: 3,
-    value: "c",
-  },
-  {
-    id: 1,
-    value: "a",
-  },
-  {
-    id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
-  },
-  {
-    id: 3,
-    value: "c",
-  },
-  {
-    id: 1,
-    value: "a",
-  },
-  {
-    id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
-  },
-  {
-    id: 3,
-    value: "c",
-  },
-
-  {
-    id: 1,
-    value: "a",
-  },
-  {
-    id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
-  },
-  {
-    id: 3,
-    value: "c",
-  },
-  {
-    id: 1,
-    value: "a",
-  },
-  {
-    id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
-  },
-  {
-    id: 3,
-    value: "c",
-  },
-  {
-    id: 1,
-    value: "a",
-  },
-  {
-    id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
-  },
-  {
-    id: 3,
-    value: "c",
-  },
-  {
-    id: 1,
-    value: "a",
-  },
-  {
-    id: 2,
-    value:
-      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
-  },
-  {
-    id: 3,
-    value: "c",
+    value: "option3",
+    flag: "👻",
   },
 ]);
 
@@ -195,8 +119,17 @@ const x = () => {
           :key="option.id"
           :value="option.id"
           :label="option.value"
-          class="text-ovetflow"
-          >{{ option.value + " " + "fsdmkfklsd" }}</NOption
+        >
+          <div>
+            <div>
+              <img
+                style="width: 50px; height: 50px"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
+                alt=""
+              />
+            </div>
+            {{ option.flag + " " + option.value }}
+          </div></NOption
         >
       </NSelect>
       {{ selectValue }}
@@ -250,7 +183,9 @@ const x = () => {
           magnam eaque optio. Eius.
         </div>
       </NCollapse>
-      <NCollapse title="Раскрыть2">
+      <NCollapse
+        title="Раскрытьoptiooption1option1option1option1option1option1option1opti22"
+      >
         <div style="padding: 20px">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
           dicta facilis vel assumenda esse tenetur perspiciatis harum architecto

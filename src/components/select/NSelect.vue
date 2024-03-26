@@ -83,6 +83,7 @@ const handleToggleSelect = (): void => {
 
 const renderOption = () => {
   const slotChildrenList = $slots.default()[0].children;
+
   if (!slotChildrenList?.length) {
     return h(
       "span",
@@ -100,7 +101,10 @@ const renderOption = () => {
           updateValue(vnode.props.value, vnode.props.label);
         },
       },
-      { default: () => vnode.props.label }
+      {
+        default: () =>
+          vnode.children?.default()[0].children || vnode.props.label,
+      }
     );
   });
 };
