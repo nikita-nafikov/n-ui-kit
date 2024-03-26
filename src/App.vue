@@ -42,6 +42,85 @@ const options = ref([
     id: 3,
     value: "c",
   },
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
+
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
+  {
+    id: 1,
+    value: "a",
+  },
+  {
+    id: 2,
+    value:
+      "bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs;fsd;fafdsjfnsdj",
+  },
+  {
+    id: 3,
+    value: "c",
+  },
 ]);
 
 // checkbox
@@ -114,6 +193,7 @@ const x = () => {
           :key="option.id"
           :value="option.id"
           :label="option.value"
+          class="text-ovetflow"
           >{{ option.value + " " + "fsdmkfklsd" }}</NOption
         >
       </NSelect>
@@ -205,5 +285,11 @@ const x = () => {
 
 .size {
   max-width: 50%;
+}
+
+.text-ovetflow {
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  word-break: keep-all !important;
 }
 </style>

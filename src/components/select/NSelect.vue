@@ -77,10 +77,17 @@ const handleToggleSelect = (): void => {
   isSelectOpen.value = !isSelectOpen.value;
 };
 
-console.log($slots.default()[0].children);
-
 const renderOption = () => {
-  return $slots.default()[0].children?.map((vnode) => {
+  const slotChildrenList = $slots.default()[0].children;
+  if (!slotChildrenList?.length) {
+    return h(
+      "span",
+      { class: "select__fallback-text" },
+      { default: () => "Список пуст" }
+    );
+  }
+
+  return slotChildrenList.map((vnode) => {
     return h(
       vnode,
       {
@@ -137,6 +144,11 @@ const renderOption = () => {
 
 .select__option {
   margin-top: 8px;
+}
+
+.select__fallback-text {
+  padding: var(--m-padding);
+  display: inline-block;
 }
 
 .options-list {

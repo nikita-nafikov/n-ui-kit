@@ -20,9 +20,6 @@ const { label } = defineProps({
 <style scoped>
 .option {
   padding: 8px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  word-break: keep-all;
 }
 
 .option:hover {
