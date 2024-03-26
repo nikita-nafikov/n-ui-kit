@@ -18,7 +18,6 @@
       :disabled="disabled"
       :placeholder="placeHolder"
       @input.stop="handleUpdateValue"
-      v-bind="$attrs"
     />
     <slot name="right-icon" />
   </div>

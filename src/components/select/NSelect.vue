@@ -25,14 +25,14 @@
     </div>
     <transition name="fade">
       <ul v-show="isSelectOpen" class="select__option options-list">
-        <slot><span>Список пуст</span></slot>
+        <render-option />
       </ul>
     </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, provide, inject } from "vue";
+import { ref, PropType, inject, useSlots, h } from "vue";
 import "../../style.css";
 
 const { isDarkTheme } = inject<boolean>("isDarkTheme");
@@ -52,18 +52,9 @@ const { modelValue, placeHolder, disabled } = defineProps({
   },
 });
 
-const emit = defineEmits<{
-  (e: "update:modelValue", value: string | number): void;
-  (e: "change", value: string | number): void;
-}>();
-
 const isSelectOpen = ref(false);
 const selectedLabel = ref<null | string | number>(null);
-
-const handleToggleSelect = (): void => {
-  if (disabled) return;
-  isSelectOpen.value = !isSelectOpen.value;
-};
+const $slots = useSlots();
 
 const handleCloseSelect = (): void => {
   isSelectOpen.value = false;
@@ -76,7 +67,31 @@ const updateValue = (value: string | number, label: string | number): void => {
   handleCloseSelect();
 };
 
-provide("updateValue", updateValue);
+const emit = defineEmits<{
+  (e: "update:modelValue", value: string | number): void;
+  (e: "change", value: string | number): void;
+}>();
+
+const handleToggleSelect = (): void => {
+  if (disabled) return;
+  isSelectOpen.value = !isSelectOpen.value;
+};
+
+console.log($slots.default()[0].children);
+
+const renderOption = () => {
+  return $slots.default()[0].children?.map((vnode) => {
+    return h(
+      vnode,
+      {
+        onClick: () => {
+          updateValue(vnode.props.value, vnode.props.label);
+        },
+      },
+      { default: () => vnode.props.label }
+    );
+  });
+};
 </script>
 
 <style scoped>

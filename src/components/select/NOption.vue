@@ -1,20 +1,11 @@
 <template>
-  <li
-    class="option"
-    @click.stop="updateValue(value, label)"
-    @keyup.space.stop="updateValue(value, label)"
-    tabindex="0"
-  >
+  <li class="option" tabindex="0">
     <slot>{{ label }}</slot>
   </li>
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
-
-const updateValue = inject<Function>("updateValue");
-
-const { label, value } = defineProps({
+const { label } = defineProps({
   label: {
     type: [String, Number],
     required: true,
@@ -31,6 +22,7 @@ const { label, value } = defineProps({
   padding: 8px;
   text-overflow: ellipsis;
   overflow: hidden;
+  word-break: keep-all;
 }
 
 .option:hover {

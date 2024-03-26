@@ -18,6 +18,10 @@
 <script setup lang="ts">
 import { computed, PropType, inject } from "vue";
 
+defineOptions({
+  inheritAttrs: false,
+});
+
 const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
 const props = defineProps({

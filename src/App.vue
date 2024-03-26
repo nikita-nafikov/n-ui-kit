@@ -114,7 +114,8 @@ const x = () => {
           :key="option.id"
           :value="option.id"
           :label="option.value"
-        />
+          >{{ option.value + " " + "fsdmkfklsd" }}</NOption
+        >
       </NSelect>
       {{ selectValue }}
     </div>
@@ -123,7 +124,7 @@ const x = () => {
         @change="change($event)"
         v-model="checkboxValue"
         size="large"
-        label="bsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfsbsnfksdjfnsfskjfsjfsdfnsdfnsdfnsdufnsupdfnusdfusdfunsfjsdnfjsfndskfnsdjfnsjfksdjfs"
+        label="d"
       />
     </div>
     <div style="margin-top: 20px">
@@ -146,6 +147,7 @@ const x = () => {
           size="small"
           :value="1"
           label="выберите2"
+          class="testtest"
         />
       </div>
       <div><NRadio v-model="radioValue" :value="1" label="выберите" /></div>
