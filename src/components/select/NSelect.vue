@@ -95,7 +95,8 @@ const renderOption = () => {
     return h(
       vnode,
       {
-        onClick: () => {
+        onClick: (event: MouseEvent) => {
+          event.stopPropagation();
           updateValue(vnode.props.value, vnode.props.label);
         },
       },
