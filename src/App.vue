@@ -186,7 +186,9 @@ const x = () => {
       <NInput class="size" place-holder="fsdf" round v-model="str"></NInput>
       {{ str }}
     </div>
-    <div style="margin-top: 20px">
+    <div
+      style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
+    >
       <NSelect @change="change" v-model="selectValue">
         <NOption
           v-for="option of options"

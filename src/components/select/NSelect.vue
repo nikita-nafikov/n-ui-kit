@@ -7,7 +7,7 @@
     :tabindex="disabled ? -1 : 0"
     :class="{ dark: isDarkTheme, open: isSelectOpen, disabled: disabled }"
   >
-    <div class="select-placeholder-wrapper">
+    <div class="select-placeholder-wrapper" :class="size">
       <span class="select-placeholder">{{ selectedLabel || placeHolder }}</span>
       <div class="select__arrow">
         <svg
@@ -37,7 +37,7 @@ import "../../style.css";
 
 const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
-const { modelValue, placeHolder, disabled } = defineProps({
+const { modelValue, placeHolder, disabled, size } = defineProps({
   modelValue: {
     type: [String, Number],
     reqired: true,
@@ -49,6 +49,10 @@ const { modelValue, placeHolder, disabled } = defineProps({
   disabled: {
     type: Boolean,
     default: false,
+  },
+  size: {
+    type: String as PropType<"small" | "medium" | "large">,
+    default: "medium",
   },
 });
 
@@ -130,6 +134,14 @@ const renderOption = () => {
   align-items: center;
   justify-content: space-between;
   padding: var(--m-padding);
+}
+
+.small.select-placeholder-wrapper {
+  padding: var(--s-padding);
+}
+
+.large.select-placeholder-wrapper {
+  padding: var(--l-padding);
 }
 
 .select:focus-visible {
