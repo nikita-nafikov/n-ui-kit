@@ -6,4 +6,8 @@
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.tab__content {
+  padding: var(--m-padding);
+}
+</style>

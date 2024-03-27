@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="tabs" :class="{ dark: isDarkTheme }">
     <ul class="tabs__header-list">
-      <!-- <li v-for="tab in tabs" :key="tab.props.title">{{ tab.props.title }}</li> -->
       <renderTitle />
     </ul>
     <slot>Нет данных</slot>
@@ -9,8 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, useSlots, h } from "vue";
+import { inject, useSlots, h } from "vue";
 
+const { isDarkTheme } = inject<boolean>("isDarkTheme");
 const $slot = useSlots();
 
 const renderTitle = () => {
@@ -20,10 +20,11 @@ const renderTitle = () => {
     if (slotChildren.props?.title) {
       return h(
         "li",
-        { class: "tabs__header-item" },
+        { class: "tabs__header-item", onClick: () => {} },
         { default: () => slotChildren.props.title }
       );
     }
+
     return h(
       "li",
       { class: "tabs__header-item" },
@@ -33,4 +34,26 @@ const renderTitle = () => {
 };
 </script>
 
-<style scoped></style>
+<style>
+.tabs {
+  background: var(--black-color);
+  color: var(--white-color);
+}
+
+.dark.tabs {
+  background: var(--white-color);
+  color: var(--black-color);
+}
+
+.tabs__header-list {
+  display: flex;
+  gap: 16px;
+  padding: var(--m-padding);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.tabs__header-item {
+  border: 1px solid red;
+  cursor: pointer;
+}
+</style>

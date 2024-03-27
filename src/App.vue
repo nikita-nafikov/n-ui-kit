@@ -203,7 +203,6 @@ const x = () => {
             ><icon />
             <div>Custom title</div></template
           >
-          привет
         </NTab>
         <NTab>
           <template #title>
