@@ -175,7 +175,6 @@ const renderOption = () => {
 }
 
 .options-list {
-  list-style: none;
   position: absolute;
   top: 100%;
   left: 0;

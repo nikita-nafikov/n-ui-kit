@@ -6,8 +6,10 @@ import NOption from "./components/select/NOption.vue";
 import NCheckbox from "./components/checkbox/NCheckbox.vue";
 import NRadio from "./components/radio/NRadio.vue";
 import NCollapse from "./components/collapse/NCollapse.vue";
+import NTab from "./components/NTabs/NTab.vue";
+import NTabs from "./components/NTabs/NTabs.vue";
 
-import { provide } from "vue";
+import { provide, h } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
 
 const { isDarkTheme, toggleTheme } = useDarkTheme();
@@ -193,6 +195,12 @@ const x = () => {
           magnam eaque optio. Eius.
         </div>
       </NCollapse>
+    </div>
+    <div style="margin-top: 20px">
+      <NTabs>
+        <NTab title="tab 1"> Привет </NTab>
+        <NTab title="tab 2"> Здрасьте</NTab>
+      </NTabs>
     </div>
   </div>
 </template>
