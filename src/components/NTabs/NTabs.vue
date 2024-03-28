@@ -8,11 +8,25 @@
 </template>
 
 <script setup lang="ts">
-import { inject, useSlots, h } from "vue";
+import { ref, inject, useSlots, h } from "vue";
 
 const { isDarkTheme } = inject<boolean>("isDarkTheme");
 const $slot = useSlots();
+const selectedIndex = ref<number>(0);
 
+const handleSelectTab = (index: number) => {
+  console.log(index);
+  selectedIndex.value = index;
+
+  $slot.default().forEach((el, index) => {
+    console.log(index === selectedIndex.value);
+    if (!el.props) {
+      el.props = {};
+    }
+    el.props.isActive = index === selectedIndex.value;
+  });
+};
+handleSelectTab(0);
 const renderTitle = () => {
   const slotChildrenList = $slot.default();
 
@@ -20,15 +34,29 @@ const renderTitle = () => {
     if (slotChildren.props?.title) {
       return h(
         "li",
-        { class: "tabs__header-item", onClick: () => {} },
-        { default: () => slotChildren.props.title }
+        {
+          class: "tabs__header-item",
+          tabIndex: 0,
+          onClick: (event: MouseEvent) => {
+            event.stopPropagation();
+            handleSelectTab(index);
+          },
+        },
+        { default: () => slotChildren.props?.title }
       );
     }
 
     return h(
       "li",
-      { class: "tabs__header-item" },
-      { default: () => slotChildren.children.title() }
+      {
+        class: "tabs__header-item",
+        tabIndex: 0,
+        onClick: (event: MouseEvent) => {
+          event.stopPropagation();
+          handleSelectTab(index);
+        },
+      },
+      { default: () => slotChildren.children?.title() }
     );
   });
 };
@@ -55,5 +83,11 @@ const renderTitle = () => {
 .tabs__header-item {
   border: 1px solid red;
   cursor: pointer;
+  outline: none;
+}
+
+.tabs__header-item:focus-visible {
+  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+    0px 0px 10px var(--primary-color-hover);
 }
 </style>

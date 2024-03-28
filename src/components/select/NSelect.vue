@@ -56,7 +56,7 @@ const { modelValue, placeHolder, disabled, size } = defineProps({
   },
 });
 
-const isSelectOpen = ref(false);
+const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
 const $slots = useSlots();
 
