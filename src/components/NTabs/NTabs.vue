@@ -3,7 +3,7 @@
     <ul class="tabs__header-list">
       <renderTitle />
     </ul>
-    <slot>Нет данных</slot>
+    <renderContent />
   </div>
 </template>
 
@@ -15,22 +15,13 @@ const $slot = useSlots();
 const selectedIndex = ref<number>(0);
 
 const handleSelectTab = (index: number) => {
-  console.log(index);
   selectedIndex.value = index;
-
-  $slot.default().forEach((el, index) => {
-    console.log(index === selectedIndex.value);
-    if (!el.props) {
-      el.props = {};
-    }
-    el.props.isActive = index === selectedIndex.value;
-  });
 };
-handleSelectTab(0);
+
 const renderTitle = () => {
   const slotChildrenList = $slot.default();
 
-  return slotChildrenList.map((slotChildren) => {
+  return slotChildrenList.map((slotChildren, index) => {
     return h(
       "li",
       {
@@ -46,6 +37,20 @@ const renderTitle = () => {
           slotChildren.props?.title || slotChildren.children?.title(),
       }
     );
+  });
+};
+
+const renderContent = () => {
+  const slotChildrenList = $slot.default();
+
+  return slotChildrenList.map((slotChildren, index) => {
+    return h("div", {}, [
+      slotChildren.children?.default().map((vnode) => {
+        if (selectedIndex.value === index) {
+          return vnode;
+        }
+      }),
+    ]);
   });
 };
 </script>
