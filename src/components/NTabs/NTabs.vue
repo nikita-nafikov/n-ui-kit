@@ -31,21 +31,6 @@ const renderTitle = () => {
   const slotChildrenList = $slot.default();
 
   return slotChildrenList.map((slotChildren) => {
-    if (slotChildren.props?.title) {
-      return h(
-        "li",
-        {
-          class: "tabs__header-item",
-          tabIndex: 0,
-          onClick: (event: MouseEvent) => {
-            event.stopPropagation();
-            handleSelectTab(index);
-          },
-        },
-        { default: () => slotChildren.props?.title }
-      );
-    }
-
     return h(
       "li",
       {
@@ -56,7 +41,10 @@ const renderTitle = () => {
           handleSelectTab(index);
         },
       },
-      { default: () => slotChildren.children?.title() }
+      {
+        default: () =>
+          slotChildren.props?.title || slotChildren.children?.title(),
+      }
     );
   });
 };
