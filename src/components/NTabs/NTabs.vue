@@ -44,7 +44,7 @@ const renderContent = () => {
   const slotChildrenList = $slot.default();
 
   return slotChildrenList.map((slotChildren, index) => {
-    return h("div", {}, [
+    return h("div", { class: "tab__content" }, [
       slotChildren.children?.default().map((vnode) => {
         if (selectedIndex.value === index) {
           return vnode;
@@ -82,5 +82,9 @@ const renderContent = () => {
 .tabs__header-item:focus-visible {
   box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
+}
+
+.tab__content {
+  padding: var(--m-padding);
 }
 </style>

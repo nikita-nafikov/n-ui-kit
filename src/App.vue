@@ -198,19 +198,14 @@ const x = () => {
     </div>
     <div style="margin-top: 20px">
       <NTabs>
-        <NTab>
+        <NTab x="111x">
           <template #title
             ><icon />
             <div>Custom title</div></template
           >
+          ffsfds
         </NTab>
-        <NTab>
-          <template #title>
-            <div>421421</div>
-            tab</template
-          >
-          Здрасьте</NTab
-        >
+        <NTab title="xfsfds"> Здхасьте</NTab>
       </NTabs>
     </div>
   </div>
