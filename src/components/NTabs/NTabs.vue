@@ -25,7 +25,7 @@ const renderTitle = () => {
     return h(
       "li",
       {
-        class: "tabs__header-item",
+        class: ["tabs__header-item", { active: index === selectedIndex.value }],
         tabIndex: 0,
         onClick: (event: MouseEvent) => {
           event.stopPropagation();
@@ -76,7 +76,6 @@ const renderContent = () => {
 }
 
 .tabs__header-item {
-  border: 1px solid red;
   cursor: pointer;
   outline: none;
 }
@@ -84,6 +83,10 @@ const renderContent = () => {
 .tabs__header-item:focus-visible {
   box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
+}
+
+.tabs__header-item.active {
+  color: var(--primary-color);
 }
 
 .tab__content {
