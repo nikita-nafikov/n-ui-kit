@@ -44,13 +44,15 @@ const renderContent = () => {
   const slotChildrenList = $slot.default();
 
   return slotChildrenList.map((slotChildren, index) => {
-    return h("div", { class: "tab__content" }, [
-      slotChildren.children?.default().map((vnode) => {
-        if (selectedIndex.value === index) {
-          return vnode;
-        }
-      }),
-    ]);
+    if (selectedIndex.value === index) {
+      return h("div", { class: "tab__content" }, [
+        slotChildren.children?.default().map((vnode) => {
+          if (selectedIndex.value === index) {
+            return vnode;
+          }
+        }),
+      ]);
+    }
   });
 };
 </script>

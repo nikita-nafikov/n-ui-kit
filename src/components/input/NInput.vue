@@ -35,7 +35,7 @@ const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;
 }>();
 
-const { modelValue } = defineProps({
+const { modelValue, disabled, round, placeHolder, size } = defineProps({
   modelValue: {
     type: String,
     required: true,

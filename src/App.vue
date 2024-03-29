@@ -198,14 +198,14 @@ const x = () => {
     </div>
     <div style="margin-top: 20px">
       <NTabs>
-        <NTab x="111x">
+        <NTab>
           <template #title
             ><icon />
             <div>Custom title</div></template
           >
           ffsfds
         </NTab>
-        <NTab title="xfsfds"> Здхасьте</NTab>
+        <NTab title="xfsfds"></NTab>
       </NTabs>
     </div>
   </div>
