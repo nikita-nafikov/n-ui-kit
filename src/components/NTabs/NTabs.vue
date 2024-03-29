@@ -73,11 +73,13 @@ const renderContent = () => {
   gap: 16px;
   padding: var(--m-padding);
   border-bottom: 2px solid var(--primary-color);
+  overflow: auto;
 }
 
 .tabs__header-item {
   cursor: pointer;
   outline: none;
+  flex-shrink: 0;
 }
 
 .tabs__header-item:focus-visible {
