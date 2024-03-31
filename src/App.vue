@@ -6,10 +6,11 @@ import NOption from "./components/select/NOption.vue";
 import NCheckbox from "./components/checkbox/NCheckbox.vue";
 import NRadio from "./components/radio/NRadio.vue";
 import NCollapse from "./components/collapse/NCollapse.vue";
-import NTab from "./components/NTabs/NTab.vue";
-import NTabs from "./components/NTabs/NTabs.vue";
+import NTab from "./components/tabs/NTab.vue";
+import NTabs from "./components/tabs/NTabs.vue";
+import NTooltip from "./components/tooltip/NTooltip.vue";
 
-import { provide, h } from "vue";
+import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
 
 const { isDarkTheme, toggleTheme } = useDarkTheme();
@@ -198,15 +199,25 @@ const x = () => {
     </div>
     <div style="margin-top: 20px">
       <NTabs>
-        <NTab title="first tab">
-          <!-- <template #title
+        <NTab>
+          <template #title
             ><icon />
             <div>Custom title</div></template
-          > -->
+          >
           ffsfds1
         </NTab>
         <NTab title="xfsfds">31</NTab>
       </NTabs>
+    </div>
+    <div style="margin-top: 20px">
+      <NTooltip>
+        <template #content
+          >fTop Left prompts infoTop Left prompts infoTop Left prompts infoTop
+          Left prompts infoTopTop Left prompts infoTop Left prompts infoTop Left
+          prompts infoTop Left prompts infoTopsd</template
+        >
+        <NButton color="warning"> Кнопка</NButton>
+      </NTooltip>
     </div>
   </div>
 </template>
