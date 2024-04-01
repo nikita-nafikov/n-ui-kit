@@ -210,14 +210,20 @@ const x = () => {
       </NTabs>
     </div>
     <div style="margin-top: 20px">
-      <NTooltip>
+      <NTooltip style="min-width: 400px">
         <template #content
-          >fTop Left prompts infoTop Left prompts infoTop Left prompts infoTop
+          >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
           Left prompts infoTopTop Left prompts infoTop Left prompts infoTop Left
           prompts infoTop Left prompts infoTopsd</template
         >
         <NButton color="warning"> Кнопка</NButton>
       </NTooltip>
+
+      <div>
+        <NTooltip style="min-width: 400px" content="dfsdf">
+          <NButton color="warning"> Кнопка</NButton>
+        </NTooltip>
+      </div>
     </div>
   </div>
 </template>

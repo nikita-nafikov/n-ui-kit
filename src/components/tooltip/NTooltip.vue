@@ -1,7 +1,7 @@
 <template>
   <div class="tooltip-wrapper">
     <slot />
-    <div class="tooltip">
+    <div class="tooltip" v-bind="$attrs">
       <span class="tooltip__text">{{ content }}</span>
       <slot name="content" />
     </div>
@@ -10,6 +10,10 @@
 
 <script setup lang="ts">
 import { inject, PropType } from "vue";
+
+defineOptions({
+  inheritAttrs: false,
+});
 
 const { content, position } = defineProps({
   content: {
