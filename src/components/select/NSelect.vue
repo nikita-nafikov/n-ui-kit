@@ -3,7 +3,7 @@
     ref="select"
     class="select"
     @click.stop="handleToggleSelect"
-    @keyup.space.stop="handleToggleSelect"
+    @keyup.enter.stop="handleToggleSelect"
     v-click-outside="handleCloseSelect"
     :tabindex="disabled ? -1 : 0"
     :class="{ dark: isDarkTheme, open: isSelectOpen, disabled: disabled }"
@@ -33,6 +33,7 @@
             ? 'select__option_open-down'
             : 'select__option_open-up',
         ]"
+        @keyup.enter.stop
       >
         <render-option />
       </ul>
@@ -119,7 +120,6 @@ const renderOption = () => {
           updateValue(vnode.props.value, vnode.props.label);
         },
         onKeydown: (event: KeyboardEvent) => {
-          event.stopPropagation();
           if (event.code === "Enter") {
             updateValue(vnode.props.value, vnode.props.label);
           }
