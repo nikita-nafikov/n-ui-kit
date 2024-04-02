@@ -113,30 +113,6 @@ const x = () => {
       <NInput class="size" place-holder="fsdf" round v-model="str"></NInput>
       {{ str }}
     </div>
-    <div
-      style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
-    >
-      <NSelect @change="change" v-model="selectValue">
-        <NOption
-          v-for="option of options"
-          :key="option.id"
-          :value="option.id"
-          :label="option.value"
-        >
-          <div>
-            <div>
-              <img
-                style="width: 50px; height: 50px"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
-                alt=""
-              />
-            </div>
-            {{ option.flag + " " + option.value }}
-          </div></NOption
-        >
-      </NSelect>
-      {{ selectValue }}
-    </div>
     <div style="margin-top: 20px">
       <NCheckbox
         @change="change($event)"
@@ -186,6 +162,61 @@ const x = () => {
           magnam eaque optio. Eius.
         </div>
       </NCollapse>
+      <NCollapse title="Раскрыть32">
+        <template #collapse-header>
+          <div class="collapse-icon"><icon /> привет</div>
+        </template>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
+      </NCollapse>
+      <NCollapse title="Раскрыть32">
+        <template #collapse-header>
+          <div class="collapse-icon"><icon /> привет</div>
+        </template>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
+      </NCollapse>
+      <NCollapse title="Раскрыть32">
+        <template #collapse-header>
+          <div class="collapse-icon"><icon /> привет</div>
+        </template>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
+      </NCollapse>
+      <NCollapse title="Раскрыть32">
+        <template #collapse-header>
+          <div class="collapse-icon"><icon /> привет</div>
+        </template>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
+      </NCollapse>
+      <NCollapse title="Раскрыть32">
+        <template #collapse-header>
+          <div class="collapse-icon"><icon /> привет</div>
+        </template>
+        <div>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          dicta facilis vel assumenda esse tenetur perspiciatis harum architecto
+          quae. Est consectetur doloremque assumenda unde excepturi laudantium
+          magnam eaque optio. Eius.
+        </div>
+      </NCollapse>
       <NCollapse
         title="Раскрытьoptiooption1option1option1option1option1option1option1opti22"
       >
@@ -196,6 +227,30 @@ const x = () => {
           magnam eaque optio. Eius.
         </div>
       </NCollapse>
+    </div>
+    <div
+      style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
+    >
+      <NSelect @change="change" v-model="selectValue">
+        <NOption
+          v-for="option of options"
+          :key="option.id"
+          :value="option.id"
+          :label="option.value"
+        >
+          <div>
+            <div>
+              <img
+                style="width: 50px; height: 50px"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
+                alt=""
+              />
+            </div>
+            {{ option.flag + " " + option.value }}
+          </div></NOption
+        >
+      </NSelect>
+      {{ selectValue }}
     </div>
     <div style="margin-top: 20px">
       <NTabs>

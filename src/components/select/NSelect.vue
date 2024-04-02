@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="select"
     class="select"
     @click.stop="handleToggleSelect"
     @keyup.space.stop="handleToggleSelect"
@@ -24,7 +25,15 @@
       </div>
     </div>
     <transition name="fade">
-      <ul v-show="isSelectOpen" class="select__option options-list">
+      <ul
+        v-show="isSelectOpen"
+        class="select__option"
+        :class="[
+          isSelectOpenUp
+            ? 'select__option_open-down'
+            : 'select__option_open-up',
+        ]"
+      >
         <render-option />
       </ul>
     </transition>
@@ -59,6 +68,8 @@ const { modelValue, placeHolder, disabled, size } = defineProps({
 const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
 const $slots = useSlots();
+const select = ref<null | HTMLElement>(null);
+const isSelectOpenUp = ref<boolean>(false);
 
 const handleCloseSelect = (): void => {
   isSelectOpen.value = false;
@@ -79,6 +90,13 @@ const emit = defineEmits<{
 const handleToggleSelect = (): void => {
   if (disabled) return;
   isSelectOpen.value = !isSelectOpen.value;
+
+  if (isSelectOpen.value) {
+    const rect = select.value?.getBoundingClientRect();
+    const distanceToBottom = window.innerHeight - rect?.bottom;
+
+    isSelectOpenUp.value = distanceToBottom < 220 ? true : false;
+  }
 };
 
 const renderOption = () => {
@@ -165,18 +183,14 @@ const renderOption = () => {
   color: var(--black-color);
 }
 
-.select__option {
-  margin-top: 8px;
-}
-
 .select__fallback-text {
   padding: var(--m-padding);
   display: inline-block;
 }
 
-.options-list {
+.select__option {
+  margin-top: 8px;
   position: absolute;
-  top: 100%;
   left: 0;
   width: 100%;
   background: var(--black-color);
@@ -185,7 +199,17 @@ const renderOption = () => {
   z-index: 1;
 }
 
-.dark .options-list {
+.select__option_open-down {
+  bottom: 120%;
+  top: auto;
+}
+
+.select__option_open-top {
+  bottom: auto;
+  top: 100%;
+}
+
+.dark .select__option {
   background: var(--white-color);
 }
 
