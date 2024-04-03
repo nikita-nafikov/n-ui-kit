@@ -1,7 +1,11 @@
 <template>
   <div class="tooltip-wrapper">
     <slot />
-    <div class="tooltip" v-bind="$attrs">
+    <div
+      class="tooltip"
+      :class="[{ dark: isDarkTheme }, `tooltip_${position}`]"
+      v-bind="$attrs"
+    >
       <span class="tooltip__text">{{ content }}</span>
       <slot name="content" />
     </div>
@@ -10,6 +14,8 @@
 
 <script setup lang="ts">
 import { inject, PropType } from "vue";
+
+const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
 defineOptions({
   inheritAttrs: false,
@@ -39,18 +45,43 @@ const { content, position } = defineProps({
 
 .tooltip {
   position: absolute;
-  bottom: -100%;
+  top: -110%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
   visibility: hidden;
   width: 100%;
-  /* min-width: max-content; */
-  transition: opacity 0.4s ease;
+  min-width: max-content;
+  transition: opacity 0.5s ease;
   padding: var(--s-padding);
   background: var(--black-color);
   color: var(--white-color);
   border: 2px solid var(--primary-color);
+  border-radius: var(--default-border-radius);
+  z-index: var(--tooltip-z-index);
+}
+
+.dark.tooltip {
+  background: var(--white-color);
+  color: var(--black-color);
+}
+
+.tooltip_bottom {
+  top: auto;
+  bottom: -110%;
+}
+
+.tooltip_right {
+  top: 0%;
+  left: 110%;
+  transform: translateX(0);
+}
+
+.tooltip_left {
+  top: 0%;
+  left: auto;
+  right: 110%;
+  transform: translateX(0);
 }
 
 .tooltip::after {
@@ -58,9 +89,30 @@ const { content, position } = defineProps({
   position: absolute;
   top: 100%;
   left: 50%;
-  margin-left: -8px;
+  transform: translateX(-50%);
   border-width: 8px;
   border-style: solid;
   border-color: var(--primary-color) transparent transparent transparent;
+}
+
+.tooltip_bottom::after {
+  top: auto;
+  bottom: 100%;
+  border-color: transparent transparent var(--primary-color) transparent;
+}
+
+.tooltip_right::after {
+  top: 0%;
+  left: 0%;
+  transform: translate(-103%, 50%);
+  border-color: transparent var(--primary-color) transparent transparent;
+}
+
+.tooltip_left::after {
+  top: 0%;
+  left: auto;
+  right: 0%;
+  transform: translate(103%, 50%);
+  border-color: transparent transparent transparent var(--primary-color);
 }
 </style>

@@ -265,7 +265,7 @@ const x = () => {
       </NTabs>
     </div>
     <div style="margin-top: 20px">
-      <NTooltip style="min-width: 400px">
+      <NTooltip>
         <template #content
           >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
           Left prompts infoTopTop Left prompts infoTop Left prompts infoTop Left
@@ -274,8 +274,29 @@ const x = () => {
         <NButton color="warning"> Кнопка</NButton>
       </NTooltip>
 
-      <div>
-        <NTooltip style="min-width: 400px" content="dfsdf">
+      <div style="margin-top: 50px">
+        <NTooltip position="bottom">
+          <template #content
+            >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
+            Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
+            Left prompts infoTop Left prompts infoTopsd</template
+          >
+          <NButton color="warning"> Кнопка</NButton>
+        </NTooltip>
+      </div>
+      <div style="margin-top: 50px">
+        <NTooltip position="right" content="Right Right Right Right ">
+          <template #content
+            >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
+            Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
+            Left prompts infoTop Left prompts infoTopsd</template
+          >
+          <NButton color="warning"> Кнопка</NButton>
+        </NTooltip>
+      </div>
+
+      <div style="margin-top: 50px">
+        <NTooltip position="left" content="Right Right Right Right ">
           <NButton color="warning"> Кнопка</NButton>
         </NTooltip>
       </div>
