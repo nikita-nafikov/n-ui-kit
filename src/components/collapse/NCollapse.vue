@@ -3,7 +3,7 @@
     <div
       class="collapse-title-wrapper"
       tabindex="0"
-      @keyup.space.stop="handleToggleCollapse"
+      @keyup.enter.stop="handleToggleCollapse"
       @click.stop="handleToggleCollapse"
     >
       <slot name="collapse-header">
