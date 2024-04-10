@@ -9,6 +9,7 @@ import NCollapse from "./components/collapse/NCollapse.vue";
 import NTab from "./components/tabs/NTab.vue";
 import NTabs from "./components/tabs/NTabs.vue";
 import NTooltip from "./components/tooltip/NTooltip.vue";
+import NModalWindow from "./components/modal/NModalWindow.vue";
 
 import { provide } from "vue";
 import useDarkTheme from "./composable/useDarkTheme";
@@ -58,16 +59,19 @@ const checkboxList = ref([
     name: "William",
     age: 30,
     sex: "Male",
+    size: "small",
   },
   {
     name: "Thomas",
     age: 24,
     sex: "Male",
+    size: "medium",
   },
   {
     name: "Jennifer",
     age: 20,
     sex: "Female",
+    size: "large",
   },
 ]);
 
@@ -80,7 +84,13 @@ const change = (event) => {
 // radio
 
 const radioValue = ref(2);
-//
+// modalWindow
+
+const ismodalWindowOpen = ref(false);
+const handleClick = () => {
+  console.log("click");
+  ismodalWindowOpen.value = true;
+};
 
 const x = () => {
   console.log("x");
@@ -129,6 +139,7 @@ const x = () => {
           :label="checkbox.name"
           :value="checkbox"
           class="width"
+          :size="checkbox.size"
         />
       </template>
 
@@ -250,6 +261,25 @@ const x = () => {
           </div></NOption
         >
       </NSelect>
+      <NSelect @change="change" v-model="selectValue">
+        <NOption
+          v-for="option of options"
+          :key="option.id"
+          :value="option.id"
+          :label="option.value"
+        >
+          <div>
+            <div>
+              <img
+                style="width: 50px; height: 50px"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
+                alt=""
+              />
+            </div>
+            {{ option.flag + " " + option.value }}
+          </div></NOption
+        >
+      </NSelect>
       {{ selectValue }}
     </div>
     <div style="margin-top: 20px">
@@ -285,7 +315,7 @@ const x = () => {
         </NTooltip>
       </div>
       <div style="margin-top: 50px">
-        <NTooltip position="right" content="Right Right Right Right ">
+        <NTooltip position="left" content="Right Right Right Right ">
           <template #content
             >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
             Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
@@ -296,9 +326,39 @@ const x = () => {
       </div>
 
       <div style="margin-top: 50px">
-        <NTooltip position="left" content="Right Right Right Right ">
-          <NButton color="warning"> Кнопка</NButton>
+        <NTooltip position="right" content="Открыть модалку ">
+          <NButton @click="handleClick" color="warning"> Кнопка</NButton>
         </NTooltip>
+      </div>
+      <div style="margin-top: 50px">
+        <NModalWindow v-model="ismodalWindowOpen">
+          <template #header>header</template>
+          <div style="margin-top: 20px">
+            <NCollapse title="Раскрыть32">
+              <template #collapse-header>
+                <div class="collapse-icon"><icon /> привет</div>
+              </template>
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consequatur dicta facilis vel assumenda esse tenetur
+                perspiciatis harum architecto quae. Est consectetur doloremque
+                assumenda unde excepturi laudantium magnam eaque optio. Eius.
+              </div>
+            </NCollapse>
+            <NCollapse title="Раскрыть32">
+              <template #collapse-header>
+                <div class="collapse-icon"><icon /> привет</div>
+              </template>
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consequatur dicta facilis vel assumenda esse tenetur
+                perspiciatis harum architecto quae. Est consectetur doloremque
+                assumenda unde excepturi laudantium magnam eaque optio. Eius.
+              </div>
+            </NCollapse>
+          </div>
+          <template #footer>footer</template>
+        </NModalWindow>
       </div>
     </div>
   </div>

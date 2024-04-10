@@ -38,7 +38,8 @@
   --danger-color-hover: #de576d;
   --dark-danger-color: #e88080;
   --dark-danger-color-hover: #e98b8b;
-  --tooltip-z-index: 10;
+  --modal-window-z-index: 10;
+  --tooltip-z-index: 5;
 
   /* only dev */
   background-color: black;
