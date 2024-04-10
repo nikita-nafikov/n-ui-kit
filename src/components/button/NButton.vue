@@ -134,6 +134,11 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   background: var(--dark-success-color-hover);
 }
 
+.button.success:focus-visible {
+  box-shadow: 0px 0px 0px 2px var(--dark-success-color-hover),
+    0px 0px 10px var(--dark-success-color-hover);
+}
+
 .warning {
   border: var(--default-border-width) solid var(--warning-color);
   background: var(--warning-color);
@@ -152,6 +157,11 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
   background: var(--dark-warning-color-hover);
 }
 
+.button.warning:focus-visible {
+  box-shadow: 0px 0px 0px 2px var(--dark-warning-color-hover),
+    0px 0px 10px var(--dark-warning-color-hover);
+}
+
 .danger {
   border: var(--default-border-width) solid var(--danger-color);
   background: var(--danger-color);
@@ -168,6 +178,11 @@ const { isDarkTheme } = inject<boolean>("isDarkTheme");
 
 .dark.danger:hover {
   background: var(--dark-danger-color-hover);
+}
+
+.button.danger:focus-visible {
+  box-shadow: 0px 0px 0px 2px var(--dark-danger-color-hover),
+    0px 0px 10px var(--dark-danger-color-hover);
 }
 
 .small {
