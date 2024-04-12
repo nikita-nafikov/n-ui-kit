@@ -107,7 +107,6 @@ onUnmounted(() => {
   color: var(--white-color);
   border-radius: var(--default-border-radius);
   padding: var(--m-padding);
-  transition: all 0.3s ease;
 }
 
 .modal-header,
@@ -141,12 +140,12 @@ onUnmounted(() => {
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: 0.5s opacity ease-out;
+  transition: 0.4s opacity ease-out;
 }
 
 .slide-fade-enter-active .modal,
 .slide-fade-leave-active .modal {
-  transition: 0.3s opacity, 0.6s transform;
+  transition: 0.3s opacity, 0.5s transform;
 }
 
 .slide-fade-enter-from .modal,
