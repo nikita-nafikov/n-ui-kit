@@ -31,6 +31,12 @@ const renderTitle = () => {
           event.stopPropagation();
           handleSelectTab(index);
         },
+        onkeydown: (event: KeyboardEvent) => {
+          if (event.code === "Enter") {
+            event.stopPropagation();
+            handleSelectTab(index);
+          }
+        },
       },
       {
         default: () =>
