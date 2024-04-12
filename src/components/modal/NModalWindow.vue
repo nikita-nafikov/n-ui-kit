@@ -4,10 +4,9 @@
       v-if="modelValue"
       class="modal-overlay"
       @click.stop="handleClose"
-      @keydown.esc="handleClose"
       :class="{ dark: isDarkTheme }"
     >
-      <div v-if="modelValue" class="modal" @click.stop v-bind="$attrs">
+      <div class="modal" @click.stop v-bind="$attrs">
         <div class="modal-wrapper">
           <header class="modal-header">
             <slot name="header">
@@ -48,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
+import { inject, onMounted, onUnmounted } from "vue";
 
 defineOptions({
   inheritAttrs: false,
@@ -67,9 +66,23 @@ const emit = defineEmits<{
   (e: "update:modelValue", value: boolean): void;
 }>();
 
+const closeModal = (event: KeyboardEvent) => {
+  if (event.code === "Escape") {
+    handleClose();
+  }
+};
+
 const handleClose = () => {
   emit("update:modelValue", false);
 };
+
+onMounted(() => {
+  document.addEventListener("keyup", closeModal);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("keyup", closeModal);
+});
 </script>
 
 <style scoped>
@@ -97,7 +110,12 @@ const handleClose = () => {
   transition: all 0.3s ease;
 }
 
-.dark.modal-wrapper .modal {
+.modal-header,
+.modal-content {
+  margin-bottom: 24px;
+}
+
+.dark.modal-overlay .modal {
   background: var(--white-color);
   color: var(--black-color);
 }

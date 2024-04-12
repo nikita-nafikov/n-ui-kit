@@ -261,7 +261,7 @@ const x = () => {
           </div></NOption
         >
       </NSelect>
-      <NSelect @change="change" v-model="selectValue">
+      <NSelect @change="change" v-model="selectValue" disabled>
         <NOption
           v-for="option of options"
           :key="option.id"
@@ -332,8 +332,8 @@ const x = () => {
       </div>
       <div style="margin-top: 50px">
         <NModalWindow v-model="ismodalWindowOpen">
-          <template #header>header</template>
-          <div style="margin-top: 20px">
+          <!-- <template #header>header</template> -->
+          <div>
             <NCollapse title="Раскрыть32">
               <template #collapse-header>
                 <div class="collapse-icon"><icon /> привет</div>
@@ -357,7 +357,7 @@ const x = () => {
               </div>
             </NCollapse>
           </div>
-          <template #footer>footer</template>
+          <!-- <template #footer>footer</template> -->
         </NModalWindow>
       </div>
     </div>
