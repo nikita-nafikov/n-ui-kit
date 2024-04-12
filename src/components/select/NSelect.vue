@@ -2,7 +2,7 @@
   <div
     ref="select"
     class="select"
-    @click.stop="handleToggleSelect"
+    @click="handleToggleSelect"
     @keyup.enter.stop="handleToggleSelect"
     v-click-outside="handleCloseSelect"
     :tabindex="disabled ? -1 : 0"

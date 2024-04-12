@@ -17,7 +17,7 @@
       :value="modelValue"
       :disabled="disabled"
       :placeholder="placeHolder"
-      @input.stop="handleUpdateValue"
+      @input="handleUpdateValue"
     />
     <slot name="right-icon" />
   </div>

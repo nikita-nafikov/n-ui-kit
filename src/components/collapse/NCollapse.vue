@@ -4,7 +4,7 @@
       class="collapse-title-wrapper"
       tabindex="0"
       @keyup.enter.stop="handleToggleCollapse"
-      @click.stop="handleToggleCollapse"
+      @click="handleToggleCollapse"
     >
       <slot name="collapse-header">
         <span class="collapse-title">
