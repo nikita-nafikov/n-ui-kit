@@ -37,7 +37,7 @@
           <div class="modal-content">
             <slot />
           </div>
-          <footer class="modal-footer">
+          <footer v-if="$slots.footer" class="modal-footer">
             <slot name="footer" />
           </footer>
         </div>
@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onMounted, onUnmounted } from "vue";
+import { inject, onMounted, onUnmounted, useSlots } from "vue";
 
 defineOptions({
   inheritAttrs: false,
@@ -61,6 +61,8 @@ const { modelValue } = defineProps({
     required: true,
   },
 });
+
+const $slots = useSlots();
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: boolean): void;
@@ -106,12 +108,12 @@ onUnmounted(() => {
   background: var(--black-color);
   color: var(--white-color);
   border-radius: var(--default-border-radius);
-  padding: var(--m-padding);
+  padding: var(--l-padding);
 }
 
-.modal-header,
+.modal-footer,
 .modal-content {
-  margin-bottom: 24px;
+  margin-top: 24px;
 }
 
 .dark.modal-overlay .modal {
