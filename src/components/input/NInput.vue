@@ -72,7 +72,7 @@ const handleFocusInput = () => {
   padding: var(--m-padding);
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 8px;
   background-color: var(--black-color);
   color: var(--white-color);
   border-radius: var(--default-border-radius);
