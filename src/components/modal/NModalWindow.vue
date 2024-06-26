@@ -4,7 +4,7 @@
       <div
         v-if="modelValue"
         class="modal-overlay"
-        @click.stop="handleClose"
+        @click="handleClose"
         :class="{ dark: isDarkTheme }"
       >
         <div class="modal" @click.stop v-bind="$attrs">
@@ -12,11 +12,7 @@
             <header class="modal-header">
               <slot name="header">
                 <div class="header__wrapper">
-                  <span
-                    class="header__icon-wrapper"
-                    @click.stop="handleClose"
-                    tabindex="0"
-                  >
+                  <NButton class="header__icon-button" @click="handleClose">
                     <svg
                       width="20px"
                       height="20px"
@@ -31,7 +27,7 @@
                         fill="currentColor"
                       />
                     </svg>
-                  </span>
+                  </NButton>
                 </div>
               </slot>
             </header>
@@ -50,6 +46,7 @@
 
 <script setup lang="ts">
 import { inject, onMounted, onUnmounted, useSlots } from "vue";
+import NButton from "../button/NButton.vue";
 
 defineOptions({
   inheritAttrs: false,
@@ -129,7 +126,7 @@ onUnmounted(() => {
   justify-content: flex-end;
 }
 
-.header__icon-wrapper {
+.header__icon-button {
   display: flex;
   align-items: center;
   margin-left: auto;

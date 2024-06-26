@@ -33,7 +33,6 @@
             ? 'select__option_open-down'
             : 'select__option_open-up',
         ]"
-        @keyup.enter.stop
       >
         <render-option />
       </ul>

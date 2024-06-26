@@ -10,7 +10,7 @@
       :disabled="props.disabled"
       class="checkbox"
     />
-    <span v-bind="$attrs" class="custom-checkbox" :class="props.size"></span>
+    <span v-bind="$attrs" class="custom-checkbox" :class="props.size" />
     <span class="checkbox-label">{{ label }}</span>
   </label>
 </template>

@@ -34,12 +34,11 @@
 <script setup lang="ts">
 import { ref, inject } from "vue";
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
-
 const { title } = defineProps({
   title: { type: String, required: true },
 });
 
+const isDarkTheme = inject<boolean>("isDarkTheme");
 const isExpanded = ref(false);
 
 const handleToggleCollapse = () => {

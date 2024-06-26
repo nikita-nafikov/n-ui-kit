@@ -27,13 +27,11 @@ const renderTitle = () => {
       {
         class: ["tabs__header-item", { active: index === selectedIndex.value }],
         tabIndex: 0,
-        onClick: (event: MouseEvent) => {
-          event.stopPropagation();
+        onClick: () => {
           handleSelectTab(index);
         },
         onkeydown: (event: KeyboardEvent) => {
           if (event.code === "Enter") {
-            event.stopPropagation();
             handleSelectTab(index);
           }
         },

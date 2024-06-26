@@ -10,7 +10,7 @@
       :disabled="props.disabled"
       class="radio"
     />
-    <span v-bind="$attrs" class="custom-radio" :class="props.size"></span>
+    <span v-bind="$attrs" class="custom-radio" :class="props.size" />
     <span class="radio-label">{{ label }}</span>
   </label>
 </template>
