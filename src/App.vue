@@ -69,7 +69,14 @@ const checkboxList = ref([
   },
 ]);
 
-const checkboxListValue = ref([]);
+const checkboxListValue = ref([
+  {
+    name: "Jennifer",
+    age: 20,
+    sex: "Female",
+    size: "large",
+  },
+]);
 
 const change = (event) => {
   console.log("change", event);
@@ -77,7 +84,12 @@ const change = (event) => {
 
 // radio
 
-const radioValue = ref(2);
+const radioValue = ref({
+  name: "Jennifer",
+  age: 20,
+  sex: "Female",
+  size: "large",
+});
 // modalWindow
 
 const ismodalWindowOpen = ref(false);
@@ -215,35 +227,26 @@ const toggleTheme = () => {
       <div style="margin-top: 20px">
         <template v-for="checkbox of checkboxList">
           <NCheckbox
-            @change="change($event)"
+            @update:model-value="change"
             v-model="checkboxListValue"
             :label="checkbox.name"
             :value="checkbox"
-            class="width"
-            :size="checkbox.size"
           />
         </template>
 
         {{ checkboxListValue }}
       </div>
       <div style="margin-top: 20px">
-        <div>
-          <NRadio
-            v-model="radioValue"
-            size="small"
-            :value="1"
-            label="выберите2"
-            class="testtest"
-          />
-        </div>
-        <div><NRadio v-model="radioValue" :value="1" label="выберите" /></div>
-        <div>
-          <NRadio
-            v-model="radioValue"
-            size="large"
-            :value="1"
-            label="выберите"
-          />
+        <div style="margin-top: 20px">
+          <template v-for="checkbox of checkboxList">
+            <NRadio
+              @update:model-value="change"
+              @change="x"
+              v-model="radioValue"
+              :label="checkbox.name"
+              :value="checkbox"
+            />
+          </template>
         </div>
         {{ radioValue }}
       </div>

@@ -11,13 +11,12 @@
   >
     <slot name="left-icon" />
     <input
+      v-model="modelValue"
       ref="input"
       class="input"
       :class="[size, { dark: isDarkTheme }]"
-      :value="modelValue"
       :disabled="disabled"
       :placeholder="placeHolder"
-      @input="handleUpdateValue"
     />
     <slot name="right-icon" />
   </div>
@@ -28,16 +27,9 @@ import { ref, PropType, inject } from "vue";
 
 const input = ref<null | HTMLInputElement>(null);
 const isDarkTheme = inject<boolean>("isDarkTheme");
+const modelValue = defineModel();
 
-const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
-}>();
-
-const { modelValue, disabled, round, placeHolder, size } = defineProps({
-  modelValue: {
-    type: String,
-    required: true,
-  },
+const { disabled, round, placeHolder, size } = defineProps({
   disabled: {
     type: Boolean,
     default: false,
@@ -55,10 +47,6 @@ const { modelValue, disabled, round, placeHolder, size } = defineProps({
     default: "medium",
   },
 });
-
-const handleUpdateValue = (event: Event) => {
-  emit("update:modelValue", (event.target as HTMLInputElement).value);
-};
 
 const handleFocusInput = () => {
   input.value?.focus();

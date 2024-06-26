@@ -5,7 +5,7 @@
   >
     <input
       type="radio"
-      v-model="model"
+      v-model="modelValue"
       :value="value"
       :disabled="props.disabled"
       class="radio"
@@ -16,21 +16,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType, inject } from "vue";
+import { PropType, inject } from "vue";
 
 defineOptions({
   inheritAttrs: false,
 });
 
 const isDarkTheme = inject<boolean>("isDarkTheme");
+const modelValue = defineModel();
 
 const props = defineProps({
-  modelValue: {
-    type: [Boolean, String, Number],
-    required: true,
-  },
   value: {
-    type: [Boolean, String, Number],
+    type: [Boolean, String, Number, Object],
     default: false,
   },
   label: {
@@ -46,23 +43,6 @@ const props = defineProps({
     default: "medium",
   },
 });
-
-const model = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(value) {
-    if (!props.disabled) {
-      emit("update:modelValue", value);
-      emit("change", value);
-    }
-  },
-});
-
-const emit = defineEmits<{
-  (e: "update:modelValue", value: boolean | string | number): void;
-  (e: "change", value: boolean | string | number): void;
-}>();
 </script>
 
 <style scoped>

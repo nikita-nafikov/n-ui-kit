@@ -5,7 +5,7 @@
   >
     <input
       type="checkbox"
-      v-model="model"
+      v-model="modelValue"
       :value="value"
       :disabled="props.disabled"
       class="checkbox"
@@ -16,19 +16,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType, inject } from "vue";
+import { PropType, inject } from "vue";
 
 defineOptions({
   inheritAttrs: false,
 });
 
 const isDarkTheme = inject<boolean>("isDarkTheme");
+const modelValue = defineModel();
 
 const props = defineProps({
-  modelValue: {
-    type: [Array, Boolean],
-    required: true,
-  },
   value: {
     type: [Boolean, String, Object, Number],
     default: false,
@@ -46,23 +43,6 @@ const props = defineProps({
     default: "medium",
   },
 });
-
-const model = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(value) {
-    if (!props.disabled) {
-      emit("update:modelValue", value);
-      emit("change", value);
-    }
-  },
-});
-
-const emit = defineEmits<{
-  (e: "update:modelValue", value: boolean | string | object | number): void;
-  (e: "change", value: boolean | string | object | number): void;
-}>();
 </script>
 
 <style scoped>
