@@ -10,13 +10,7 @@ import NTab from "./components/tabs/NTab.vue";
 import NTabs from "./components/tabs/NTabs.vue";
 import NTooltip from "./components/tooltip/NTooltip.vue";
 import NModalWindow from "./components/modal/NModalWindow.vue";
-
-import { provide } from "vue";
-import useDarkTheme from "./composable/useDarkTheme";
-
-const { isDarkTheme, toggleTheme } = useDarkTheme();
-
-provide("isDarkTheme", { isDarkTheme, toggleTheme });
+import NConfigProvider from "./components/config-provider/NConfigProvider.vue";
 
 //dev
 import { ref } from "vue";
@@ -25,8 +19,8 @@ import icon from "../public/icon.vue";
 // input
 const str = ref("");
 
-const input = () => {
-  console.log("input");
+const input = (e) => {
+  console.log("input", e.target.value);
 };
 
 //select
@@ -95,72 +89,18 @@ const handleClick = () => {
 const x = () => {
   console.log("x");
 };
+
+const isDarkTheme1 = ref(true);
+
+const toggleTheme = () => {
+  isDarkTheme1.value = !isDarkTheme1.value;
+  console.log("x", isDarkTheme1.value);
+};
 </script>
 
 <template>
-  <div class="container" :class="{ dark: isDarkTheme }">
+  <NConfigProvider :is-dark-theme="isDarkTheme1">
     <NButton @click="toggleTheme">Сменить тему</NButton>
-    <div class="x">
-      <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
-      <NButton disabled color="danger">Кнопка</NButton>
-      <NButton color="warning"> Кнопка</NButton>
-      <NButton size="large" color="success">1</NButton>
-      <NButton color="warning">
-        <template v-slot:left-icon><icon /></template> Кнопка
-      </NButton>
-    </div>
-    <div @click="x">
-      <NInput v-model="str" @input="input" disabled
-        ><template v-slot:left-icon><icon /></template
-      ></NInput>
-      {{ str }}
-    </div>
-    <div style="margin-top: 20px">
-      <NInput round size="large" v-model="str"></NInput>
-      {{ str }}
-    </div>
-    <div style="margin-top: 20px">
-      <NInput class="size" place-holder="fsdf" round v-model="str"></NInput>
-      {{ str }}
-    </div>
-    <div style="margin-top: 20px">
-      <NCheckbox
-        @change="change($event)"
-        v-model="checkboxValue"
-        size="large"
-        label="d"
-      />
-    </div>
-    <div style="margin-top: 20px">
-      <template v-for="checkbox of checkboxList">
-        <NCheckbox
-          @change="change($event)"
-          v-model="checkboxListValue"
-          :label="checkbox.name"
-          :value="checkbox"
-          class="width"
-          :size="checkbox.size"
-        />
-      </template>
-
-      {{ checkboxListValue }}
-    </div>
-    <div style="margin-top: 20px">
-      <div>
-        <NRadio
-          v-model="radioValue"
-          size="small"
-          :value="1"
-          label="выберите2"
-          class="testtest"
-        />
-      </div>
-      <div><NRadio v-model="radioValue" :value="1" label="выберите" /></div>
-      <div>
-        <NRadio v-model="radioValue" size="large" :value="1" label="выберите" />
-      </div>
-      {{ radioValue }}
-    </div>
     <div style="margin-top: 20px">
       <NCollapse title="Раскрыть32">
         <template #collapse-header>
@@ -239,73 +179,136 @@ const x = () => {
         </div>
       </NCollapse>
     </div>
-    <div
-      style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
-    >
-      <NSelect @change="change" v-model="selectValue">
-        <NOption
-          v-for="option of options"
-          :key="option.id"
-          :value="option.id"
-          :label="option.value"
-        >
-          <div>
-            <div>
-              <img
-                style="width: 50px; height: 50px"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
-                alt=""
-              />
-            </div>
-            {{ option.flag + " " + option.value }}
-          </div></NOption
-        >
-      </NSelect>
-      <NSelect @change="change" v-model="selectValue" disabled>
-        <NOption
-          v-for="option of options"
-          :key="option.id"
-          :value="option.id"
-          :label="option.value"
-        >
-          <div>
-            <div>
-              <img
-                style="width: 50px; height: 50px"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
-                alt=""
-              />
-            </div>
-            {{ option.flag + " " + option.value }}
-          </div></NOption
-        >
-      </NSelect>
-      {{ selectValue }}
-    </div>
-    <div style="margin-top: 20px">
-      <NTabs>
-        <NTab>
-          <template #title
-            ><icon />
-            <div>Custom title</div></template
-          >
-          ffsfds1
-        </NTab>
-        <NTab title="xfsfds">31</NTab>
-      </NTabs>
-    </div>
-    <div style="margin-top: 20px">
-      <NTooltip>
-        <template #content
-          >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
-          Left prompts infoTopTop Left prompts infoTop Left prompts infoTop Left
-          prompts infoTop Left prompts infoTopsd</template
-        >
+    <div class="container dark">
+      <NButton @click="toggleTheme">Сменить тему</NButton>
+      <div class="x">
+        <NButton @click="x" size="small" color="primary"> Кнопка </NButton>
+        <NButton disabled color="danger">Кнопка</NButton>
         <NButton color="warning"> Кнопка</NButton>
-      </NTooltip>
+        <NButton size="large" color="success">1</NButton>
+        <NButton color="warning">
+          <template v-slot:left-icon><icon /></template> Кнопка
+        </NButton>
+      </div>
+      <div @click="x">
+        <NInput v-model="str" @input="input"
+          ><template v-slot:left-icon><icon /></template
+        ></NInput>
+        {{ str }}
+      </div>
+      <div style="margin-top: 20px">
+        <NInput round size="large" v-model="str"></NInput>
+        {{ str }}
+      </div>
+      <div style="margin-top: 20px">
+        <NInput class="size" place-holder="fsdf" round v-model="str"></NInput>
+        {{ str }}
+      </div>
+      <div style="margin-top: 20px">
+        <NCheckbox
+          @change="change($event)"
+          v-model="checkboxValue"
+          size="large"
+          label="d"
+        />
+      </div>
+      <div style="margin-top: 20px">
+        <template v-for="checkbox of checkboxList">
+          <NCheckbox
+            @change="change($event)"
+            v-model="checkboxListValue"
+            :label="checkbox.name"
+            :value="checkbox"
+            class="width"
+            :size="checkbox.size"
+          />
+        </template>
 
-      <div style="margin-top: 50px">
-        <NTooltip position="bottom">
+        {{ checkboxListValue }}
+      </div>
+      <div style="margin-top: 20px">
+        <div>
+          <NRadio
+            v-model="radioValue"
+            size="small"
+            :value="1"
+            label="выберите2"
+            class="testtest"
+          />
+        </div>
+        <div><NRadio v-model="radioValue" :value="1" label="выберите" /></div>
+        <div>
+          <NRadio
+            v-model="radioValue"
+            size="large"
+            :value="1"
+            label="выберите"
+          />
+        </div>
+        {{ radioValue }}
+      </div>
+      <div
+        style="
+          margin-top: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        "
+      >
+        <NSelect @change="change" v-model="selectValue">
+          <NOption
+            v-for="option of options"
+            :key="option.id"
+            :value="option.id"
+            :label="option.value"
+          >
+            <div>
+              <div>
+                <img
+                  style="width: 50px; height: 50px"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
+                  alt=""
+                />
+              </div>
+              {{ option.flag + " " + option.value }}
+            </div></NOption
+          >
+        </NSelect>
+        <NSelect @change="change" v-model="selectValue">
+          <NOption
+            v-for="option of options"
+            :key="option.id"
+            :value="option.id"
+            :label="option.value"
+          >
+            <div>
+              <div>
+                <img
+                  style="width: 50px; height: 50px"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
+                  alt=""
+                />
+              </div>
+              {{ option.flag + " " + option.value }}
+            </div></NOption
+          >
+        </NSelect>
+        {{ selectValue }}
+      </div>
+      <div style="margin-top: 20px">
+        <NTabs>
+          <NTab>
+            <template #title
+              ><icon />
+              <div>Custom title</div></template
+            >
+            ffsfds1
+          </NTab>
+          <NTab title="xfsfds">31</NTab>
+        </NTabs>
+      </div>
+      <div style="margin-top: 20px">
+        <NTooltip>
           <template #content
             >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
             Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
@@ -313,55 +316,68 @@ const x = () => {
           >
           <NButton color="warning"> Кнопка</NButton>
         </NTooltip>
-      </div>
-      <div style="margin-top: 50px">
-        <NTooltip position="left" content="Right Right Right Right ">
-          <template #content
-            >Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
-            Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
-            Left prompts infoTop Left prompts infoTopsd</template
-          >
-          <NButton color="warning"> Кнопка</NButton>
-        </NTooltip>
-      </div>
 
-      <div style="margin-top: 50px">
-        <NTooltip position="right" content="Открыть модалку ">
-          <NButton @click="handleClick" color="warning"> Кнопка</NButton>
-        </NTooltip>
-      </div>
-      <div style="margin-top: 50px">
-        <NModalWindow v-model="ismodalWindowOpen">
-          <!-- <template #header>header</template> -->
-          <div>
-            <NCollapse title="Раскрыть32">
-              <template #collapse-header>
-                <div class="collapse-icon"><icon /> привет</div>
-              </template>
-              <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur dicta facilis vel assumenda esse tenetur
-                perspiciatis harum architecto quae. Est consectetur doloremque
-                assumenda unde excepturi laudantium magnam eaque optio. Eius.
-              </div>
-            </NCollapse>
-            <NCollapse title="Раскрыть32">
-              <template #collapse-header>
-                <div class="collapse-icon"><icon /> привет</div>
-              </template>
-              <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consequatur dicta facilis vel assumenda esse tenetur
-                perspiciatis harum architecto quae. Est consectetur doloremque
-                assumenda unde excepturi laudantium magnam eaque optio. Eius.
-              </div>
-            </NCollapse>
-          </div>
-          <!-- <template #footer>footer</template> -->
-        </NModalWindow>
+        <div style="margin-top: 50px">
+          <NTooltip position="bottom">
+            <template #content
+              >Top Left prompts infoTop Left prompts infoTop Left prompts
+              infoTop Left prompts infoTopTop Left prompts infoTop Left prompts
+              infoTop Left prompts infoTop Left prompts infoTopsd</template
+            >
+            <NButton color="warning"> Кнопка</NButton>
+          </NTooltip>
+        </div>
+        <div style="margin-top: 50px">
+          <NTooltip position="right" content="Right Right Right Right ">
+            <template #content
+              >Top Left prompts infoTop Left <br />
+              prompts infoTop Left prompts infoTop Left prompts infoTopTop Left
+              prompts<br />
+              infoTop Left prompts infoTop Left prompts infoTop Left prompts<br />
+              infoTopsd</template
+            >
+            <NButton color="warning"> Кнопка</NButton>
+          </NTooltip>
+        </div>
+
+        <div style="margin-top: 50px">
+          <NTooltip position="right">
+            <template #content> <div>Открыть модалку</div> </template>
+            <NButton @click="handleClick" color="warning"> Кнопка</NButton>
+          </NTooltip>
+        </div>
+        <div style="margin-top: 50px">
+          <NModalWindow v-model="ismodalWindowOpen">
+            <div>
+              <NCollapse title="Раскрыть32">
+                <template #collapse-header>
+                  <div class="collapse-icon"><icon /> привет</div>
+                </template>
+                <div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequatur dicta facilis vel assumenda esse tenetur
+                  perspiciatis harum architecto quae. Est consectetur doloremque
+                  assumenda unde excepturi laudantium magnam eaque optio. Eius.
+                </div>
+              </NCollapse>
+              <NCollapse title="Раскрыть32">
+                <template #collapse-header>
+                  <div class="collapse-icon"><icon /> привет</div>
+                </template>
+                <div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Consequatur dicta facilis vel assumenda esse tenetur
+                  perspiciatis harum architecto quae. Est consectetur doloremque
+                  assumenda unde excepturi laudantium magnam eaque optio. Eius.
+                </div>
+              </NCollapse>
+            </div>
+            <template #footer>footer</template>
+          </NModalWindow>
+        </div>
       </div>
     </div>
-  </div>
+  </NConfigProvider>
 </template>
 
 <style>
@@ -372,7 +388,7 @@ const x = () => {
 }
 
 .dark.container {
-  background: #000;
+  background: gray;
 }
 
 .x {

@@ -45,8 +45,6 @@
 import { ref, PropType, inject, useSlots, h } from "vue";
 import "../../style.css";
 
-const { isDarkTheme } = inject<boolean>("isDarkTheme");
-
 const { modelValue, placeHolder, disabled, size } = defineProps({
   modelValue: {
     type: [String, Number],
@@ -66,6 +64,7 @@ const { modelValue, placeHolder, disabled, size } = defineProps({
   },
 });
 
+const isDarkTheme = inject<boolean>("isDarkTheme");
 const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
 const $slots = useSlots();
@@ -92,8 +91,8 @@ const handleToggleSelect = (): void => {
   if (disabled) return;
   isSelectOpen.value = !isSelectOpen.value;
 
-  if (isSelectOpen.value) {
-    const rect = select.value?.getBoundingClientRect();
+  if (isSelectOpen.value && select.value) {
+    const rect = select.value.getBoundingClientRect();
     const distanceToBottom = window.innerHeight - rect?.bottom;
 
     isSelectOpenUp.value = distanceToBottom < 220 ? true : false;

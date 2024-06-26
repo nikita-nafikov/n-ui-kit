@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { ref, inject, useSlots, h } from "vue";
 
-const { isDarkTheme } = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<boolean>("isDarkTheme");
 const $slot = useSlots();
 const selectedIndex = ref<number>(0);
 

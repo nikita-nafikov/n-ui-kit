@@ -28,8 +28,7 @@ import { ref, PropType, inject } from "vue";
 import "../../style.css";
 
 const input = ref<null | HTMLInputElement>(null);
-// @ts-ignore: Unreachable code error
-const { isDarkTheme } = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<boolean>("isDarkTheme");
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: string): void;

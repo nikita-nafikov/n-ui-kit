@@ -55,7 +55,7 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const { isDarkTheme } = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<boolean>("isDarkTheme");
 
 const { modelValue } = defineProps({
   modelValue: {

@@ -22,8 +22,8 @@ const { disabled, size, color } = defineProps({
     default: "default",
   },
 });
-// @ts-ignore: Unreachable code error
-const { isDarkTheme } = inject<boolean>("isDarkTheme");
+
+const isDarkTheme = inject<boolean>("isDarkTheme");
 </script>
 
 <template>
