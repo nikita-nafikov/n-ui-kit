@@ -9,7 +9,12 @@
     :class="{ dark: isDarkTheme, open: isSelectOpen, disabled: disabled }"
   >
     <div class="select-placeholder-wrapper" :class="size">
-      <span class="select-placeholder">{{ selectedLabel || placeHolder }}</span>
+      <span v-if="!multiply" class="select-placeholder">{{
+        selectedLabel || placeHolder
+      }}</span>
+      <span v-else class="select-placeholder">{{
+        selectedLabel || placeHolder
+      }}</span>
       <div class="select__arrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -34,26 +39,27 @@
             : 'select__option_open-up',
         ]"
       >
-        <render-option />
+        <slot />
       </ul>
     </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, inject, useSlots, h } from "vue";
-import "../../style.css";
+import { ref, PropType, provide, inject } from "vue";
 
-const { modelValue, placeHolder, disabled, size } = defineProps({
-  modelValue: {
-    type: [String, Number],
-    reqired: true,
-  },
+const modelValue = defineModel<any>();
+
+const { placeHolder, disabled, size, multiply } = defineProps({
   placeHolder: {
     type: String,
     default: "Выберите",
   },
   disabled: {
+    type: Boolean,
+    default: false,
+  },
+  multiply: {
     type: Boolean,
     default: false,
   },
@@ -66,70 +72,60 @@ const { modelValue, placeHolder, disabled, size } = defineProps({
 const isDarkTheme = inject<boolean>("isDarkTheme");
 const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
-const $slots = useSlots();
 const select = ref<null | HTMLElement>(null);
 const isSelectOpenUp = ref<boolean>(false);
+
+const handleToggleSelect = (): void => {
+  if (disabled) return;
+  isSelectOpen.value = !isSelectOpen.value;
+  if (isSelectOpen.value && select.value) {
+    const rect = select.value.getBoundingClientRect();
+    const distanceToBottom = window.innerHeight - rect?.bottom;
+    isSelectOpenUp.value = distanceToBottom < 220 ? true : false;
+  }
+};
 
 const handleCloseSelect = (): void => {
   isSelectOpen.value = false;
 };
 
-const updateValue = (value: string | number, label: string | number): void => {
-  selectedLabel.value = label;
-  emit("update:modelValue", value);
-  emit("change", value);
-  handleCloseSelect();
-};
+const updateValue = (
+  value: string | number | object,
+  label: string | number
+): void => {
+  if (multiply && typeof value !== "object") {
+    const selectedItemIndex = modelValue.value.findIndex(
+      (element: string | number) => element === value
+    );
 
-const emit = defineEmits<{
-  (e: "update:modelValue", value: string | number): void;
-  (e: "change", value: string | number): void;
-}>();
+    if (selectedItemIndex === -1) {
+      modelValue.value = [...modelValue.value, value];
+    } else {
+      modelValue.value = modelValue.value.filter(
+        (element: string | number) => element !== value
+      );
+    }
+  } else if (multiply && typeof value === "object") {
+    const selectedItemIndex = modelValue.value.findIndex(
+      (element: object) => JSON.stringify(element) === JSON.stringify(value)
+    );
 
-const handleToggleSelect = (): void => {
-  if (disabled) return;
-  isSelectOpen.value = !isSelectOpen.value;
-
-  if (isSelectOpen.value && select.value) {
-    const rect = select.value.getBoundingClientRect();
-    const distanceToBottom = window.innerHeight - rect?.bottom;
-
-    isSelectOpenUp.value = distanceToBottom < 220 ? true : false;
+    if (selectedItemIndex === -1) {
+      modelValue.value = [...modelValue.value, value];
+    } else {
+      modelValue.value = modelValue.value.filter(
+        (element: object, index: number) => index !== selectedItemIndex
+      );
+    }
+  } else {
+    modelValue.value = value;
+    handleCloseSelect();
   }
 };
 
-const renderOption = () => {
-  const slotChildrenList = $slots.default()[0].children;
-
-  if (!slotChildrenList?.length) {
-    return h(
-      "span",
-      { class: "select__fallback-text" },
-      { default: () => "Список пуст" }
-    );
-  }
-
-  return slotChildrenList.map((vnode) => {
-    return h(
-      vnode,
-      {
-        onClick: (event: MouseEvent) => {
-          event.stopPropagation();
-          updateValue(vnode.props.value, vnode.props.label);
-        },
-        onKeydown: (event: KeyboardEvent) => {
-          if (event.code === "Enter") {
-            updateValue(vnode.props.value, vnode.props.label);
-          }
-        },
-      },
-      {
-        default: () =>
-          vnode.children?.default()[0].children || vnode.props.label,
-      }
-    );
-  });
-};
+provide("updateSelectValue", updateValue);
+provide("selectedValue", modelValue);
+provide("isMultiply", multiply);
 </script>
 
 <style scoped>
@@ -172,7 +168,8 @@ const renderOption = () => {
 }
 
 .select:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 
@@ -195,6 +192,8 @@ const renderOption = () => {
   max-height: 200px;
   overflow-y: auto;
   z-index: 1;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .select__option_open-down {
@@ -213,7 +212,9 @@ const renderOption = () => {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .fade-enter-from,

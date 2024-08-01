@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { PropType, inject } from "vue";
-import "../../style.css";
 
 const { disabled, size, color } = defineProps({
   disabled: {
@@ -45,7 +44,11 @@ const isDarkTheme = inject<boolean>("isDarkTheme");
   outline: none;
   border-radius: var(--default-border-radius);
   padding: var(--m-padding);
-  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.1s;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.1s;
   display: flex;
   align-items: center;
   gap: 3px;
@@ -73,7 +76,8 @@ const isDarkTheme = inject<boolean>("isDarkTheme");
 }
 
 .button:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 
@@ -135,7 +139,8 @@ const isDarkTheme = inject<boolean>("isDarkTheme");
 }
 
 .button.success:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--dark-success-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--dark-success-color-hover),
     0px 0px 10px var(--dark-success-color-hover);
 }
 
@@ -158,7 +163,8 @@ const isDarkTheme = inject<boolean>("isDarkTheme");
 }
 
 .button.warning:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--dark-warning-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--dark-warning-color-hover),
     0px 0px 10px var(--dark-warning-color-hover);
 }
 
@@ -181,7 +187,8 @@ const isDarkTheme = inject<boolean>("isDarkTheme");
 }
 
 .button.danger:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--dark-danger-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--dark-danger-color-hover),
     0px 0px 10px var(--dark-danger-color-hover);
 }
 

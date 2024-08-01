@@ -1,19 +1,46 @@
 <template>
-  <li class="option" tabindex="0">
+  <li
+    class="option"
+    :class="{ checked: isChecked }"
+    tabindex="0"
+    @click="updateSelectValue(value, label)"
+  >
     <slot>{{ label }}</slot>
   </li>
 </template>
 
 <script setup lang="ts">
-const { label } = defineProps({
+import { inject, computed } from "vue";
+
+const updateSelectValue = inject("updateSelectValue") as Function;
+const selectedValue = inject("selectedValue") as any;
+const isMultiply = inject("isMultiply") as boolean;
+
+const { label, value } = defineProps({
   label: {
     type: [String, Number],
     required: true,
   },
   value: {
-    type: [String, Number],
+    type: [String, Number, Object],
     required: true,
   },
+});
+
+const isChecked = computed(() => {
+  if (!isMultiply && typeof value !== "object") {
+    return selectedValue.value === value;
+  } else if (!isMultiply && typeof value === "object") {
+    return JSON.stringify(selectedValue.value) === JSON.stringify(value);
+  } else if (isMultiply && typeof value !== "object") {
+    return selectedValue.value.find(
+      (element: number | string) => element === value
+    );
+  } else {
+    return selectedValue.value.find(
+      (element: object) => JSON.stringify(element) === JSON.stringify(value)
+    );
+  }
 });
 </script>
 
@@ -23,6 +50,10 @@ const { label } = defineProps({
 }
 
 .option:hover {
-  background: var(--dark-gray-color);
+  background: var(--gray-color);
+}
+
+.option.checked {
+  color: var(--primary-color);
 }
 </style>
