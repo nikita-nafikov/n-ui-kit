@@ -31,7 +31,8 @@ const renderTitle = () => {
           handleSelectTab(index);
         },
         onkeydown: (event: KeyboardEvent) => {
-          if (event.code === "Enter") {
+          if (event.code === "Enter" || event.code === "Space") {
+            event.preventDefault();
             handleSelectTab(index);
           }
         },
