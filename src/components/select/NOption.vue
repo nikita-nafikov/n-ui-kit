@@ -3,7 +3,7 @@
     class="option"
     :class="{ checked: isChecked }"
     tabindex="0"
-    @click="updateSelectValue(value, label)"
+    @click.stop="updateSelectValue(value, label)"
   >
     <slot>{{ label }}</slot>
   </li>
