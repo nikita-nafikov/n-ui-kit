@@ -11,17 +11,17 @@
 import { ref, inject, useSlots, h } from "vue";
 
 const isDarkTheme = inject<boolean>("isDarkTheme");
-const $slot = useSlots();
+const $slots = useSlots();
+const slotChildrenList = $slots.default?.();
 const selectedIndex = ref<number>(0);
 
 const handleSelectTab = (index: number) => {
   selectedIndex.value = index;
+  emit("change-tab", index);
 };
 
 const renderTitle = () => {
-  const slotChildrenList = $slot.default();
-
-  return slotChildrenList.map((slotChildren, index) => {
+  return slotChildrenList?.map((slotChildren, index) => {
     return h(
       "li",
       {
@@ -45,9 +45,7 @@ const renderTitle = () => {
 };
 
 const renderContent = () => {
-  const slotChildrenList = $slot.default();
-
-  return slotChildrenList.map((slotChildren, index) => {
+  return slotChildrenList?.map((slotChildren, index) => {
     if (selectedIndex.value === index) {
       return h("div", { class: "tab__content" }, [
         slotChildren.children?.default().map((vnode) => {
@@ -59,6 +57,10 @@ const renderContent = () => {
     }
   });
 };
+
+const emit = defineEmits<{
+  (e: "change-tab", index: number): void;
+}>();
 </script>
 
 <style>
@@ -87,7 +89,8 @@ const renderContent = () => {
 }
 
 .tabs__header-item:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 
