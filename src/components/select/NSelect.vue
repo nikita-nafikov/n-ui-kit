@@ -9,12 +9,7 @@
     :class="{ dark: isDarkTheme, open: isSelectOpen, disabled: disabled }"
   >
     <div class="select-placeholder-wrapper" :class="size">
-      <span v-if="!multiply" class="select-placeholder">{{
-        selectedLabel || placeHolder
-      }}</span>
-      <span v-else class="select-placeholder">{{
-        selectedLabel || placeHolder
-      }}</span>
+      <span class="select-placeholder">{{ definePlaceHolderText }}</span>
       <div class="select__arrow">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +41,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, provide, inject, onMounted, useSlots } from "vue";
+import {
+  ref,
+  computed,
+  PropType,
+  provide,
+  inject,
+  onMounted,
+  useSlots,
+} from "vue";
 
 const modelValue = defineModel<any>();
 
@@ -72,9 +75,20 @@ const { placeHolder, disabled, size, multiply } = defineProps({
 const isDarkTheme = inject<boolean>("isDarkTheme");
 const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
+const selectedLabels = ref<(string | number)[]>([]);
 const select = ref<null | HTMLElement>(null);
 const isSelectOpenUp = ref<boolean>(false);
 const slots = useSlots();
+
+const definePlaceHolderText = computed(() => {
+  if (!multiply && selectedLabel.value) {
+    return selectedLabel.value;
+  } else if (multiply && selectedLabels.value.length) {
+    return selectedLabels.value.join(", ");
+  } else {
+    return placeHolder;
+  }
+});
 
 const handleToggleSelect = (): void => {
   if (disabled) return;
@@ -102,10 +116,14 @@ const updateValue = (
 
     if (selectedItemIndex === -1) {
       modelValue.value = [...modelValue.value, value];
+      selectedLabels.value.push(label);
     } else {
       modelValue.value = modelValue.value.filter(
         (element: object | string | number, index: number) =>
           index !== selectedItemIndex
+      );
+      selectedLabels.value = selectedLabels.value.filter(
+        (element) => element !== label
       );
     }
   } else {
@@ -119,8 +137,18 @@ onMounted(() => {
   if (!modelValue.value) return;
 
   slots.default?.()[0].children?.forEach((vnode) => {
-    if (vnode.props.value === modelValue.value)
-      return (selectedLabel.value = vnode.props.label);
+    if (!multiply) {
+      if (
+        JSON.stringify(vnode.props.value) === JSON.stringify(modelValue.value)
+      )
+        return (selectedLabel.value = vnode.props.label);
+    } else {
+      modelValue.value.forEach((value) => {
+        if (JSON.stringify(vnode.props.value) === JSON.stringify(value)) {
+          selectedLabels.value.push(vnode.props.label);
+        }
+      });
+    }
   });
 });
 
