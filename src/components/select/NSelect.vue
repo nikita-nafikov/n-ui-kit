@@ -46,7 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, PropType, provide, inject } from "vue";
+import { ref, PropType, provide, inject, onMounted, useSlots } from "vue";
 
 const modelValue = defineModel<any>();
 
@@ -74,6 +74,7 @@ const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
 const select = ref<null | HTMLElement>(null);
 const isSelectOpenUp = ref<boolean>(false);
+const slots = useSlots();
 
 const handleToggleSelect = (): void => {
   if (disabled) return;
@@ -93,35 +94,35 @@ const updateValue = (
   value: string | number | object,
   label: string | number
 ): void => {
-  if (multiply && typeof value !== "object") {
+  if (multiply) {
     const selectedItemIndex = modelValue.value.findIndex(
-      (element: string | number) => element === value
+      (element: object | string | number) =>
+        JSON.stringify(element) === JSON.stringify(value)
     );
 
     if (selectedItemIndex === -1) {
       modelValue.value = [...modelValue.value, value];
     } else {
       modelValue.value = modelValue.value.filter(
-        (element: string | number) => element !== value
-      );
-    }
-  } else if (multiply && typeof value === "object") {
-    const selectedItemIndex = modelValue.value.findIndex(
-      (element: object) => JSON.stringify(element) === JSON.stringify(value)
-    );
-
-    if (selectedItemIndex === -1) {
-      modelValue.value = [...modelValue.value, value];
-    } else {
-      modelValue.value = modelValue.value.filter(
-        (element: object, index: number) => index !== selectedItemIndex
+        (element: object | string | number, index: number) =>
+          index !== selectedItemIndex
       );
     }
   } else {
     modelValue.value = value;
+    selectedLabel.value = label;
     handleCloseSelect();
   }
 };
+
+onMounted(() => {
+  if (!modelValue.value) return;
+
+  slots.default?.()[0].children?.forEach((vnode) => {
+    if (vnode.props.value === modelValue.value)
+      return (selectedLabel.value = vnode.props.label);
+  });
+});
 
 provide("updateSelectValue", updateValue);
 provide("selectedValue", modelValue);

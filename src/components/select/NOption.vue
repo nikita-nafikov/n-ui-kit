@@ -28,14 +28,8 @@ const { label, value } = defineProps({
 });
 
 const isChecked = computed(() => {
-  if (!isMultiply && typeof value !== "object") {
-    return selectedValue.value === value;
-  } else if (!isMultiply && typeof value === "object") {
+  if (!isMultiply) {
     return JSON.stringify(selectedValue.value) === JSON.stringify(value);
-  } else if (isMultiply && typeof value !== "object") {
-    return selectedValue.value.find(
-      (element: number | string) => element === value
-    );
   } else {
     return selectedValue.value.find(
       (element: object) => JSON.stringify(element) === JSON.stringify(value)
