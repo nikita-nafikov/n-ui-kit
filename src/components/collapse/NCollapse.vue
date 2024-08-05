@@ -12,17 +12,7 @@
         </span>
       </slot>
       <span class="collapse-icon">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="17"
-          height="14"
-          viewBox="0 0 1024 1024"
-        >
-          <path
-            fill="currentColor"
-            d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"
-          ></path>
-        </svg>
+        <Arrow />
       </span>
     </div>
     <div class="content">
@@ -33,6 +23,7 @@
 
 <script setup lang="ts">
 import { ref, inject } from "vue";
+import Arrow from "../../assets/icon/Arrow.vue";
 
 const { title } = defineProps({
   title: { type: String, required: true },
@@ -69,7 +60,8 @@ const handleToggleCollapse = () => {
 }
 
 .collapse-title-wrapper:focus-visible {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 

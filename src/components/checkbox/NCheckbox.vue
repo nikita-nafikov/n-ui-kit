@@ -72,7 +72,8 @@ const props = defineProps({
 }
 
 .checkbox:focus-visible + .custom-checkbox {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 

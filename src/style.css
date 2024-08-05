@@ -38,13 +38,14 @@
   --danger-color-hover: #de576d;
   --dark-danger-color: #e88080;
   --dark-danger-color-hover: #e98b8b;
+  --notification-z-index: 15;
   --modal-window-z-index: 10;
   --tooltip-z-index: 5;
 
   /* only dev */
-  background-color: black;
+  /* background-color: black; */
   /* background-color: white; */
-  /* background: gray; */
+  background: gray;
 }
 
 * {
@@ -58,3 +59,5 @@ ul,
 ol {
   list-style: none;
 }
+
+
