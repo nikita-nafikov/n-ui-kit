@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, inject, onMounted, PropType, ComputedRef } from "vue";
+import { computed, inject, onMounted, PropType, ComputedRef, VNode } from "vue";
 import NButton from "../button/NButton.vue";
 import CloseIcon from "../../assets/icon/CloseIcon.vue";
 import Done from "../../assets/icon/Done.vue";
@@ -16,7 +16,7 @@ const props = defineProps({
   },
   title: { type: String, default: "Title", required: false },
   message: {
-    type: String,
+    type: [String, Object] as PropType<string | VNode>,
     default: "A message was not provided.",
     required: false,
   },
@@ -53,6 +53,10 @@ const close = () => {
   emit("close");
 };
 
+const renderMessage = () => {
+  return props.message;
+};
+
 onMounted(() => {
   if (props.autoClose) {
     const delay = props.duration * 1000;
@@ -77,7 +81,9 @@ onMounted(() => {
       <div class="content">
         <h2 class="content__title">{{ props.title }}</h2>
 
-        <p class="content__message">{{ message }}</p>
+        <p class="content__message">
+          <renderMessage />
+        </p>
       </div>
     </div>
     <div v-if="autoClose" class="progress"></div>

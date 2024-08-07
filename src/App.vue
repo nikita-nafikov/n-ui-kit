@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, h } from "vue";
 import icon from "../public/icon.vue";
 import NInput from "./components/input/NInput.vue";
 import NButton from "./components/button/NButton.vue";
@@ -117,10 +117,28 @@ const { createNotification } = useNotifications();
 <template>
   <NConfigProvider :is-dark-theme="isDarkTheme1">
     <NButton @click="toggleTheme"> Сменить тему </NButton>
-    <NButton @click="createNotification({ autoClose: true, type: 'error' })"
+    <NButton
+      @click="
+        createNotification({
+          autoClose: true,
+          type: 'info',
+          message: h('img', {
+            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU',
+          }),
+        })
+      "
+      >h</NButton
+    >
+    <NButton
+      @click="
+        createNotification({
+          autoClose: true,
+          type: 'info',
+          message: 'This is a reminder',
+        })
+      "
       >123</NButton
     >
-
     <div
       style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
     >
