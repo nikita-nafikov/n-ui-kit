@@ -76,7 +76,7 @@ onUnmounted(() => {
 
 <style scoped>
 .modal-overlay {
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: var(--overlay-bg);
   position: fixed;
   top: 0;
   left: 0;

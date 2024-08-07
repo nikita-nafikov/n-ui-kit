@@ -15,7 +15,7 @@ import NModalWindow from "./components/modal/NModalWindow.vue";
 import NConfigProvider from "./components/config-provider/NConfigProvider.vue";
 import NNotificationContainer from "./components/notification/NNotificationContainer.vue";
 import useNotifications from "./composiables/useNotification";
-
+import NLoader from "./components/loader/NLoader.vue";
 // dev
 
 // input
@@ -111,12 +111,34 @@ function toggleTheme() {
   console.log("x", isDarkTheme1.value);
 }
 
+const showLoading = () => {
+  isShow.value = !isShow.value;
+  setTimeout(() => {
+    isShow.value = false;
+  }, 2000);
+};
+
+const isShow = ref(false);
+
 const { createNotification } = useNotifications();
 </script>
 
 <template>
   <NConfigProvider :is-dark-theme="isDarkTheme1">
     <NButton @click="toggleTheme"> Сменить тему </NButton>
+    <div>
+      <NLoader :show="isShow" :size="52" fullscreen>
+        loading
+        <!-- <template #custom-spin>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
+              alt=""
+            />
+          </div>
+        </template> -->
+      </NLoader>
+    </div>
     <NButton
       @click="
         createNotification({
@@ -129,16 +151,7 @@ const { createNotification } = useNotifications();
       "
       >h</NButton
     >
-    <NButton
-      @click="
-        createNotification({
-          autoClose: true,
-          type: 'info',
-          message: 'This is a reminder',
-        })
-      "
-      >123</NButton
-    >
+    <NButton @click="showLoading">123</NButton>
     <div
       style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
     >
