@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PropType, inject } from "vue";
+import { PropType, inject, ComputedRef } from "vue";
 
 const { disabled, size, color } = defineProps({
   disabled: {
@@ -22,7 +22,7 @@ const { disabled, size, color } = defineProps({
   },
 });
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 </script>
 
 <template>

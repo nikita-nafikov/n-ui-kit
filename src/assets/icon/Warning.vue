@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject } from "vue";
+import { inject, ComputedRef } from "vue";
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 </script>

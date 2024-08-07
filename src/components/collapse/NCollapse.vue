@@ -22,14 +22,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from "vue";
+import { ref, inject, ComputedRef } from "vue";
 import Arrow from "../../assets/icon/Arrow.vue";
 
 const { title } = defineProps({
   title: { type: String, required: true },
 });
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const isExpanded = ref(false);
 
 const handleToggleCollapse = () => {

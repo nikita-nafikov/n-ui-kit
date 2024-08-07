@@ -16,13 +16,13 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, inject } from "vue";
+import { PropType, inject, ComputedRef } from "vue";
 
 defineOptions({
   inheritAttrs: false,
 });
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const modelValue = defineModel();
 
 const props = defineProps({

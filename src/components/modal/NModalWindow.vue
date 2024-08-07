@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { inject, onMounted, onUnmounted, useSlots } from "vue";
+import { inject, onMounted, onUnmounted, useSlots, ComputedRef } from "vue";
 import NButton from "../button/NButton.vue";
 import CloseIcon from "../../assets/icon/CloseIcon.vue";
 
@@ -40,7 +40,7 @@ defineOptions({
   inheritAttrs: false,
 });
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 
 const { modelValue } = defineProps({
   modelValue: {

@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, useSlots, h } from "vue";
+import { ref, inject, useSlots, h, ComputedRef } from "vue";
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const $slots = useSlots();
 const slotChildrenList = $slots.default?.();
 const selectedIndex = ref<number>(0);

@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-import { inject, PropType } from "vue";
+import { inject, PropType, ComputedRef } from "vue";
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 
 defineOptions({
   inheritAttrs: false,

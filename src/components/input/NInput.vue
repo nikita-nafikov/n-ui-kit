@@ -23,10 +23,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, PropType, inject } from "vue";
+import { ref, PropType, inject, ComputedRef } from "vue";
 
 const input = ref<null | HTMLInputElement>(null);
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const modelValue = defineModel();
 
 const { disabled, round, placeHolder, size } = defineProps({

@@ -39,6 +39,7 @@ import {
   inject,
   onMounted,
   useSlots,
+  ComputedRef,
 } from "vue";
 import Arrow from "../../assets/icon/Arrow.vue";
 
@@ -63,7 +64,7 @@ const { placeHolder, disabled, size, multiply } = defineProps({
   },
 });
 
-const isDarkTheme = inject<boolean>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
 const selectedLabels = ref<(string | number)[]>([]);
