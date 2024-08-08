@@ -42,13 +42,14 @@ import {
   ComputedRef,
 } from "vue";
 import Arrow from "../../assets/icon/Arrow.vue";
+import { useI18n } from "vue-i18n";
 
 const modelValue = defineModel<any>();
 
 const { placeHolder, disabled, size, multiply } = defineProps({
   placeHolder: {
     type: String,
-    default: "Выберите",
+    default: null,
   },
   disabled: {
     type: Boolean,
@@ -64,6 +65,7 @@ const { placeHolder, disabled, size, multiply } = defineProps({
   },
 });
 
+const { t } = useI18n({ useScope: "global" });
 const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const isSelectOpen = ref<boolean>(false);
 const selectedLabel = ref<null | string | number>(null);
@@ -78,7 +80,7 @@ const definePlaceHolderText = computed(() => {
   } else if (multiply && selectedLabels.value.length) {
     return selectedLabels.value.join(", ");
   } else {
-    return placeHolder;
+    return placeHolder || t("placeHolders.select");
   }
 });
 

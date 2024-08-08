@@ -26,7 +26,7 @@ function input(e) {
 }
 
 // select
-const selectValue = ref([1]);
+const selectValue = ref([]);
 
 const options = ref([
   {
@@ -121,11 +121,15 @@ const showLoading = () => {
 const isShow = ref(false);
 
 const { createNotification } = useNotifications();
+
+const local = ref("ru");
 </script>
 
 <template>
-  <NConfigProvider :is-dark-theme="isDarkTheme1">
+  <NConfigProvider :is-dark-theme="isDarkTheme1" :locale="local">
     <NButton @click="toggleTheme"> Сменить тему </NButton>
+    <NButton @click="local = 'en'"> switch language </NButton>
+    <NButton @click="local = 'ru'"> Сменить язык </NButton>
     <div>
       <NLoader :show="isShow" :size="52" fullscreen>
         loading

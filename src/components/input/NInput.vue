@@ -16,7 +16,7 @@
       class="input"
       :class="[size, { dark: isDarkTheme }]"
       :disabled="disabled"
-      :placeholder="placeHolder"
+      :placeholder="placeHolder || t('placeHolders.input')"
     />
     <slot name="right-icon" />
   </div>
@@ -24,7 +24,9 @@
 
 <script lang="ts" setup>
 import { ref, PropType, inject, ComputedRef } from "vue";
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n({ useScope: "global" });
 const input = ref<null | HTMLInputElement>(null);
 const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
 const modelValue = defineModel();
@@ -40,7 +42,7 @@ const { disabled, round, placeHolder, size } = defineProps({
   },
   placeHolder: {
     type: String,
-    default: "Введите",
+    default: null,
   },
   size: {
     type: String as PropType<"small" | "medium" | "large">,
