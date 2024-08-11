@@ -1,35 +1,7 @@
-<template>
-  <div
-    class="input-wrapper"
-    :class="[
-      size,
-      { dark: isDarkTheme },
-      { round: round },
-      { disabled: disabled },
-    ]"
-    @click="handleFocusInput"
-  >
-    <slot name="left-icon" />
-    <input
-      v-model="modelValue"
-      ref="input"
-      class="input"
-      :class="[size, { dark: isDarkTheme }]"
-      :disabled="disabled"
-      :placeholder="placeHolder || t('placeHolders.input')"
-    />
-    <slot name="right-icon" />
-  </div>
-</template>
-
 <script lang="ts" setup>
-import { ref, PropType, inject, ComputedRef } from "vue";
+import type { ComputedRef, PropType } from "vue";
+import { inject, ref } from "vue";
 import { useI18n } from "vue-i18n";
-
-const { t } = useI18n({ useScope: "global" });
-const input = ref<null | HTMLInputElement>(null);
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-const modelValue = defineModel();
 
 const { disabled, round, placeHolder, size } = defineProps({
   disabled: {
@@ -49,11 +21,34 @@ const { disabled, round, placeHolder, size } = defineProps({
     default: "medium",
   },
 });
+const { t } = useI18n({ useScope: "global" });
+const input = ref<null | HTMLInputElement>(null);
+const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
+const modelValue = defineModel();
 
-const handleFocusInput = () => {
+function handleFocusInput() {
   input.value?.focus();
-};
+}
 </script>
+
+<template>
+  <div
+    class="input-wrapper"
+    :class="[size, { dark: isDarkTheme }, { round }, { disabled }]"
+    @click="handleFocusInput"
+  >
+    <slot name="left-icon" />
+    <input
+      ref="input"
+      v-model="modelValue"
+      class="input"
+      :class="[size, { dark: isDarkTheme }]"
+      :disabled="disabled"
+      :placeholder="placeHolder || t('placeHolders.input')"
+    />
+    <slot name="right-icon" />
+  </div>
+</template>
 
 <style scoped>
 .input-wrapper {
@@ -109,8 +104,7 @@ const handleFocusInput = () => {
 }
 
 .input-wrapper:focus-within {
-  box-shadow:
-    0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 

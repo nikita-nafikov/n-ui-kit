@@ -134,9 +134,7 @@ onUnmounted(() => {
 
 .slide-fade-enter-active .modal,
 .slide-fade-leave-active .modal {
-  transition:
-    0.3s opacity,
-    0.5s top;
+  transition: 0.3s opacity, 0.5s top;
 }
 
 .slide-fade-enter-from .modal,

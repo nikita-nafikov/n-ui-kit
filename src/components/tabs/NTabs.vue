@@ -21,7 +21,6 @@ const handleSelectTab = (index: number) => {
 };
 
 const renderTitle = () => {
-  console.log(slotChildrenList[0].children?.title());
   return slotChildrenList?.map((slotChildren, index) => {
     return h(
       "li",

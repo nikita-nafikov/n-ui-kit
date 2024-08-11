@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, h } from "vue";
 import icon from "../public/icon.vue";
-import NInput from "./components/input/NInput.vue";
+import NInput from "./components/input/ui/NInput.vue";
 import NButton from "./components/button/NButton.vue";
 import NSelect from "./components/select/NSelect.vue";
 import NOption from "./components/select/NOption.vue";
