@@ -2,7 +2,7 @@
 import { h, ref } from 'vue';
 import icon from '../public/icon.vue';
 import NInput from './components/input/ui/NInput.vue';
-import NButton from './components/button/NButton.vue';
+import NButton from './components/button/ui/NButton.vue';
 import NSelect from './components/select/NSelect.vue';
 import NOption from './components/select/NOption.vue';
 import NCheckbox from './components/checkbox/NCheckbox.vue';
@@ -251,10 +251,10 @@ const local = ref('ru');
           1
         </NButton>
         <NButton color="warning">
-          <template #left-icon>
+          <template #leftIcon>
             <icon />
           </template>
-          Кнопка
+          Кнопка12312
         </NButton>
       </div>
       <div @click="x">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ComputedRef, PropType, VNode } from 'vue';
 import { computed, inject, onMounted } from 'vue';
-import NButton from '../button/NButton.vue';
+import NButton from '../button/ui/NButton.vue';
 import CloseIcon from '../../assets/icon/CloseIcon.vue';
 import Done from '../../assets/icon/Done.vue';
 import Warning from '../../assets/icon/Warning.vue';

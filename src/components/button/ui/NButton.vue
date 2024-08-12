@@ -32,9 +32,9 @@ const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
     :class="[size, color, { dark: isDarkTheme }, { round }]"
     :disabled="disabled"
   >
-    <slot name="left-icon" />
+    <slot name="leftIcon" />
     <slot />
-    <slot name="right-icon" />
+    <slot name="rightIcon" />
   </button>
 </template>
 
