@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import type { ComputedRef } from 'vue';
+import { inject } from 'vue';
+
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
+</script>
+
 <template>
   <svg
     data-name="Layer 3"
@@ -15,9 +22,3 @@
     />
   </svg>
 </template>
-
-<script setup lang="ts">
-import { inject, ComputedRef } from "vue";
-
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-</script>

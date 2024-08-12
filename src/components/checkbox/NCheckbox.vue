@@ -1,29 +1,10 @@
-<template>
-  <label
-    class="checkbox-wrapper"
-    :class="{ disabled: props.disabled, dark: isDarkTheme }"
-  >
-    <input
-      type="checkbox"
-      v-model="modelValue"
-      :value="value"
-      :disabled="props.disabled"
-      class="checkbox"
-    />
-    <span v-bind="$attrs" class="custom-checkbox" :class="props.size" />
-    <span class="checkbox-label">{{ label }}</span>
-  </label>
-</template>
-
 <script setup lang="ts">
-import { PropType, inject, ComputedRef } from "vue";
+import type { ComputedRef, PropType } from 'vue';
+import { inject } from 'vue';
 
 defineOptions({
   inheritAttrs: false,
 });
-
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-const modelValue = defineModel();
 
 const props = defineProps({
   value: {
@@ -32,18 +13,37 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: "Отметьте",
+    default: 'Отметьте',
   },
   disabled: {
     type: Boolean,
     default: false,
   },
   size: {
-    type: String as PropType<"small" | "medium" | "large">,
-    default: "medium",
+    type: String as PropType<'small' | 'medium' | 'large'>,
+    default: 'medium',
   },
 });
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
+const modelValue = defineModel();
 </script>
+
+<template>
+  <label
+    class="checkbox-wrapper"
+    :class="{ disabled: props.disabled, dark: isDarkTheme }"
+  >
+    <input
+      v-model="modelValue"
+      type="checkbox"
+      :value="value"
+      :disabled="props.disabled"
+      class="checkbox"
+    >
+    <span v-bind="$attrs" class="custom-checkbox" :class="props.size" />
+    <span class="checkbox-label">{{ label }}</span>
+  </label>
+</template>
 
 <style scoped>
 .checkbox-wrapper {
@@ -102,11 +102,11 @@ const props = defineProps({
 }
 
 .custom-checkbox::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 11px;
   height: 11px;
-  background-image: url("../../assets/img/check.svg");
+  background-image: url('../../assets/img/check.svg');
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;

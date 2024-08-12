@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { PropType, inject, ComputedRef } from "vue";
+import type { ComputedRef, PropType } from 'vue';
+import { inject } from 'vue';
 
 const { disabled, size, color } = defineProps({
   disabled: {
@@ -11,24 +12,24 @@ const { disabled, size, color } = defineProps({
     default: false,
   },
   size: {
-    type: String as PropType<"small" | "medium" | "large">,
-    default: "medium",
+    type: String as PropType<'small' | 'medium' | 'large'>,
+    default: 'medium',
   },
   color: {
     type: String as PropType<
-      "primary" | "success" | "warning" | "danger" | "default"
+      'primary' | 'success' | 'warning' | 'danger' | 'default'
     >,
-    default: "default",
+    default: 'default',
   },
 });
 
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 </script>
 
 <template>
   <button
     class="button"
-    :class="[size, color, { dark: isDarkTheme }, { round: round }]"
+    :class="[size, color, { dark: isDarkTheme }, { round }]"
     :disabled="disabled"
   >
     <slot name="left-icon" />

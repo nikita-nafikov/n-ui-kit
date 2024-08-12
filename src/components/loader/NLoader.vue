@@ -1,21 +1,5 @@
-<template>
-  <div :class="{ 'loader-overlay': props.fullscreen }" v-if="props.show">
-    <div class="loader">
-      <div class="loader-spin-wrapper">
-        <slot name="custom-spin">
-          <div
-            class="loader-spin"
-            :style="`--spin-width-size: ${props.size}px; --spin-height-size: ${props.size}px`"
-          ></div>
-        </slot>
-      </div>
-      <slot />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
-import { watch } from "vue";
+import { watch } from 'vue';
 
 const props = defineProps({
   fullscreen: {
@@ -41,13 +25,30 @@ watch(
   () => props.show,
   (newVal) => {
     if (newVal && props.fullscreen) {
-      document.body.style.overflow = "hidden";
-    } else {
+      document.body.style.overflow = 'hidden';
+    }
+    else {
       document.body.style.overflow = INIT_BODY_OVERFLOW;
     }
-  }
+  },
 );
 </script>
+
+<template>
+  <div v-if="props.show" :class="{ 'loader-overlay': props.fullscreen }">
+    <div class="loader">
+      <div class="loader-spin-wrapper">
+        <slot name="custom-spin">
+          <div
+            class="loader-spin"
+            :style="`--spin-width-size: ${props.size}px; --spin-height-size: ${props.size}px`"
+          />
+        </slot>
+      </div>
+      <slot />
+    </div>
+  </div>
+</template>
 
 <style scoped>
 .loader-overlay {

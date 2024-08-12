@@ -1,27 +1,27 @@
-import { StoryFn, Meta } from "@storybook/vue3";
-import NButton from "./NButton.vue";
+import type { Meta, StoryFn } from '@storybook/vue3';
+import NButton from './NButton.vue';
 
 export default {
-  title: "NButton",
+  title: 'NButton',
   component: NButton,
   argTypes: {
     disabled: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
       defaultValue: false,
     },
     plain: {
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
       defaultValue: false,
     },
     size: {
-      control: { type: "radio" },
-      options: ["small", "medium", "large"],
-      defaultValue: "medium",
+      control: { type: 'radio' },
+      options: ['small', 'medium', 'large'],
+      defaultValue: 'medium',
     },
     color: {
-      control: { type: "select" },
-      options: ["primary", "secondary"],
-      defaultValue: "primary",
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+      defaultValue: 'primary',
     },
   },
 } as Meta<typeof NButton>;
@@ -36,7 +36,7 @@ export default {
 //   `,
 // });
 
-export const DefaultNButton: StoryFn<typeof NButton> = (args) => ({
+export const DefaultNButton: StoryFn<typeof NButton> = args => ({
   components: { NButton },
   setup() {
     return { args };

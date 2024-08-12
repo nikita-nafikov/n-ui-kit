@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { ComputedRef, PropType } from "vue";
-import { inject, ref } from "vue";
-import { useI18n } from "vue-i18n";
+import type { ComputedRef, PropType } from 'vue';
+import { inject, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const { disabled, round, placeHolder, size } = defineProps({
   disabled: {
@@ -17,13 +17,13 @@ const { disabled, round, placeHolder, size } = defineProps({
     default: null,
   },
   size: {
-    type: String as PropType<"small" | "medium" | "large">,
-    default: "medium",
+    type: String as PropType<'small' | 'medium' | 'large'>,
+    default: 'medium',
   },
 });
-const { t } = useI18n({ useScope: "global" });
+const { t } = useI18n({ useScope: 'global' });
 const input = ref<null | HTMLInputElement>(null);
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 const modelValue = defineModel();
 
 function handleFocusInput() {
@@ -45,7 +45,7 @@ function handleFocusInput() {
       :class="[size, { dark: isDarkTheme }]"
       :disabled="disabled"
       :placeholder="placeHolder || t('placeHolders.input')"
-    />
+    >
     <slot name="right-icon" />
   </div>
 </template>
@@ -104,7 +104,8 @@ function handleFocusInput() {
 }
 
 .input-wrapper:focus-within {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 

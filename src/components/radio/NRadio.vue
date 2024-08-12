@@ -1,29 +1,10 @@
-<template>
-  <label
-    class="radio-wrapper"
-    :class="{ disabled: props.disabled, dark: isDarkTheme }"
-  >
-    <input
-      type="radio"
-      v-model="modelValue"
-      :value="value"
-      :disabled="props.disabled"
-      class="radio"
-    />
-    <span v-bind="$attrs" class="custom-radio" :class="props.size" />
-    <span class="radio-label">{{ label }}</span>
-  </label>
-</template>
-
 <script setup lang="ts">
-import { PropType, inject, ComputedRef } from "vue";
+import type { ComputedRef, PropType } from 'vue';
+import { inject } from 'vue';
 
 defineOptions({
   inheritAttrs: false,
 });
-
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-const modelValue = defineModel();
 
 const props = defineProps({
   value: {
@@ -32,18 +13,37 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: "Отметьте",
+    default: 'Отметьте',
   },
   disabled: {
     type: Boolean,
     default: false,
   },
   size: {
-    type: String as PropType<"small" | "medium" | "large">,
-    default: "medium",
+    type: String as PropType<'small' | 'medium' | 'large'>,
+    default: 'medium',
   },
 });
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
+const modelValue = defineModel();
 </script>
+
+<template>
+  <label
+    class="radio-wrapper"
+    :class="{ disabled: props.disabled, dark: isDarkTheme }"
+  >
+    <input
+      v-model="modelValue"
+      type="radio"
+      :value="value"
+      :disabled="props.disabled"
+      class="radio"
+    >
+    <span v-bind="$attrs" class="custom-radio" :class="props.size" />
+    <span class="radio-label">{{ label }}</span>
+  </label>
+</template>
 
 <style scoped>
 .radio-wrapper {
@@ -72,7 +72,8 @@ const props = defineProps({
 }
 
 .radio:focus-visible + .custom-radio {
-  box-shadow: 0px 0px 0px 2px var(--primary-color-hover),
+  box-shadow:
+    0px 0px 0px 2px var(--primary-color-hover),
     0px 0px 10px var(--primary-color-hover);
 }
 
@@ -101,7 +102,7 @@ const props = defineProps({
 }
 
 .custom-radio::before {
-  content: "";
+  content: '';
   display: inline-block;
   min-width: 5px;
   min-height: 5px;

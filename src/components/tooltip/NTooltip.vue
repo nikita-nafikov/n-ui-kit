@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import type { ComputedRef, PropType } from 'vue';
+import { inject } from 'vue';
+
+defineOptions({
+  inheritAttrs: false,
+});
+
+const { content, position } = defineProps({
+  content: {
+    type: String,
+  },
+  position: {
+    type: String as PropType<'top' | 'bottom' | 'right' | 'left'>,
+    default: 'top',
+  },
+});
+
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
+</script>
+
 <template>
   <div class="tooltip-wrapper">
     <slot />
@@ -11,26 +32,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { inject, PropType, ComputedRef } from "vue";
-
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-
-defineOptions({
-  inheritAttrs: false,
-});
-
-const { content, position } = defineProps({
-  content: {
-    type: String,
-  },
-  position: {
-    type: String as PropType<"top" | "bottom" | "right" | "left">,
-    default: "top",
-  },
-});
-</script>
 
 <style scoped>
 .tooltip-wrapper {
@@ -85,7 +86,7 @@ const { content, position } = defineProps({
 }
 
 .tooltip::after {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 100%;
   left: 50%;

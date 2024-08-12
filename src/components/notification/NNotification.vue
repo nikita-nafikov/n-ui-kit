@@ -1,23 +1,24 @@
 <script setup lang="ts">
-import { computed, inject, onMounted, PropType, ComputedRef, VNode } from "vue";
-import NButton from "../button/NButton.vue";
-import CloseIcon from "../../assets/icon/CloseIcon.vue";
-import Done from "../../assets/icon/Done.vue";
-import Warning from "../../assets/icon/Warning.vue";
-import Danger from "../../assets/icon/Danger.vue";
-import Info from "../../assets/icon/Info.vue";
+import type { ComputedRef, PropType, VNode } from 'vue';
+import { computed, inject, onMounted } from 'vue';
+import NButton from '../button/NButton.vue';
+import CloseIcon from '../../assets/icon/CloseIcon.vue';
+import Done from '../../assets/icon/Done.vue';
+import Warning from '../../assets/icon/Warning.vue';
+import Danger from '../../assets/icon/Danger.vue';
+import Info from '../../assets/icon/Info.vue';
 
 const props = defineProps({
   id: { type: String, required: true },
   type: {
-    type: String as PropType<"info" | "warning" | "error" | "success">,
-    default: "info",
+    type: String as PropType<'info' | 'warning' | 'error' | 'success'>,
+    default: 'info',
     required: false,
   },
-  title: { type: String, default: "Title", required: false },
+  title: { type: String, default: 'Title', required: false },
   message: {
     type: [String, Object] as PropType<string | VNode>,
-    default: "A message was not provided.",
+    default: 'A message was not provided.',
     required: false,
   },
   autoClose: { type: Boolean, default: true, required: false },
@@ -25,10 +26,10 @@ const props = defineProps({
 });
 
 const emit = defineEmits<{
-  (e: "close"): void;
+  (e: 'close'): void
 }>();
 
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 const toastIcons = {
   info: Info,
   error: Danger,
@@ -38,24 +39,24 @@ const toastIcons = {
 
 const toastColor = computed(() => {
   switch (props.type) {
-    case "error":
-      return isDarkTheme?.value ? "#e88080" : "#d03050";
-    case "warning":
-      return isDarkTheme?.value ? "#f2c97d" : "#f0a020";
-    case "success":
-      return isDarkTheme?.value ? "#63e2b7" : "#18a058";
+    case 'error':
+      return isDarkTheme?.value ? '#e88080' : '#d03050';
+    case 'warning':
+      return isDarkTheme?.value ? '#f2c97d' : '#f0a020';
+    case 'success':
+      return isDarkTheme?.value ? '#63e2b7' : '#18a058';
     default:
-      return isDarkTheme?.value ? "#191c30" : "#ffffff";
+      return isDarkTheme?.value ? '#191c30' : '#ffffff';
   }
 });
 
-const close = () => {
-  emit("close");
-};
+function close() {
+  emit('close');
+}
 
-const renderMessage = () => {
+function renderMessage() {
   return props.message;
-};
+}
 
 onMounted(() => {
   if (props.autoClose) {
@@ -77,16 +78,18 @@ onMounted(() => {
 
     <div class="notification__body">
       <component :is="toastIcons[props.type]" />
-      <div class="notification-separator"></div>
+      <div class="notification-separator" />
       <div class="content">
-        <h2 class="content__title">{{ props.title }}</h2>
+        <h2 class="content__title">
+          {{ props.title }}
+        </h2>
 
         <p class="content__message">
           <renderMessage />
         </p>
       </div>
     </div>
-    <div v-if="autoClose" class="progress"></div>
+    <div v-if="autoClose" class="progress" />
   </li>
 </template>
 

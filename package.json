@@ -28,6 +28,10 @@
   "peerDependencies": {
     "vue": ">=3"
   },
+  "dependencies": {
+    "jsdom": "^24.1.1",
+    "vue-i18n": "^9.13.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.21.1",
     "@storybook/addon-essentials": "^7.6.16",
@@ -49,9 +53,5 @@
     "vitest": "^2.0.5",
     "vue": ">=3",
     "vue-tsc": "^1.8.27"
-  },
-  "dependencies": {
-    "jsdom": "^24.1.1",
-    "vue-i18n": "^9.13.1"
   }
 }

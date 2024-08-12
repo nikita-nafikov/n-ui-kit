@@ -1,13 +1,57 @@
+<script setup lang="ts">
+import type { ComputedRef } from 'vue';
+import { inject, onMounted, onUnmounted, useSlots } from 'vue';
+import NButton from '../button/NButton.vue';
+import CloseIcon from '../../assets/icon/CloseIcon.vue';
+
+defineOptions({
+  inheritAttrs: false,
+});
+
+const { modelValue } = defineProps({
+  modelValue: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: boolean): void
+}>();
+
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
+
+const $slots = useSlots();
+
+function closeModal(event: KeyboardEvent) {
+  if (event.code === 'Escape') {
+    handleClose();
+  }
+}
+
+function handleClose() {
+  emit('update:modelValue', false);
+}
+
+onMounted(() => {
+  document.addEventListener('keyup', closeModal);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keyup', closeModal);
+});
+</script>
+
 <template>
   <Teleport to="body">
     <Transition name="slide-fade">
       <div
         v-if="modelValue"
         class="modal-overlay"
-        @click="handleClose"
         :class="{ dark: isDarkTheme }"
+        @click="handleClose"
       >
-        <div class="modal" @click.stop v-bind="$attrs">
+        <div class="modal" v-bind="$attrs" @click.stop>
           <div class="modal-wrapper">
             <header class="modal-header">
               <slot name="header">
@@ -30,49 +74,6 @@
     </Transition>
   </Teleport>
 </template>
-
-<script setup lang="ts">
-import { inject, onMounted, onUnmounted, useSlots, ComputedRef } from "vue";
-import NButton from "../button/NButton.vue";
-import CloseIcon from "../../assets/icon/CloseIcon.vue";
-
-defineOptions({
-  inheritAttrs: false,
-});
-
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-
-const { modelValue } = defineProps({
-  modelValue: {
-    type: Boolean,
-    required: true,
-  },
-});
-
-const $slots = useSlots();
-
-const emit = defineEmits<{
-  (e: "update:modelValue", value: boolean): void;
-}>();
-
-const closeModal = (event: KeyboardEvent) => {
-  if (event.code === "Escape") {
-    handleClose();
-  }
-};
-
-const handleClose = () => {
-  emit("update:modelValue", false);
-};
-
-onMounted(() => {
-  document.addEventListener("keyup", closeModal);
-});
-
-onUnmounted(() => {
-  document.removeEventListener("keyup", closeModal);
-});
-</script>
 
 <style scoped>
 .modal-overlay {
@@ -134,7 +135,9 @@ onUnmounted(() => {
 
 .slide-fade-enter-active .modal,
 .slide-fade-leave-active .modal {
-  transition: 0.3s opacity, 0.5s top;
+  transition:
+    0.3s opacity,
+    0.5s top;
 }
 
 .slide-fade-enter-from .modal,

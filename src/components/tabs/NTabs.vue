@@ -1,37 +1,32 @@
-<template>
-  <div class="tabs" :class="{ dark: isDarkTheme }">
-    <ul class="tabs__header-list">
-      <renderTitle />
-    </ul>
-    <renderContent />
-  </div>
-</template>
-
 <script setup lang="ts">
-import { ref, inject, useSlots, h, ComputedRef } from "vue";
+import type { ComputedRef } from 'vue';
+import { h, inject, ref, useSlots } from 'vue';
 
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
+const emit = defineEmits<{
+  (e: 'changeTab', index: number): void
+}>();
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 const $slots = useSlots();
 const slotChildrenList = $slots.default?.();
 const selectedIndex = ref<number>(0);
 
-const handleSelectTab = (index: number) => {
+function handleSelectTab(index: number) {
   selectedIndex.value = index;
-  emit("change-tab", index);
-};
+  emit('changeTab', index);
+}
 
-const renderTitle = () => {
+function renderTitle() {
   return slotChildrenList?.map((slotChildren, index) => {
     return h(
-      "li",
+      'li',
       {
-        class: ["tabs__header-item", { active: index === selectedIndex.value }],
+        class: ['tabs__header-item', { active: index === selectedIndex.value }],
         tabIndex: 0,
         onClick: () => {
           handleSelectTab(index);
         },
         onkeydown: (event: KeyboardEvent) => {
-          if (event.code === "Enter" || event.code === "Space") {
+          if (event.code === 'Enter' || event.code === 'Space') {
             event.preventDefault();
             handleSelectTab(index);
           }
@@ -40,15 +35,15 @@ const renderTitle = () => {
       {
         default: () =>
           slotChildren.props?.title || slotChildren.children?.title(),
-      }
+      },
     );
   });
-};
+}
 
-const renderContent = () => {
+function renderContent() {
   return slotChildrenList?.map((slotChildren, index) => {
     if (selectedIndex.value === index) {
-      return h("div", { class: "tab__content" }, [
+      return h('div', { class: 'tab__content' }, [
         slotChildren.children?.default().map((vnode) => {
           if (selectedIndex.value === index) {
             return vnode;
@@ -57,12 +52,17 @@ const renderContent = () => {
       ]);
     }
   });
-};
-
-const emit = defineEmits<{
-  (e: "change-tab", index: number): void;
-}>();
+}
 </script>
+
+<template>
+  <div class="tabs" :class="{ dark: isDarkTheme }">
+    <ul class="tabs__header-list">
+      <renderTitle />
+    </ul>
+    <renderContent />
+  </div>
+</template>
 
 <style>
 .tabs {

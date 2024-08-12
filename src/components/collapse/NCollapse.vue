@@ -1,3 +1,20 @@
+<script setup lang="ts">
+import type { ComputedRef } from 'vue';
+import { inject, ref } from 'vue';
+import Arrow from '../../assets/icon/Arrow.vue';
+
+const { title } = defineProps({
+  title: { type: String, required: true },
+});
+
+const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
+const isExpanded = ref(false);
+
+function handleToggleCollapse() {
+  isExpanded.value = !isExpanded.value;
+}
+</script>
+
 <template>
   <div class="collapse" :class="{ dark: isDarkTheme, open: isExpanded }">
     <div
@@ -16,26 +33,12 @@
       </span>
     </div>
     <div class="content">
-      <div class="content-wrapper"><slot /></div>
+      <div class="content-wrapper">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref, inject, ComputedRef } from "vue";
-import Arrow from "../../assets/icon/Arrow.vue";
-
-const { title } = defineProps({
-  title: { type: String, required: true },
-});
-
-const isDarkTheme = inject<ComputedRef<boolean>>("isDarkTheme");
-const isExpanded = ref(false);
-
-const handleToggleCollapse = () => {
-  isExpanded.value = !isExpanded.value;
-};
-</script>
 
 <style scoped>
 .collapse {

@@ -1,9 +1,16 @@
+<script setup lang="ts">
+import useNotifications from '../../composiables/useNotification';
+import NNotification from './NNotification.vue';
+
+const { notifications, removeNotifications } = useNotifications();
+</script>
+
 <template>
   <transition-group name="fade" tag="ul" class="toast-notifications">
     <NNotification
       v-for="item in notifications"
-      :key="item.id"
       :id="item.id"
+      :key="item.id"
       :type="item.type"
       :title="item.title"
       :message="item.message"
@@ -14,16 +21,9 @@
           removeNotifications(item.id);
         }
       "
-    ></NNotification>
+    />
   </transition-group>
 </template>
-
-<script setup lang="ts">
-import NNotification from "./NNotification.vue";
-import useNotifications from "../../composiables/useNotification";
-
-const { notifications, removeNotifications } = useNotifications();
-</script>
 
 <style scoped>
 .toast-notifications {
