@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ComputedRef, PropType } from 'vue';
 import { inject } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 defineOptions({
   inheritAttrs: false,
@@ -13,7 +14,7 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: 'Отметьте',
+    default: null,
   },
   disabled: {
     type: Boolean,
@@ -24,6 +25,7 @@ const props = defineProps({
     default: 'medium',
   },
 });
+const { t } = useI18n({ useScope: 'global' });
 const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 const modelValue = defineModel();
 </script>
@@ -41,7 +43,7 @@ const modelValue = defineModel();
       class="radio"
     >
     <span v-bind="$attrs" class="custom-radio" :class="props.size" />
-    <span class="radio-label">{{ label }}</span>
+    <span class="radio-label">{{ label || t('labels.radio') }}</span>
   </label>
 </template>
 

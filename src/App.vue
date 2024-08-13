@@ -6,7 +6,7 @@ import NButton from './components/button/ui/NButton.vue';
 import NSelect from './components/select/NSelect.vue';
 import NOption from './components/select/NOption.vue';
 import NCheckbox from './components/checkbox/ui/NCheckbox.vue';
-import NRadio from './components/radio/NRadio.vue';
+import NRadio from './components/radio/ui/NRadio.vue';
 import NCollapse from './components/collapse/NCollapse.vue';
 import NTab from './components/tabs/NTab.vue';
 import NTabs from './components/tabs/NTabs.vue';
