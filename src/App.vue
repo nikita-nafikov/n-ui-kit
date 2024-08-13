@@ -5,7 +5,7 @@ import NInput from './components/input/ui/NInput.vue';
 import NButton from './components/button/ui/NButton.vue';
 import NSelect from './components/select/NSelect.vue';
 import NOption from './components/select/NOption.vue';
-import NCheckbox from './components/checkbox/NCheckbox.vue';
+import NCheckbox from './components/checkbox/ui/NCheckbox.vue';
 import NRadio from './components/radio/NRadio.vue';
 import NCollapse from './components/collapse/NCollapse.vue';
 import NTab from './components/tabs/NTab.vue';
@@ -127,6 +127,16 @@ const local = ref('ru');
 
 <template>
   <NConfigProvider :is-dark-theme="isDarkTheme1" :locale="local">
+    <div style="margin-top: 20px">
+      <NCheckbox
+        v-model="checkboxValue"
+        size="large"
+        :value="true"
+        @update:model-value="change"
+        @change="change($event)"
+      />
+      {{ checkboxValue }}
+    </div>
     <NButton @click="toggleTheme">
       Сменить тему
     </NButton>
@@ -273,14 +283,7 @@ const local = ref('ru');
         <NInput v-model="str" class="size" place-holder="fsdf" round />
         {{ str }}
       </div>
-      <div style="margin-top: 20px">
-        <NCheckbox
-          v-model="checkboxValue"
-          size="large"
-          label="d"
-          @change="change($event)"
-        />
-      </div>
+
       <div style="margin-top: 20px">
         <template v-for="checkbox of checkboxList">
           <NCheckbox

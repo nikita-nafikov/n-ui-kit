@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ComputedRef, PropType } from 'vue';
 import { inject } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 defineOptions({
   inheritAttrs: false,
@@ -13,7 +14,7 @@ const props = defineProps({
   },
   label: {
     type: String,
-    default: 'Отметьте',
+    default: null,
   },
   disabled: {
     type: Boolean,
@@ -24,6 +25,7 @@ const props = defineProps({
     default: 'medium',
   },
 });
+const { t } = useI18n({ useScope: 'global' });
 const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 const modelValue = defineModel();
 </script>
@@ -41,7 +43,7 @@ const modelValue = defineModel();
       class="checkbox"
     >
     <span v-bind="$attrs" class="custom-checkbox" :class="props.size" />
-    <span class="checkbox-label">{{ label }}</span>
+    <span class="checkbox-label">{{ label || t('labels.checkbox') }}</span>
   </label>
 </template>
 
@@ -106,7 +108,7 @@ const modelValue = defineModel();
   display: inline-block;
   width: 11px;
   height: 11px;
-  background-image: url('../../assets/img/check.svg');
+  background-image: url('../../../assets/img/check.svg');
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;

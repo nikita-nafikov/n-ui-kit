@@ -2,5 +2,9 @@
   "placeHolders": {
     "select": "Select",
     "input": "Input"
+  },
+  "labels": {
+    "radio": "Check",
+    "checkbox": "Check"
   }
 }

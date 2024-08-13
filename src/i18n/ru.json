@@ -2,5 +2,9 @@
   "placeHolders": {
     "select": "Выберите",
     "input": "Введите"
+  },
+  "labels": {
+    "radio": "Выберите",
+    "checkbox": "Выберите"
   }
 }
