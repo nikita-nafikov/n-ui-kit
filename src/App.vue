@@ -15,7 +15,7 @@ import NModalWindow from './components/modal/NModalWindow.vue';
 import NConfigProvider from './components/config-provider/NConfigProvider.vue';
 import NNotificationContainer from './components/notification/NNotificationContainer.vue';
 import useNotifications from './composiables/useNotification';
-import NLoader from './components/loader/NLoader.vue';
+import NLoader from './components/loader/ui/NLoader.vue';
 // dev
 
 // input

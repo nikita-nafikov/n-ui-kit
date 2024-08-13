@@ -38,7 +38,7 @@ watch(
   <div v-if="props.show" :class="{ 'loader-overlay': props.fullscreen }">
     <div class="loader">
       <div class="loader-spin-wrapper">
-        <slot name="custom-spin">
+        <slot name="customSpin">
           <div
             class="loader-spin"
             :style="`--spin-width-size: ${props.size}px; --spin-height-size: ${props.size}px`"
