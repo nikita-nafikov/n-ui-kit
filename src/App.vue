@@ -7,7 +7,7 @@ import NSelect from './components/select/NSelect.vue';
 import NOption from './components/select/NOption.vue';
 import NCheckbox from './components/checkbox/ui/NCheckbox.vue';
 import NRadio from './components/radio/ui/NRadio.vue';
-import NCollapse from './components/collapse/NCollapse.vue';
+import NCollapse from './components/collapse/ui/NCollapse.vue';
 import NTab from './components/tabs/NTab.vue';
 import NTabs from './components/tabs/NTabs.vue';
 import NTooltip from './components/tooltip/NTooltip.vue';
@@ -207,7 +207,7 @@ const local = ref('ru');
     </div>
     <div style="margin-top: 20px">
       <NCollapse title="Раскрыть32">
-        <template #collapse-header>
+        <template #collapseHeader>
           <div class="collapse-icon">
             <icon /> привет
           </div>
@@ -220,7 +220,7 @@ const local = ref('ru');
         </div>
       </NCollapse>
       <NCollapse title="Раскрыть32">
-        <template #collapse-header>
+        <template #collapseHeader>
           <div class="collapse-icon">
             <icon /> привет
           </div>
@@ -385,7 +385,7 @@ const local = ref('ru');
           <NModalWindow v-model="ismodalWindowOpen">
             <div>
               <NCollapse title="Раскрыть32">
-                <template #collapse-header>
+                <template #collapseHeader>
                   <div class="collapse-icon">
                     <icon /> привет
                   </div>
@@ -398,7 +398,7 @@ const local = ref('ru');
                 </div>
               </NCollapse>
               <NCollapse title="Раскрыть32">
-                <template #collapse-header>
+                <template #collapseHeader>
                   <div class="collapse-icon">
                     <icon /> привет
                   </div>

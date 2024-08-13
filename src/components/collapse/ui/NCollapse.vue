@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ComputedRef } from 'vue';
 import { inject, ref } from 'vue';
-import Arrow from '../../assets/icon/Arrow.vue';
+import Arrow from '../../../assets/icon/Arrow.vue';
 
 const { title } = defineProps({
   title: { type: String, required: true },
@@ -23,7 +23,7 @@ function handleToggleCollapse() {
       @keyup.enter.stop="handleToggleCollapse"
       @click="handleToggleCollapse"
     >
-      <slot name="collapse-header">
+      <slot name="collapseHeader">
         <span class="collapse-title">
           {{ title }}
         </span>
