@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { ComputedRef } from 'vue';
 import { inject, onMounted, onUnmounted, useSlots } from 'vue';
-import NButton from '../button/ui/NButton.vue';
-import CloseIcon from '../../assets/icon/CloseIcon.vue';
+import NButton from '../../button/ui/NButton.vue';
+import CloseIcon from '../../../assets/icon/CloseIcon.vue';
 
 defineOptions({
   inheritAttrs: false,

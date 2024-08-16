@@ -11,7 +11,7 @@ import NCollapse from './components/collapse/ui/NCollapse.vue';
 import NTab from './components/tabs/NTab.vue';
 import NTabs from './components/tabs/NTabs.vue';
 import NTooltip from './components/tooltip/NTooltip.vue';
-import NModalWindow from './components/modal/NModalWindow.vue';
+import NModalWindow from './components/modal/ui/NModalWindow.vue';
 import NConfigProvider from './components/config-provider/NConfigProvider.vue';
 import NNotificationContainer from './components/notification/NNotificationContainer.vue';
 import useNotifications from './composiables/useNotification';
