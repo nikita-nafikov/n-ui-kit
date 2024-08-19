@@ -27,8 +27,9 @@ const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
       :class="[{ dark: isDarkTheme }, `tooltip_${position}`]"
       v-bind="$attrs"
     >
-      <span class="tooltip__text">{{ content }}</span>
-      <slot name="content" />
+      <slot name="content">
+        <span class="tooltip__text">{{ content }}</span>
+      </slot>
     </div>
   </div>
 </template>

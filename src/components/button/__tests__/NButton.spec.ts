@@ -18,12 +18,12 @@ describe('nButton tests', () => {
 
   it('should render correctly with default props', () => {
     const wrapper = mount(NButton);
-    const inputWrapper = wrapper.find('.button');
+    const button = wrapper.find('.button');
 
-    expect(inputWrapper.classes()).toContain('medium');
-    expect(inputWrapper.classes()).toContain('default');
-    expect(inputWrapper.classes()).not.toContain('disabled');
-    expect(inputWrapper.classes()).not.toContain('round');
+    expect(button.classes()).toContain('medium');
+    expect(button.classes()).toContain('default');
+    expect(button.classes()).not.toContain('disabled');
+    expect(button.classes()).not.toContain('round');
   });
 
   sizes.forEach((size) => {
