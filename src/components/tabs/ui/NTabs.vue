@@ -43,13 +43,14 @@ function renderTitle() {
 function renderContent() {
   return slotChildrenList?.map((slotChildren, index) => {
     if (selectedIndex.value === index) {
-      return h('div', { class: 'tab__content' }, [
-        slotChildren.children?.default().map((vnode) => {
-          if (selectedIndex.value === index) {
-            return vnode;
-          }
-        }),
-      ]);
+      const children = slotChildren.children?.default?.();
+      const vnodeArray = Array.isArray(children) ? children : [children];
+
+      return h('div', { class: 'tab__content' }, vnodeArray.map((vnode) => {
+        if (selectedIndex.value === index) {
+          return vnode;
+        }
+      }));
     }
   });
 }

@@ -8,8 +8,8 @@ import NOption from './components/select/NOption.vue';
 import NCheckbox from './components/checkbox/ui/NCheckbox.vue';
 import NRadio from './components/radio/ui/NRadio.vue';
 import NCollapse from './components/collapse/ui/NCollapse.vue';
-import NTab from './components/tabs/NTab.vue';
-import NTabs from './components/tabs/NTabs.vue';
+import NTab from './components/tabs/ui/NTab.vue';
+import NTabs from './components/tabs/ui/NTabs.vue';
 import NTooltip from './components/tooltip/ui/NTooltip.vue';
 import NModalWindow from './components/modal/ui/NModalWindow.vue';
 import NConfigProvider from './components/config-provider/NConfigProvider.vue';
@@ -313,22 +313,22 @@ const local = ref('ru');
 
       <div style="margin-top: 20px">
         <NTabs>
-          <NTab>
-            <template #title>
+          <NTab title="gthdsq">
+            <!-- <template #title>
               <icon />
               <div>Custom title</div>
-            </template>
+            </template> -->
             ffsfds1
           </NTab>
           <NTab title="xfsfds">
             31
-            <div>
+            <!-- <div>
               <img
                 style="width: 50px; height: 50px"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
                 alt=""
               >
-            </div>
+            </div> -->
           </NTab>
         </NTabs>
       </div>
