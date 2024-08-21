@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { ComputedRef, PropType, VNode } from 'vue';
 import { computed, inject, onMounted } from 'vue';
-import NButton from '../button/ui/NButton.vue';
-import CloseIcon from '../../assets/icon/CloseIcon.vue';
-import Done from '../../assets/icon/Done.vue';
-import Warning from '../../assets/icon/Warning.vue';
-import Danger from '../../assets/icon/Danger.vue';
-import Info from '../../assets/icon/Info.vue';
+import NButton from '../../button/ui/NButton.vue';
+import CloseIcon from '../../../assets/icon/CloseIcon.vue';
+import Done from '../../../assets/icon/Done.vue';
+import Warning from '../../../assets/icon/Warning.vue';
+import Danger from '../../../assets/icon/Danger.vue';
+import Info from '../../../assets/icon/Info.vue';
 
 const props = defineProps({
   id: { type: String, required: true },

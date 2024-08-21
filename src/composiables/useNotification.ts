@@ -4,7 +4,7 @@ import type { Notification } from '../types/INotification';
 
 const notifications = ref<Notification[]>([]);
 
-export default function useNotifications() {
+export function useNotifications() {
   const createNotification = (options: Partial<Notification>): void => {
     const defaultNotificationOptions = {
       type: 'info',
