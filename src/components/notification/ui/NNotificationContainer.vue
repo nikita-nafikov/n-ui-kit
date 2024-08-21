@@ -3,7 +3,6 @@ import { useNotifications } from '../../../composiables/useNotification';
 import NNotification from './NNotification.vue';
 
 const { notifications, removeNotifications } = useNotifications();
-console.log('notifications', notifications.value);
 </script>
 
 <template>
