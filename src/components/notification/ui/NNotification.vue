@@ -9,7 +9,7 @@ import Danger from '../../../assets/icon/Danger.vue';
 import Info from '../../../assets/icon/Info.vue';
 
 const props = defineProps({
-  id: { type: String, required: true },
+  id: { type: [String, Number], required: true },
   type: {
     type: String as PropType<'info' | 'warning' | 'error' | 'success'>,
     default: 'info',

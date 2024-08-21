@@ -162,7 +162,6 @@ const local = ref('ru');
     <NButton
       @click="
         createNotification({
-          autoClose: true,
           type: 'info',
           message: h('img', {
             src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU',
