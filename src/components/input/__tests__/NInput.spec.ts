@@ -107,4 +107,17 @@ describe('nInput tests', () => {
     await inputWrapper.trigger('click');
     expect(document.activeElement).toBe(input.element);
   });
+
+  it('should update modelValue', async () => {
+    const wrapper = mount(NInput);
+    const input = wrapper.find('input');
+
+    await input.setValue('Input text');
+
+    const updateModelValueEvent = wrapper.emitted('update:modelValue');
+
+    expect(wrapper.emitted()).toHaveProperty('update:modelValue');
+    expect(updateModelValueEvent).toHaveLength(1);
+    expect(updateModelValueEvent?.[0]).toEqual(['Input text']);
+  });
 });

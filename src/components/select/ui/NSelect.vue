@@ -12,7 +12,7 @@ import {
   useSlots,
 } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Arrow from '../../assets/icon/Arrow.vue';
+import Arrow from '../../../assets/icon/Arrow.vue';
 
 const { placeHolder, disabled, size, multiply } = defineProps({
   placeHolder: {
@@ -65,6 +65,7 @@ function handleToggleSelect(): void {
     const distanceToBottom = window.innerHeight - rect?.bottom;
     isSelectOpenUp.value = distanceToBottom < 220;
   }
+  console.log('isSelectOpen.valueisSelectOpen.valueisSelectOpen.value', isSelectOpen.value);
 }
 
 function handleCloseSelect(): void {

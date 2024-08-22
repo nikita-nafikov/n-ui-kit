@@ -109,4 +109,17 @@ describe('nCheckbox tests', () => {
     expect(checkboxWrapper.classes()).not.toContain('custom-class');
     expect(customCheckbox.classes()).toContain('custom-class');
   });
+
+  it('should update modelValue', async () => {
+    const wrapper = mount(NCheckbox);
+    const checkbox = wrapper.find('.checkbox');
+
+    await checkbox.setValue(true);
+
+    const updateModelValueEvent = wrapper.emitted('update:modelValue');
+
+    expect(wrapper.emitted()).toHaveProperty('update:modelValue');
+    expect(updateModelValueEvent).toHaveLength(1);
+    expect(updateModelValueEvent?.[0]).toEqual([true]);
+  });
 });

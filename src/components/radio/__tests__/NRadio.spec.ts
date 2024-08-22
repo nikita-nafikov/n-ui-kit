@@ -109,4 +109,16 @@ describe('nRadio tests', () => {
     expect(RadioWrapper.classes()).not.toContain('custom-class');
     expect(customRadio.classes()).toContain('custom-class');
   });
+
+  it('should update modelValue', async () => {
+    const wrapper = mount(NRadio);
+    const radio = wrapper.find('.radio');
+
+    await radio.setValue(true);
+
+    const updateModelValueEvent = wrapper.emitted('update:modelValue');
+
+    expect(wrapper.emitted()).toHaveProperty('update:modelValue');
+    expect(updateModelValueEvent).toHaveLength(1);
+  });
 });

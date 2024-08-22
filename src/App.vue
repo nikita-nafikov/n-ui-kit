@@ -3,8 +3,8 @@ import { h, ref } from 'vue';
 import icon from '../public/icon.vue';
 import NInput from './components/input/ui/NInput.vue';
 import NButton from './components/button/ui/NButton.vue';
-import NSelect from './components/select/NSelect.vue';
-import NOption from './components/select/NOption.vue';
+import NSelect from './components/select/ui/NSelect.vue';
+import NOption from './components/select/ui/NOption.vue';
 import NCheckbox from './components/checkbox/ui/NCheckbox.vue';
 import NRadio from './components/radio/ui/NRadio.vue';
 import NCollapse from './components/collapse/ui/NCollapse.vue';
@@ -188,8 +188,10 @@ const local = ref('ru');
           :key="option.id"
           :value="option.id"
           :label="option.value"
-        >
-          <div>
+        />
+      </NSelect>
+
+      <!-- <div>
             <div>
               <img
                 style="width: 50px; height: 50px"
@@ -198,9 +200,7 @@ const local = ref('ru');
               >
             </div>
             {{ `${option.flag} ${option.value}` }}
-          </div>
-        </NOption>
-      </NSelect>
+          </div> -->
       {{ selectValue }}
       <NNotificationContainer />
     </div>
