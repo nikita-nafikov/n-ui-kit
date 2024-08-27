@@ -65,7 +65,6 @@ function handleToggleSelect(): void {
     const distanceToBottom = window.innerHeight - rect?.bottom;
     isSelectOpenUp.value = distanceToBottom < 220;
   }
-  console.log('isSelectOpen.valueisSelectOpen.valueisSelectOpen.value', isSelectOpen.value);
 }
 
 function handleCloseSelect(): void {
