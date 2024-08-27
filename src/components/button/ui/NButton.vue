@@ -3,18 +3,22 @@ import type { ComputedRef, PropType } from 'vue';
 import { inject } from 'vue';
 
 const { disabled, size, color } = defineProps({
+  /** disable the button */
   disabled: {
     type: Boolean,
     default: false,
   },
+  /** determine whether it's a circle button */
   round: {
     type: Boolean,
     default: false,
   },
+  /** button size */
   size: {
     type: String as PropType<'small' | 'medium' | 'large'>,
     default: 'medium',
   },
+  /** button color */
   color: {
     type: String as PropType<
       'primary' | 'success' | 'warning' | 'danger' | 'default'
