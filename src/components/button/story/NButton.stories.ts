@@ -1,7 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { computed, provide } from 'vue';
 import NButton from '..//ui/NButton.vue';
-import Done from '../../../assets/icon/Done.vue';
 
 export default {
   title: 'UI/NButton',
@@ -53,7 +52,7 @@ export default {
 } as Meta<typeof NButton>;
 
 const Template: StoryFn<typeof NButton> = args => ({
-  components: { NButton, Done },
+  components: { NButton },
   setup() {
     return { args };
   },
