@@ -2,16 +2,19 @@
 import { watch } from 'vue';
 
 const props = defineProps({
+  /** show loader fullscreen  */
   fullscreen: {
     type: Boolean,
     required: false,
     default: false,
   },
+  /** show loader  */
   show: {
     type: Boolean,
     required: false,
     default: false,
   },
+  /** loader size  */
   size: {
     type: Number,
     required: false,
