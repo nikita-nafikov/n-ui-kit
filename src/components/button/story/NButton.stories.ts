@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
 import { computed, provide } from 'vue';
-import NButton from '..//ui/NButton.vue';
+import NButton from '../ui/NButton.vue';
 
 export default {
   title: 'UI/NButton',

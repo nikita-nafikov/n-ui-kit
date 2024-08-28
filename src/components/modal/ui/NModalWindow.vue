@@ -9,6 +9,7 @@ defineOptions({
 });
 
 const { modelValue } = defineProps({
+  /** show modal window  */
   modelValue: {
     type: Boolean,
     required: true,
