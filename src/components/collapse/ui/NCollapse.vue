@@ -4,7 +4,7 @@ import { inject, ref } from 'vue';
 import Arrow from '../../../assets/icon/Arrow.vue';
 
 const { title } = defineProps({
-  title: { type: String, required: true },
+  title: { type: String, default: '' },
 });
 
 const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
