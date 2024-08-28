@@ -1,4 +1,3 @@
-import * as path from 'node:path';
 import type { StorybookConfig } from '@storybook/vue3-vite';
 
 const config: StorybookConfig = {

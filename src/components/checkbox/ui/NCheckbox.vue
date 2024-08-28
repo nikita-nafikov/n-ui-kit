@@ -8,18 +8,22 @@ defineOptions({
 });
 
 const props = defineProps({
+  /** value of the Checkbox */
   value: {
     type: [Boolean, String, Object, Number],
     default: false,
   },
+  /** label of the Checkbox */
   label: {
     type: String,
     default: null,
   },
+  /** whether the Checkbox is disabled */
   disabled: {
     type: Boolean,
     default: false,
   },
+  /** size of the Checkbox */
   size: {
     type: String as PropType<'small' | 'medium' | 'large'>,
     default: 'medium',
