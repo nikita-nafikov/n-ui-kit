@@ -12,7 +12,7 @@ import NTab from './components/tabs/ui/NTab.vue';
 import NTabs from './components/tabs/ui/NTabs.vue';
 import NTooltip from './components/tooltip/ui/NTooltip.vue';
 import NModalWindow from './components/modal/ui/NModalWindow.vue';
-import NConfigProvider from './components/config-provider/NConfigProvider.vue';
+import NConfigProvider from './components/config-provider/ui/NConfigProvider.vue';
 import NNotificationContainer from './components/notification/ui/NNotificationContainer.vue';
 import { useNotifications } from './composiables/useNotification';
 import NLoader from './components/loader/ui/NLoader.vue';

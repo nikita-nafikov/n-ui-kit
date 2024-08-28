@@ -37,7 +37,7 @@ function handleFocusInput() {
     :class="[size, { dark: isDarkTheme }, { round }, { disabled }]"
     @click="handleFocusInput"
   >
-    <slot name="left-icon" />
+    <slot name="leftIcon" />
     <input
       ref="input"
       v-model="modelValue"
@@ -46,7 +46,7 @@ function handleFocusInput() {
       :disabled="disabled"
       :placeholder="placeHolder || t('placeHolders.input')"
     >
-    <slot name="right-icon" />
+    <slot name="rightIcon" />
   </div>
 </template>
 

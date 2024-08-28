@@ -16,7 +16,9 @@ export default {
     
 
 <template>
-  <NCollapse />
+  <NCollapse title="NCollapse Title">
+    NCollapse Content
+  </NCollapse>
 </template>
         `,
       },
