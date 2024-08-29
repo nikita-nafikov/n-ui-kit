@@ -319,7 +319,7 @@ const local = ref('ru');
             </template> -->
             ffsfds1
           </NTab>
-          <NTab title="xfsfds">
+          <NTab  :title="title' in args ? null : 'First Tab'">
             31
             <!-- <div>
               <img
@@ -330,91 +330,6 @@ const local = ref('ru');
             </div> -->
           </NTab>
         </NTabs>
-      </div>
-      <div style="margin-top: 20px">
-        <NTooltip>
-          <template #content>
-            Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
-            Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
-            Left prompts infoTop Left prompts infoTopsd
-          </template>
-          <NButton color="warning">
-            Кнопка
-          </NButton>
-        </NTooltip>
-
-        <div style="margin-top: 50px">
-          <NTooltip position="bottom">
-            <template #content>
-              Top Left prompts infoTop Left prompts infoTop Left prompts infoTop
-              Left prompts infoTopTop Left prompts infoTop Left prompts infoTop
-              Left prompts infoTop Left prompts infoTopsd
-            </template>
-            <NButton color="warning">
-              Кнопка
-            </NButton>
-          </NTooltip>
-        </div>
-        <div style="margin-top: 50px">
-          <NTooltip position="right" content="Right Right Right Right ">
-            <template #content>
-              Top Left prompts infoTop Left <br>
-              prompts infoTop Left prompts infoTop Left prompts infoTopTop Left
-              prompts<br>
-              infoTop Left prompts infoTop Left prompts infoTop Left prompts<br>
-              infoTopsd
-            </template>
-            <NButton color="warning">
-              Кнопка
-            </NButton>
-          </NTooltip>
-        </div>
-
-        <div style="margin-top: 50px">
-          <NTooltip position="bottom">
-            <template #content>
-              <div>Открыть модалку</div>
-            </template>
-            <!-- <NButton color="warning" @click="handleClick"> -->
-            Кнопка
-            <!-- </NButton> -->
-          </NTooltip>
-        </div>
-        <div style="margin-top: 50px">
-          <NModalWindow v-model="ismodalWindowOpen">
-            <div>
-              <NCollapse title="Раскрыть32">
-                <template #collapseHeader>
-                  <div class="collapse-icon">
-                    <icon /> привет
-                  </div>
-                </template>
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur dicta facilis vel assumenda esse tenetur
-                  perspiciatis harum architecto quae. Est consectetur doloremque
-                  assumenda unde excepturi laudantium magnam eaque optio. Eius.
-                </div>
-              </NCollapse>
-              <NCollapse title="Раскрыть32">
-                <template #collapseHeader>
-                  <div class="collapse-icon">
-                    <icon /> привет
-                  </div>
-                </template>
-                <div>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Consequatur dicta facilis vel assumenda esse tenetur
-                  perspiciatis harum architecto quae. Est consectetur doloremque
-                  assumenda unde excepturi laudantium magnam eaque optio. Eius.
-                </div>
-              </NCollapse>
-            </div>
-            <template #footer>
-              footer
-            </template>
-          </NModalWindow>
-        </div>
       </div>
     </div>
   </NConfigProvider>
