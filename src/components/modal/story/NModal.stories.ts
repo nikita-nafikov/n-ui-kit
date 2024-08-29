@@ -76,7 +76,7 @@ Default.args = {
 
 export const WithCustomHeaderAndFooter = Template.bind({});
 WithCustomHeaderAndFooter.args = {
-  default: 'Custom spin',
+  default: 'Modal content',
   modelValue: true,
   header: `
   <div style="display: flex; gap: 4px; align-items: center;">
