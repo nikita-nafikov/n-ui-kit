@@ -7,9 +7,11 @@ defineOptions({
 });
 
 const { content, position } = defineProps({
+  /** display content, can be overridden by slot#content */
   content: {
     type: String,
   },
+  /** position of Tooltip */
   position: {
     type: String as PropType<'top' | 'bottom' | 'right' | 'left'>,
     default: 'top',
