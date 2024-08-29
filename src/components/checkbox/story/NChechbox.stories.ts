@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
-import { computed, provide } from 'vue';
+import { computed, provide, ref } from 'vue';
 import NCheckbox from '../ui/NCheckbox.vue';
 
 export default {
@@ -18,9 +18,12 @@ export default {
     
 
 <template>
-  <NCheckbox v-model="checkboxValues" value="1" label="Option 1" />
-  <NCheckbox v-model="checkboxValues" value="2" label="Option 2" />
-  <NCheckbox v-model="checkboxValues" value="3" label="Option 3" />
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <NCheckbox v-bind="args" v-model="checkboxValues" value="1" label="Option 1"></NCheckbox>
+      <NCheckbox v-bind="args" v-model="checkboxValues" value="2" label="Option 2"></NCheckbox>
+      <NCheckbox v-bind="args" v-model="checkboxValues" value="3" label="Option 3"></NCheckbox>
+    </div>
+    <div>modelValue: {{ checkboxValues }}</div>
 </template>
         `,
       },
@@ -54,12 +57,16 @@ export default {
 const Template: StoryFn<typeof NCheckbox> = args => ({
   components: { NCheckbox },
   setup() {
-    return { args };
+    const checkboxValues = ref(['1']);
+    return { args, checkboxValues };
   },
   template: `
-    <NCheckbox v-bind="args"></NCheckbox>
-    <NCheckbox v-bind="args"></NCheckbox>
-    <NCheckbox v-bind="args"></NCheckbox>
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <NCheckbox v-bind="args" v-model="checkboxValues" value="1" label="Option 1"></NCheckbox>
+      <NCheckbox v-bind="args" v-model="checkboxValues" value="2" label="Option 2"></NCheckbox>
+      <NCheckbox v-bind="args" v-model="checkboxValues" value="3" label="Option 3"></NCheckbox>
+    </div>
+    <div>modelValue: {{ checkboxValues }}</div>
   `,
 });
 

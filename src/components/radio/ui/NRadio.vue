@@ -8,18 +8,22 @@ defineOptions({
 });
 
 const props = defineProps({
+  /** value of the Radio */
   value: {
     type: [Boolean, String, Number, Object],
     default: false,
   },
+  /** label of the Radio */
   label: {
     type: String,
     default: null,
   },
+  /** whether the Radio is disabled */
   disabled: {
     type: Boolean,
     default: false,
   },
+  /** size of the Radio */
   size: {
     type: String as PropType<'small' | 'medium' | 'large'>,
     default: 'medium',
