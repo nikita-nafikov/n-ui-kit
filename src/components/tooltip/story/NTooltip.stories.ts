@@ -28,7 +28,7 @@ export default {
         `,
       },
       description: {
-        component: 'Commonly used button.',
+        component: 'Display prompt information for mouse hover.',
       },
     },
   },
