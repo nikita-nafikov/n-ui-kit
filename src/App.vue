@@ -371,13 +371,13 @@ const local = ref('ru');
         </div>
 
         <div style="margin-top: 50px">
-          <NTooltip position="right">
+          <NTooltip position="bottom">
             <template #content>
               <div>Открыть модалку</div>
             </template>
-            <NButton color="warning" @click="handleClick">
-              Кнопка
-            </NButton>
+            <!-- <NButton color="warning" @click="handleClick"> -->
+            Кнопка
+            <!-- </NButton> -->
           </NTooltip>
         </div>
         <div style="margin-top: 50px">
