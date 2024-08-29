@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/vue3';
-import { computed, provide } from 'vue';
+import { computed, provide, ref } from 'vue';
 import NModalWindow from '../ui/NModalWindow.vue';
 
 export default {
@@ -13,11 +13,12 @@ export default {
 <script setup>
   import NModalWindow from '@/components'
 
-  const isModalWindowShow = ref(true)
+  const isModalWindowShow = ref(false)
 </script>
     
 
 <template>
+  <button @click="isModalWindowShow = true"></button>
   <NModalWindow v-model="isModalWindowShow">NModalWindow Content...</NModalWindow>
 </template>
         `,
@@ -47,11 +48,14 @@ export default {
 const Template: StoryFn<typeof NModalWindow> = args => ({
   components: { NModalWindow },
   setup() {
-    return { args };
+    const isModalWindowShow = ref(true);
+
+    return { args, isModalWindowShow };
   },
   template: `
     <div>
-      <NModalWindow v-bind="args">
+      <button @click="args.modelValue = true">Open Modal</button>
+      <NModalWindow v-bind="args" v-model="args.modelValue">
         <template v-if="${'header' in args}" v-slot:header>
           ${args.header}
         </template>
