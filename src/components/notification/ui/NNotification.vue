@@ -9,19 +9,25 @@ import Danger from '../../../assets/icon/Danger.vue';
 import Info from '../../../assets/icon/Info.vue';
 
 const props = defineProps({
+  /** unique notification key (create automaticity by UUID ) */
   id: { type: [String, Number], required: true },
+  /** notification color */
   type: {
     type: String as PropType<'info' | 'warning' | 'error' | 'success'>,
     default: 'info',
     required: false,
   },
+  /** notification title */
   title: { type: String, default: 'Title', required: false },
+  /** notification message (can be render function for customization) */
   message: {
     type: [String, Object] as PropType<string | VNode>,
     default: 'A message was not provided.',
     required: false,
   },
+  /** whether the notification is autoClose */
   autoClose: { type: Boolean, default: true, required: false },
+  /** notification  duration */
   duration: { type: Number, default: 5, required: false },
 });
 
