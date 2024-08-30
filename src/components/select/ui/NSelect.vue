@@ -15,18 +15,22 @@ import { useI18n } from 'vue-i18n';
 import Arrow from '../../../assets/icon/Arrow.vue';
 
 const { placeHolder, disabled, size, multiply } = defineProps({
+  /** Select placeholder */
   placeHolder: {
     type: String,
     default: null,
   },
+  /** whether Select is disabled */
   disabled: {
     type: Boolean,
     default: false,
   },
+  /** whether multiple-select is activated */
   multiply: {
     type: Boolean,
     default: false,
   },
+  /** size of Select */
   size: {
     type: String as PropType<'small' | 'medium' | 'large'>,
     default: 'medium',

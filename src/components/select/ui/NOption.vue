@@ -2,10 +2,12 @@
 import { computed, inject } from 'vue';
 
 const { label, value } = defineProps({
+  /** label of Option */
   label: {
     type: [String, Number],
     required: true,
   },
+  /** value of Option */
   value: {
     type: [String, Number, Object],
     required: true,
