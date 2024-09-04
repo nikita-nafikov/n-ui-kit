@@ -6,5 +6,11 @@
   "labels": {
     "radio": "Выберите",
     "checkbox": "Выберите"
+  },
+  "message": {
+    "notification": "Сообщение не указано."
+  },
+  "title": {
+    "notification": "Заголовок не указан."
   }
 }

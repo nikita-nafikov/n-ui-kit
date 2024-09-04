@@ -8,8 +8,8 @@ export function useNotifications() {
   const createNotification = (options: Partial<Notification>): void => {
     const defaultNotificationOptions = {
       type: 'info',
-      title: 'Info Notification',
-      message: 'Ooops! A message was not provided.',
+      title: null,
+      message: null,
       autoClose: true,
       duration: 5,
     };

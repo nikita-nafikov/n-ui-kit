@@ -6,5 +6,11 @@
   "labels": {
     "radio": "Check",
     "checkbox": "Check"
+  },
+  "message": {
+    "notification": "A message was not provided."
+  },
+  "title": {
+    "notification": "A title was not provided."
   }
 }

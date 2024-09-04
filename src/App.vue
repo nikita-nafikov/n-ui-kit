@@ -123,16 +123,6 @@ const local = ref('ru');
 
 <template>
   <NConfigProvider :is-dark-theme="isDarkTheme1" :locale="local">
-    <div style="margin-top: 20px">
-      <NCheckbox
-        v-model="checkboxValue"
-        size="large"
-        :value="true"
-        @update:model-value="change"
-        @change="change($event)"
-      />
-      {{ checkboxValue }}
-    </div>
     <NButton @click="toggleTheme">
       Сменить тему
     </NButton>
@@ -145,61 +135,19 @@ const local = ref('ru');
     <div>
       <NLoader :show="isShow" :size="52" fullscreen>
         loading
-        <!-- <template #custom-spin>
-          <div>
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
-              alt=""
-            />
-          </div>
-        </template> -->
       </NLoader>
     </div>
     <NButton
       @click="
         createNotification({
           type: 'info',
-          message: h('img', {
-            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU',
-          }),
         })
       "
     >
-      h
+      hfssdffsd
     </NButton>
-    <NButton @click="showLoading">
-      123
-    </NButton>
-    <div
-      style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px"
-    >
-      <NSelect
-        v-model="selectValue"
-        multiply
-        class="psps"
-        @update:model-value="change"
-      >
-        <NOption
-          v-for="option of options"
-          :key="option.id"
-          :value="option.id"
-          :label="option.value"
-        />
-      </NSelect>
 
-      <!-- <div>
-            <div>
-              <img
-                style="width: 50px; height: 50px"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPsiEK5xTQBo6DpkNzyY0NF6LSLLDG81_ISZZwvtmOoTTnVjD7wrbD7b-r5GMDY3-843A&usqp=CAU"
-                alt=""
-              >
-            </div>
-            {{ `${option.flag} ${option.value}` }}
-          </div> -->
-      {{ selectValue }}
-      <NNotificationContainer />
-    </div>
+    <NNotificationContainer />
   </NConfigProvider>
 </template>
 

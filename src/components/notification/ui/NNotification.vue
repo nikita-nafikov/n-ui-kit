@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ComputedRef, PropType, VNode } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { computed, inject, onMounted } from 'vue';
 import NButton from '../../button/ui/NButton.vue';
 import CloseIcon from '../../../assets/icon/CloseIcon.vue';
@@ -18,7 +19,7 @@ const props = defineProps({
     required: false,
   },
   /** notification title */
-  title: { type: String, default: 'Title', required: false },
+  title: { type: String, default: null, required: false },
   /** notification message (can be render function for customization) */
   message: {
     type: [String, Object] as PropType<string | VNode>,
@@ -35,6 +36,7 @@ const emit = defineEmits<{
   (e: 'close'): void
 }>();
 
+const { t } = useI18n({ useScope: 'global' });
 const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
 const toastIcons = {
   info: Info,
@@ -61,7 +63,7 @@ function close() {
 }
 
 function renderMessage() {
-  return props.message;
+  return props.message || t('message.notification');
 }
 
 onMounted(() => {
@@ -87,7 +89,7 @@ onMounted(() => {
       <div class="notification-separator" />
       <div class="content">
         <h2 class="content__title">
-          {{ props.title }}
+          {{ props.title || t('title.notification') }}
         </h2>
 
         <p class="content__message">
