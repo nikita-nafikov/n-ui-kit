@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import type { ComputedRef } from 'vue';
-import { h, inject, ref, useSlots } from 'vue';
+import { h, inject, ref } from 'vue';
 
 const emit = defineEmits<{
   (e: 'changeTab', index: number): void
 }>();
+const $slots = defineSlots<{
+  default: () => any
+}>();
 const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
-const $slots = useSlots();
 const slotChildrenList = $slots.default?.();
 const selectedIndex = ref<number>(0);
 
@@ -16,6 +18,8 @@ function handleSelectTab(index: number) {
 }
 
 function renderTitle() {
+  if (!Array.isArray(slotChildrenList))
+    return;
   return slotChildrenList?.map((slotChildren, index) => {
     return h(
       'li',
@@ -40,18 +44,23 @@ function renderTitle() {
   });
 }
 
+// const slotChildrenList = $slots.default?.();
 function renderContent() {
+  if (!Array.isArray(slotChildrenList))
+    return;
   return slotChildrenList?.map((slotChildren, index) => {
-    if (selectedIndex.value === index) {
-      const children = slotChildren.children?.default?.();
-      const vnodeArray = Array.isArray(children) ? children : [children];
+    if (selectedIndex.value !== index)
+      return null;
 
-      return h('div', { class: 'tab__content' }, vnodeArray.map((vnode) => {
-        if (selectedIndex.value === index) {
-          return vnode;
-        }
-      }));
-    }
+    const children = slotChildren.children?.default?.();
+    const vnodeArray = Array.isArray(children) ? children : [children];
+
+    return h('div', { class: 'tab__content' }, vnodeArray.map((vnode) => {
+      if (selectedIndex.value !== index)
+        return null;
+
+      return vnode;
+    }));
   });
 }
 </script>
