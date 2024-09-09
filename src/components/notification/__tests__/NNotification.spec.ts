@@ -29,7 +29,7 @@ describe('nNotification', () => {
       },
     });
 
-    expect(wrapper.text()).toContain('Title');
+    expect(wrapper.text()).toContain('title.notification');
     expect(wrapper.text()).toContain('A message was not provided.');
   });
 

@@ -19,10 +19,10 @@ const props = defineProps({
     required: false,
   },
   /** notification title */
-  title: { type: String, default: null, required: false },
+  title: { type: String as PropType<string | null>, default: null, required: false },
   /** notification message (can be render function for customization) */
   message: {
-    type: [String, Object] as PropType<string | VNode>,
+    type: [String, Object] as PropType<string | VNode | null>,
     default: 'A message was not provided.',
     required: false,
   },

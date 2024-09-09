@@ -43,11 +43,6 @@
   --notification-z-index: 15;
   --modal-window-z-index: 10;
   --tooltip-z-index: 5;
-
-  /* only dev */
-  /* background-color: black; */
-  /* background-color: white; */
-  background: gray;
 }
 
 * {

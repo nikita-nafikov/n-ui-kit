@@ -9,7 +9,6 @@ describe('nSelect', () => {
     const wrapper = mount(NSelect, {
       props: {
         placeHolder: 'Select an option',
-        modelValue: null,
       },
       slots: {
         default: [

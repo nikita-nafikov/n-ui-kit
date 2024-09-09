@@ -12,6 +12,8 @@ import NConfigProvider from './components/config-provider/ui/NConfigProvider.vue
 import NNotificationContainer from './components/notification/ui/NNotificationContainer.vue';
 import { useNotifications } from './composiables/useNotification';
 import NLoader from './components/loader/ui/NLoader.vue';
+import NTabs from './components/tabs/ui/NTabs.vue';
+import NTab from './components/tabs/ui/NTab.vue';
 // dev
 
 // input
@@ -22,7 +24,7 @@ function input(e) {
 }
 
 // select
-const selectValue = ref([]);
+const selectValue = ref([2]);
 
 const options = ref([
   {
@@ -123,6 +125,14 @@ const local = ref('ru');
 
 <template>
   <NConfigProvider :is-dark-theme="isDarkTheme1" :locale="local">
+    <NTabs>
+      <NTab title="1">
+        1
+      </NTab>
+      <NTab title="2">
+        2
+      </NTab>
+    </NTabs>
     <NButton @click="toggleTheme">
       Сменить тему
     </NButton>

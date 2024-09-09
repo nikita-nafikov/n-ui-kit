@@ -2,6 +2,7 @@
 import type {
   ComputedRef,
   PropType,
+  VNode,
 } from 'vue';
 import {
   computed,
@@ -37,7 +38,7 @@ const { placeHolder, disabled, size, multiply } = defineProps({
   },
 });
 
-const modelValue = defineModel<any>();
+const modelValue = defineModel<string | number | unknown[] | object>();
 
 const { t } = useI18n({ useScope: 'global' });
 const isDarkTheme = inject<ComputedRef<boolean>>('isDarkTheme');
@@ -76,7 +77,7 @@ function handleCloseSelect(): void {
 }
 
 function updateValue(value: string | number | object, label: string | number): void {
-  if (multiply) {
+  if (multiply && Array.isArray(modelValue.value)) {
     const selectedItemIndex = modelValue.value.findIndex(
       (element: object | string | number) =>
         JSON.stringify(element) === JSON.stringify(value),
@@ -88,7 +89,7 @@ function updateValue(value: string | number | object, label: string | number): v
     }
     else {
       modelValue.value = modelValue.value.filter(
-        (element: object | string | number, index: number) =>
+        (_: object | string | number, index: number) =>
           index !== selectedItemIndex,
       );
       selectedLabels.value = selectedLabels.value.filter(
@@ -107,19 +108,22 @@ onMounted(() => {
   if (!modelValue.value)
     return;
 
-  slots.default?.()[0].children?.forEach((vnode) => {
-    if (!multiply) {
+  (slots.default?.()[0].children as Array<VNode>)?.forEach((vnode) => {
+    if (!vnode.props)
+      return;
+
+    if (multiply && Array.isArray(modelValue.value)) {
+      modelValue.value.forEach((value) => {
+        if (vnode.props && JSON.stringify(vnode.props.value) === JSON.stringify(value)) {
+          selectedLabels.value.push(vnode.props.label);
+        }
+      });
+    }
+    else {
       if (
         JSON.stringify(vnode.props.value) === JSON.stringify(modelValue.value)
       )
         return (selectedLabel.value = vnode.props.label);
-    }
-    else {
-      modelValue.value.forEach((value) => {
-        if (JSON.stringify(vnode.props.value) === JSON.stringify(value)) {
-          selectedLabels.value.push(vnode.props.label);
-        }
-      });
     }
   });
 });
