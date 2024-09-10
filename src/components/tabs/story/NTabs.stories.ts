@@ -12,8 +12,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NTabs from '@/components'
-  import NTab from '@/components'
+  import { NTabs, NTab } from "n-ui-kit"
 </script>
     
 

@@ -11,7 +11,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NCheckbox from '@/components'
+  import { NCheckbox } from "n-ui-kit"
 
   const checkboxValues = ref([])
 </script>

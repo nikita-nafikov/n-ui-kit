@@ -11,7 +11,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NRadio from '@/components'
+  import { NRadio } from "n-ui-kit"
 
   const radioValue = ref(1)
 </script>

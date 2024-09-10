@@ -11,7 +11,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NButton from '@/components'
+  import { NButton } from "n-ui-kit"
 </script>
     
 

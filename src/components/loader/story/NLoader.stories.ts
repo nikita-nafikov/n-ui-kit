@@ -10,7 +10,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NLoader from '@/components'
+  import { NLoader } from "n-ui-kit"
 
   const isLoaderShow = ref(true)
 </script>

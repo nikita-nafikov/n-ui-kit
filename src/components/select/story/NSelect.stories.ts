@@ -12,8 +12,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NSelect from '@/components'
-  import NOption from '@/components'
+  import { NSelect, NOption } from "n-ui-kit"
 
   const selectValue = ref(null)
   const optionList = [

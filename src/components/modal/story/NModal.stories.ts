@@ -12,7 +12,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NModalWindow from '@/components'
+  import { NModalWindow } from "n-ui-kit"
 
   const isModalWindowShow = ref(false)
 </script>

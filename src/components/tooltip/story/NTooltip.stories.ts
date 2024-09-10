@@ -12,8 +12,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NTooltip from '@/components'
-  import NButton from '@/components'
+  import { NTooltip, NButton } from "n-ui-kit"
 </script>
     
 

@@ -14,8 +14,8 @@ export default {
       source: {
         code: `
 <script setup>
-  import NNotificationContainer from '@/components'
-  import { useNotifications } from '@/composiables/useNotification';
+  import { NNotificationContainer } from "n-ui-kit"
+  import { useNotifications } from "n-ui-kit/composables";
   import { h } from 'vue'
 
   const { createNotification } = useNotifications();

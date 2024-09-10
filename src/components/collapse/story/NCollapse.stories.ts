@@ -11,7 +11,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NCollapse from '@/components'
+  import { NCollapse } from "n-ui-kit"
 </script>
     
 

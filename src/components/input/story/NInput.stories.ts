@@ -11,7 +11,7 @@ export default {
       source: {
         code: `
 <script setup>
-  import NInput from '@/components'
+  import { NInput } from "n-ui-kit"
 
   const inputValue = ref('')
 </script>
