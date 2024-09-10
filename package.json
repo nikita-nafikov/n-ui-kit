@@ -1,19 +1,23 @@
 {
   "name": "n-ui-kit",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.17",
   "exports": {
     ".": {
       "import": "./dist/nuikit.es.ts",
       "require": "./dist/nuikit.umd.ts"
     },
-    "./styles": "./dist/style.css"
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    }
   },
   "main": "./dist/nuikit.umd.ts",
   "module": "./dist/nuikit.es.ts",
   "types": "./dist/components/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src/components/"
   ],
   "scripts": {
     "dev": "vite",
