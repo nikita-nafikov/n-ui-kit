@@ -34,7 +34,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "predeploy": "npm run build-storybook",
-    "deploy": "gh-pages -d storybook-static"
+    "deploy": "gh-pages -d storybook-static",
+    "storybook:build": "storybook build",
+    "storybook:publish": "npm run storybook:build && code -r ./storybook-static/.nojekyll && gh-pages -d ./storybook-static -t true"
   },
   "peerDependencies": {
     "vue": ">=3"
