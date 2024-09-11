@@ -1,6 +1,6 @@
 # UI Kit на Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+UI Kit на Vue 3 с использованием Composition API, который подходит для разработки пользовательских интерфейсов. Он обладает высокой гибкостью и предоставляет множество возможностей для кастомизации, путем использования `<slot>` и `h`. Кроме того UI Kit поддерживает использование темной темы и интернализации благодаря компоненту `<NConfigProvider>`
 
 ## Основные особенности, которые я внедрил:
 
